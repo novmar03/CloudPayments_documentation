@@ -86,7 +86,7 @@ for (const [id, section] of Object.entries(sections)) {
     code.attr('id', codeId).attr('class', `language-${language}`);
     pre.attr('class', 'api-code');
     pre.wrap('<div class="api-code-block"></div>');
-    pre.before(`<div class="api-code-toolbar"><span>${language === 'markup' ? 'HTML' : language.toUpperCase()}</span><button type="button" data-copy-code="${codeId}" aria-live="polite">Копировать</button></div>`);
+    pre.before(`<div class="api-code-toolbar"><span>${language === 'markup' ? 'HTML' : language.toUpperCase()}</span><button type="button" data-copy-code="${codeId}" data-copy-state="ready" aria-label="Копировать код" title="Копировать код"><svg class="api-copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="12" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg><svg class="api-copy-success" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span class="api-copy-status" data-copy-status role="status" aria-live="polite"></span></button></div>`);
   });
   fragment('table').wrap('<div class="api-table-scroll" tabindex="0" aria-label="Таблица параметров"></div>');
   fragment('aside').addClass('api-callout').attr('role', 'note');
@@ -108,7 +108,7 @@ for (const [route, markdown] of Object.entries(docs)) {
     const match = Object.entries(fragments).find(([id, data]) => id !== 'intro' && data.destination.route === route && data.destination.title === title);
     return match ? `${line}\n\n<ImportedApiSection section="${match[0]}" />` : line;
   });
-  fs.writeFileSync(path.join(root, 'docs', `${route}.md`), output.replace(/\n{3,}/g, '\n\n'));
+  fs.writeFileSync(path.join(root, 'docs', `${route}.md`), output.replace(/\n{3,}/g, '\n\n').trimEnd() + '\n');
 }
 fs.mkdirSync(path.join(root, 'src/content'), {recursive: true});
 const result = {source: 'User-provided документация CP.htm.zip', sourceSha256: hash(source), totals, linkTargets: targets, fragments};

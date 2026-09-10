@@ -15,18 +15,30 @@ async function copyCodeText(text) {
   if (!copied) throw new Error('Clipboard unavailable');
 }
 
+const copyFeedbackTimers = new WeakMap();
+
 async function handleCodeCopy(event) {
   const button = event.target.closest('[data-copy-code]');
   if (!button) return;
   const code = document.getElementById(button.dataset.copyCode);
   if (!code) return;
+  clearTimeout(copyFeedbackTimers.get(button));
+  const feedback = (state, label) => {
+    button.dataset.copyState = state;
+    button.setAttribute('aria-label', label);
+    button.setAttribute('title', label);
+    button.querySelector('[data-copy-status]').textContent = state === 'ready' ? '' : label;
+  };
   try {
     await copyCodeText(code.textContent);
-    button.textContent = 'Скопировано';
+    feedback('copied', 'Код скопирован');
   } catch {
-    button.textContent = 'Выделите код для копирования';
+    feedback('error', 'Не удалось скопировать. Выделите код для копирования.');
   }
-  setTimeout(() => {button.textContent = 'Копировать';}, 2000);
+  copyFeedbackTimers.set(button, setTimeout(() => {
+    feedback('ready', 'Копировать код');
+    copyFeedbackTimers.delete(button);
+  }, 2000));
 }
 
 if (typeof module !== 'undefined') module.exports = {copyCodeText, handleCodeCopy};
