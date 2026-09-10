@@ -86,6 +86,9 @@ for route,anchor in internal_links:
     if anchor: assert any(t['id']==anchor for t in pages[route]['toc']), (route,anchor)
 
 template=(ROOT/'src/offline-template.html').read_text(encoding='utf-8')
+for placeholder, filename in [('__FAVICON_DATA_URI__', 'favicon.svg'), ('__LOGO_DATA_URI__', 'cloudpayments-logo.svg')]:
+    asset = (ROOT/'static'/filename).read_bytes()
+    template = template.replace(placeholder, 'data:image/svg+xml;base64,' + base64.b64encode(asset).decode('ascii'))
 data=json.dumps({'groups':groups,'pages':pages},ensure_ascii=False).replace('<','\\u003c')
 out=args.output
 out.parent.mkdir(parents=True, exist_ok=True)

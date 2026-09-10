@@ -52,5 +52,5 @@ for (const id of ids) {
 sandbox.location.hash = '#/';
 handlers.hashchange();
 assert(elements.main.innerHTML.includes('Об этом документе'));
-assert(!/<script[^>]+src=|<link[^>]+href=|<img[^>]+src="(?!data:)/.test(html));
+assert(!/<script[^>]+src=|<link[^>]+href="(?!data:)|<img[^>]+src="(?!data:)/.test(html));
 console.log(`Verified ${ids.length} pages, all audience filters, heading anchors and offline assets.`);

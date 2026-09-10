@@ -19,8 +19,7 @@ module.exports = {
   themeConfig: {
     colorMode: {defaultMode: 'light', disableSwitch: true},
     navbar: {
-      title: 'CloudPayments',
-      logo: {alt: '', src: 'favicon.svg'},
+      logo: {alt: 'CloudPayments', src: 'cloudpayments-logo.svg', width: 219, height: 34},
       items: [
         {label: 'Документация', to: '/', position: 'left', activeBaseRegex: '.*'},
         {label: 'Личный кабинет ↗', href: 'https://merchant.cloudpayments.ru', position: 'right'},
