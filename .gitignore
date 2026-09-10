@@ -1,0 +1,8 @@
+node_modules/
+build/
+.docusaurus/
+.sites-runtime/
+__pycache__/
+*.pyc
+.env
+.env.*

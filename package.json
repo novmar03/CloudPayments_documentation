@@ -1,0 +1,33 @@
+{
+  "name": "cloudpayments-documentation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "docusaurus start",
+    "build": "NO_UPDATE_NOTIFIER=1 docusaurus build",
+    "build:html": "python3 scripts/export-html.py",
+    "check:html": "node scripts/check-html.cjs"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.9.2",
+    "@docusaurus/preset-classic": "3.9.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "clsx": "2.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "overrides": {
+    "webpack": "5.101.3"
+  }
+}
