@@ -1,3 +1,16 @@
+const fs = require('node:fs');
+const path = require('node:path');
+
+// The API outline comes from the same page headings as the offline HTML.
+const apiHeadingIds = new Map();
+const apiHeadings = [...fs.readFileSync(path.join(__dirname, 'docs/tech/api.md'), 'utf8').matchAll(/^(#{2,4}) (.+)$/gm)].map(([, hashes, title]) => {
+  const slug = title.toLowerCase().replace(/[^\p{L}\p{N}_\s-]/gu, '').replace(/ /g, '-');
+  const count = apiHeadingIds.get(slug) || 0;
+  apiHeadingIds.set(slug, count + 1);
+  const anchor = slug + (count ? `-${count}` : '');
+  return {type: 'link', label: title, href: `/tech/api/#${encodeURIComponent(anchor)}`, autoAddBaseUrl: true, className: `api-heading-level-${hashes.length}`};
+});
+
 module.exports = {
   "docs": [
     "index",
@@ -67,7 +80,13 @@ module.exports = {
         "tech/charity",
         "tech/infoshop",
         "tech/sdk",
-        "tech/api",
+        {
+          "type": "category",
+          "label": "API",
+          "link": {"type": "doc", "id": "tech/api"},
+          "collapsed": true,
+          "items": apiHeadings
+        },
         "tech/notifications",
         {
           "type": "category",
