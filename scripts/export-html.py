@@ -9,6 +9,22 @@ args = parser.parse_args()
 groups = json.loads((SOURCE / 'src/components/navigation.json').read_text())
 pages = {}
 internal_links = []
+api_data = json.loads((ROOT/'src/content/api-fragments.json').read_text(encoding='utf-8'))
+
+def imported_section(section):
+    content = api_data['fragments'][section]['html']
+    def rewrite_tag(match):
+        tag = match[0]
+        link = re.search(r'href="https://developers\.cloudpayments\.ru/#([^"]+)"', tag)
+        if not link: return tag
+        destination = api_data['linkTargets'].get(link[1])
+        if not destination: return tag
+        route, anchor = destination['route'], destination['anchor']
+        internal_links.append((route, anchor))
+        url = '#/' + route + ('@' + anchor if anchor else '')
+        tag = tag.replace(link[0], 'href="' + html.escape(url, quote=True) + '"')
+        return re.sub(r'\s(?:target|rel)="[^"]*"', '', tag)
+    return '<div class="imported-api">' + re.sub(r'<a\b[^>]*>', rewrite_tag, content) + '</div>'
 
 def target(url):
     if url.startswith('/'):
@@ -45,6 +61,10 @@ def render(body):
     while i<len(lines):
         line=lines[i]
         if not line.strip(): i+=1;continue
+        if line.startswith('import ImportedApiSection '): i+=1;continue
+        component = re.fullmatch(r'<ImportedApiSection section="([^"]+)" />', line)
+        if component:
+            output.append(imported_section(component[1])); i+=1; continue
         if line.startswith('```'):
             lang=line[3:];code=[];i+=1
             while i<len(lines) and not lines[i].startswith('```'):code.append(lines[i]);i+=1
@@ -83,9 +103,11 @@ for g in groups:
 
 for route,anchor in internal_links:
     assert route in pages, route
-    if anchor: assert any(t['id']==anchor for t in pages[route]['toc']), (route,anchor)
+    if anchor: assert 'id="'+html.escape(anchor,quote=True)+'"' in pages[route]['html'], (route,anchor)
 
 template=(ROOT/'src/offline-template.html').read_text(encoding='utf-8')
+template=template.replace('/* IMPORTED_API_CSS */', (ROOT/'src/css/imported-api.css').read_text(encoding='utf-8'))
+template=template.replace('/* DOCUMENT_UI */', (ROOT/'src/components/document-ui.js').read_text(encoding='utf-8'))
 for placeholder, filename in [('__FAVICON_DATA_URI__', 'favicon.svg'), ('__LOGO_DATA_URI__', 'cloudpayments-logo.svg')]:
     asset = (ROOT/'static'/filename).read_bytes()
     template = template.replace(placeholder, 'data:image/svg+xml;base64,' + base64.b64encode(asset).decode('ascii'))

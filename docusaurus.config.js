@@ -14,7 +14,7 @@ module.exports = {
       showLastUpdateTime: false,
     },
     blog: false,
-    theme: {customCss: require.resolve('./src/css/custom.css')},
+    theme: {customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/imported-api.css')]},
   }]],
   themeConfig: {
     colorMode: {defaultMode: 'light', disableSwitch: true},

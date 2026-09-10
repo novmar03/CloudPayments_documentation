@@ -3,13 +3,33 @@ const path = require('node:path');
 
 // The API outline comes from the same page headings as the offline HTML.
 const apiHeadingIds = new Map();
-const apiHeadings = [...fs.readFileSync(path.join(__dirname, 'docs/tech/api.md'), 'utf8').matchAll(/^(#{2,4}) (.+)$/gm)].map(([, hashes, title]) => {
+const apiHeadingsFlat = [...fs.readFileSync(path.join(__dirname, 'docs/tech/api.md'), 'utf8').matchAll(/^(#{2,4}) (.+)$/gm)].map(([, hashes, title]) => {
   const slug = title.toLowerCase().replace(/[^\p{L}\p{N}_\s-]/gu, '').replace(/ /g, '-');
   const count = apiHeadingIds.get(slug) || 0;
   apiHeadingIds.set(slug, count + 1);
   const anchor = slug + (count ? `-${count}` : '');
-  return {type: 'link', label: title, href: `/tech/api/#${encodeURIComponent(anchor)}`, autoAddBaseUrl: true, className: `api-heading-level-${hashes.length}`};
+  return {level: hashes.length, title, anchor};
 });
+
+function makeApiOutline(headings) {
+  const root = [];
+  const stack = [{level: 1, items: root}];
+  headings.forEach((heading, index) => {
+    while (stack[stack.length - 1].level >= heading.level) stack.pop();
+    const next = headings[index + 1];
+    const hasChildren = next && next.level > heading.level;
+    const link = {type: 'link', label: heading.title, href: `/tech/api/#${encodeURIComponent(heading.anchor)}`, autoAddBaseUrl: true, className: `api-heading-level-${heading.level}`};
+    if (!hasChildren) {
+      stack[stack.length - 1].items.push(link);
+      return;
+    }
+    const category = {type: 'category', label: heading.title, collapsed: true, items: []};
+    stack[stack.length - 1].items.push(category);
+    stack.push({level: heading.level, items: category.items});
+  });
+  return root;
+}
+const apiHeadings = makeApiOutline(apiHeadingsFlat);
 
 module.exports = {
   "docs": [
