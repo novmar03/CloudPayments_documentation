@@ -33,7 +33,7 @@ elements.sidebar.querySelectorAll = () => {
   return outlineLinks;
 };
 const sandbox = {
-  document: {getElementById: id => elements[id] || element(id), addEventListener() {}, title: ''},
+  document: {getElementById: id => id === 'documentation-search' ? null : elements[id] || element(id), addEventListener() {}, title: ''},
   location: {hash: '#/'}, history: {replaceState() {}},
   window: {scrollTo() {}, addEventListener(event, callback) {handlers[event] = callback;}},
   requestAnimationFrame: callback => callback(),

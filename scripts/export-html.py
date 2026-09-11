@@ -5,6 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT
 parser = argparse.ArgumentParser(description='Build a standalone HTML documentation file.')
 parser.add_argument('--output', type=Path, default=ROOT / 'index.html')
+parser.add_argument('--search-index', type=Path, help='Optional index for the Docusaurus search bar.')
 args = parser.parse_args()
 groups = json.loads((SOURCE / 'src/components/navigation.json').read_text())
 pages = {}
@@ -114,10 +115,16 @@ for route,anchor in internal_links:
 template=(ROOT/'src/offline-template.html').read_text(encoding='utf-8')
 template=template.replace('/* IMPORTED_API_CSS */', (ROOT/'src/css/imported-api.css').read_text(encoding='utf-8'))
 template=template.replace('/* DOCUMENT_UI */', (ROOT/'src/components/document-ui.js').read_text(encoding='utf-8'))
+template=template.replace('/* DOCUMENT_SEARCH */', (ROOT/'src/components/documentation-search.cjs').read_text(encoding='utf-8'))
+template=template.replace('/* DOCUMENT_SEARCH_CSS */', (ROOT/'src/css/documentation-search.css').read_text(encoding='utf-8'))
 for placeholder, filename in [('__FAVICON_DATA_URI__', 'favicon.svg'), ('__LOGO_DATA_URI__', 'cloudpayments-logo.svg')]:
     asset = (ROOT/'static'/filename).read_bytes()
     template = template.replace(placeholder, 'data:image/svg+xml;base64,' + base64.b64encode(asset).decode('ascii'))
 data=json.dumps({'groups':groups,'pages':pages},ensure_ascii=False).replace('<','\\u003c')
+if args.search_index:
+    searchable = {key: {**page, 'html': re.sub(r'\ssrc="data:[^"]*"', '', page['html'])} for key, page in pages.items()}
+    args.search_index.parent.mkdir(parents=True, exist_ok=True)
+    args.search_index.write_text(json.dumps({'groups': groups, 'pages': searchable}, ensure_ascii=False), encoding='utf-8')
 out=args.output
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(template.replace('/* DOCUMENT_DATA */',data), encoding='utf-8')

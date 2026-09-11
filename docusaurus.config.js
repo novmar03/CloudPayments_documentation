@@ -7,6 +7,7 @@ module.exports = {
   trailingSlash: true,
   onBrokenLinks: 'throw',
   i18n: {defaultLocale: 'ru', locales: ['ru']},
+  plugins: [require.resolve('./plugins/documentation-search.cjs')],
   presets: [['classic', {
     docs: {
       routeBasePath: '/',
@@ -14,7 +15,7 @@ module.exports = {
       showLastUpdateTime: false,
     },
     blog: false,
-    theme: {customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/imported-api.css')]},
+    theme: {customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/imported-api.css'), require.resolve('./src/css/documentation-search.css')]},
   }]],
   themeConfig: {
     colorMode: {defaultMode: 'light', disableSwitch: true},
@@ -23,6 +24,7 @@ module.exports = {
       items: [
         {label: 'Документация', to: '/', position: 'left', activeBaseRegex: '.*'},
         {label: 'Личный кабинет ↗', href: 'https://merchant.cloudpayments.ru', position: 'right'},
+        {type: 'search', position: 'right'},
       ],
     },
     docs: {sidebar: {hideable: false, autoCollapseCategories: true}},
