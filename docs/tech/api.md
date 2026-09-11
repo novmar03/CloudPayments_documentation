@@ -4,118 +4,134 @@ slug: /tech/api
 toc_max_heading_level: 4
 ---
 
-import ImportedApiSection from '@site/src/components/ImportedApiSection';
+import EditedSection from '@site/src/components/EditedSection';
 
-<ImportedApiSection section="intro" />
+<EditedSection page="tech/api" index={0} />
 
-## Принцип работы
+## Принцип работы {#принцип-работы}
 
-<ImportedApiSection section="printsip-raboty" />
+<EditedSection page="tech/api" index={1} />
 
-## Аутентификация запросов
+## Аутентификация запросов {#аутентификация-запросов}
 
-<ImportedApiSection section="autentifikatsiya-zaprosov" />
+<EditedSection page="tech/api" index={2} />
 
-## Идемпотентность API
+## Идемпотентность API {#идемпотентность-api}
 
-<ImportedApiSection section="idempotentnost-api" />
+<EditedSection page="tech/api" index={3} />
 
-## Тестовый метод
+## Тестовый метод {#тестовый-метод}
 
-<ImportedApiSection section="testovyy-metod" />
+<EditedSection page="tech/api" index={4} />
 
-## Бизнес-сценарии оплаты (технические аспекты)
+## Бизнес-сценарии оплаты (технические аспекты) {#бизнес-сценарии-оплаты-технические-аспекты}
 
-### Оплата по криптограмме
+<EditedSection page="tech/api" index={5} />
 
-<ImportedApiSection section="oplata-po-kriptogramme" />
+### Оплата по криптограмме {#оплата-по-криптограмме}
 
-### Обработка 3-D Secure
+<EditedSection page="tech/api" index={6} />
 
-<ImportedApiSection section="obrabotka-3-d-secure" />
+### Обработка 3-D Secure {#обработка-3-d-secure}
 
-### Рекарринг
+<EditedSection page="tech/api" index={7} />
 
-<ImportedApiSection section="oplata-po-tokenu-rekarring" />
+#### Пример формы: {#primer-formy}
 
-### Двухстадийная оплата
+<EditedSection page="tech/api" index={8} />
 
-#### Подтверждение оплаты
+### Рекарринг {#рекарринг}
 
-<ImportedApiSection section="podtverzhdenie-oplaty" />
+<EditedSection page="tech/api" index={9} />
 
-#### Отмена оплаты
+#### Возможные варианты {#vozmozhnye-varianty}
 
-<ImportedApiSection section="otmena-oplaty" />
+<EditedSection page="tech/api" index={10} />
 
-### Возврат денег
+### Двухстадийная оплата {#двухстадийная-оплата}
 
-<ImportedApiSection section="vozvrat-deneg" />
+<EditedSection page="tech/api" index={11} />
 
-#### Выплата по криптограмме
+#### Подтверждение оплаты {#подтверждение-оплаты}
 
-<ImportedApiSection section="vyplata-po-kriptogramme" />
+<EditedSection page="tech/api" index={12} />
 
-#### Выплата по токену
+#### Отмена оплаты {#отмена-оплаты}
 
-<ImportedApiSection section="vyplata-po-tokenu" />
+<EditedSection page="tech/api" index={13} />
 
-#### Выплата по СБП
+### Возврат денег {#возврат-денег}
 
-<ImportedApiSection section="vyplata-po-sbp" />
+<EditedSection page="tech/api" index={14} />
 
-#### Выгрузка списка претензий за произвольный период
+#### Выплата по криптограмме {#выплата-по-криптограмме}
 
-<ImportedApiSection section="vygruzka-spiska-pretenziy-za-proizvolnyy-period" />
+<EditedSection page="tech/api" index={15} />
 
-### Работа с транзакциями
+#### Выплата по токену {#выплата-по-токену}
 
-#### Просмотр транзакции
+<EditedSection page="tech/api" index={16} />
 
-<ImportedApiSection section="prosmotr-tranzaktsii" />
+#### Выплата по СБП {#выплата-по-сбп}
 
-#### Проверка статуса платежа
+<EditedSection page="tech/api" index={17} />
 
-<ImportedApiSection section="proverka-statusa-platezha" />
+#### Выгрузка списка претензий за произвольный период {#выгрузка-списка-претензий-за-произвольный-период}
 
-#### Выгрузка списка транзакций
+<EditedSection page="tech/api" index={18} />
 
-<ImportedApiSection section="vygruzka-spiska-tranzaktsiy" />
+### Работа с транзакциями {#работа-с-транзакциями}
 
-#### Выгрузка списка транзакций за произвольный период
+<EditedSection page="tech/api" index={19} />
 
-<ImportedApiSection section="vygruzka-spiska-tranzaktsiy-za-proizvolnyy-period" />
+#### Просмотр транзакции {#просмотр-транзакции}
 
-#### Выгрузка токенов
+<EditedSection page="tech/api" index={20} />
 
-<ImportedApiSection section="vygruzka-tokenov" />
+#### Проверка статуса платежа {#проверка-статуса-платежа}
 
-### Подписки
+<EditedSection page="tech/api" index={21} />
 
-#### Создание подписки на рекуррентные платежи
+#### Выгрузка списка транзакций {#выгрузка-списка-транзакций}
 
-<ImportedApiSection section="sozdanie-podpiski-na-rekurrentnye-platezhi" />
+<EditedSection page="tech/api" index={22} />
 
-#### Запрос информации о подписке
+#### Выгрузка списка транзакций за произвольный период {#выгрузка-списка-транзакций-за-произвольный-период}
 
-<ImportedApiSection section="zapros-informatsii-o-podpiske" />
+<EditedSection page="tech/api" index={23} />
 
-#### Поиск подписок
+#### Выгрузка токенов {#выгрузка-токенов}
 
-<ImportedApiSection section="poisk-podpisok" />
+<EditedSection page="tech/api" index={24} />
 
-#### Изменение подписки на рекуррентные платежи
+### Подписки {#подписки}
 
-<ImportedApiSection section="izmenenie-podpiski-na-rekurrentnye-platezhi" />
+<EditedSection page="tech/api" index={25} />
 
-#### Отмена подписки на рекуррентные платежи
+#### Создание подписки на рекуррентные платежи {#создание-подписки-на-рекуррентные-платежи}
 
-<ImportedApiSection section="otmena-podpiski-na-rekurrentnye-platezhi" />
+<EditedSection page="tech/api" index={26} />
 
-### Локализация
+#### Запрос информации о подписке {#запрос-информации-о-подписке}
 
-<ImportedApiSection section="lokalizatsiya" />
+<EditedSection page="tech/api" index={27} />
 
-### Длинная запись
+#### Поиск подписок {#поиск-подписок}
 
-<ImportedApiSection section="dlinnaya-zapis" />
+<EditedSection page="tech/api" index={28} />
+
+#### Изменение подписки на рекуррентные платежи {#изменение-подписки-на-рекуррентные-платежи}
+
+<EditedSection page="tech/api" index={29} />
+
+#### Отмена подписки на рекуррентные платежи {#отмена-подписки-на-рекуррентные-платежи}
+
+<EditedSection page="tech/api" index={30} />
+
+### Локализация {#локализация}
+
+<EditedSection page="tech/api" index={31} />
+
+### Длинная запись {#длинная-запись}
+
+<EditedSection page="tech/api" index={32} />
