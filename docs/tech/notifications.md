@@ -3,28 +3,46 @@ title: "Уведомления"
 slug: /tech/notifications
 ---
 
-import ImportedApiSection from '@site/src/components/ImportedApiSection';
+import EditedSection from '@site/src/components/EditedSection';
 
-## Check
+<EditedSection page="tech/notifications" index={0} />
 
-## Pay
+## Check {#check}
 
-## Fail
+<EditedSection page="tech/notifications" index={1} />
 
-## Confirm
+## Pay {#pay}
 
-## Refund
+<EditedSection page="tech/notifications" index={2} />
 
-## Recurrent
+## Fail {#fail}
 
-## Cancel
+<EditedSection page="tech/notifications" index={3} />
 
-## Проверка уведомлений
+## Confirm {#confirm}
 
-## Просмотр настроек уведомлений
+<EditedSection page="tech/notifications" index={4} />
 
-<ImportedApiSection section="prosmotr-nastroek-uvedomleniy" />
+## Refund {#refund}
 
-## Изменение настроек уведомлений
+<EditedSection page="tech/notifications" index={5} />
 
-<ImportedApiSection section="izmenenie-nastroek-uvedomleniy" />
+## Recurrent {#recurrent}
+
+<EditedSection page="tech/notifications" index={6} />
+
+## Cancel {#cancel}
+
+<EditedSection page="tech/notifications" index={7} />
+
+## Проверка уведомлений {#проверка-уведомлений}
+
+<EditedSection page="tech/notifications" index={8} />
+
+## Просмотр настроек уведомлений {#просмотр-настроек-уведомлений}
+
+<EditedSection page="tech/notifications" index={9} />
+
+## Изменение настроек уведомлений {#изменение-настроек-уведомлений}
+
+<EditedSection page="tech/notifications" index={10} />
