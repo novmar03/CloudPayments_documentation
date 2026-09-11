@@ -11,10 +11,18 @@ import EditedSection from '@site/src/components/EditedSection';
 
 <EditedSection page="start/connect" index={1} />
 
-### Этапы подключения {#этапы-подключения}
+#### Зачем подключать CloudPayments {#section-3ef06271-9466-495f-9d16-a5eaf4e86838}
 
 <EditedSection page="start/connect" index={2} />
 
-### Контакт поддержки {#контакт-поддержки}
+#### Кому подходит {#section-b0f63321-271d-4c9a-83d3-7d9657b2b970}
 
 <EditedSection page="start/connect" index={3} />
+
+## Этапы подключения {#этапы-подключения}
+
+<EditedSection page="start/connect" index={4} />
+
+## Контакт поддержки {#контакт-поддержки}
+
+<EditedSection page="start/connect" index={5} />
