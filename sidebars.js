@@ -29,7 +29,9 @@ function makeApiOutline(headings) {
   });
   return root;
 }
-const apiHeadings = makeApiOutline(apiHeadingsFlat);
+const editorPagesPath = path.join(__dirname, 'src/content/editor-pages.json');
+const editorPages = fs.existsSync(editorPagesPath) ? JSON.parse(fs.readFileSync(editorPagesPath,'utf8')) : {};
+const apiHeadings = makeApiOutline(editorPages['tech/api'] ? editorPages['tech/api'].toc.map(h=>({...h,anchor:h.id})) : apiHeadingsFlat);
 
 module.exports = {
   "docs": [

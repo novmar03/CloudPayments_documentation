@@ -3,8 +3,18 @@ title: "Личный кабинет мерчанта"
 slug: /start/account
 ---
 
-## Что такое личный кабинет
+import EditedSection from '@site/src/components/EditedSection';
 
-## Возможности
+<EditedSection page="start/account" index={0} />
 
-## Мобильное приложение
+## Что такое личный кабинет {#что-такое-личный-кабинет}
+
+<EditedSection page="start/account" index={1} />
+
+## Возможности {#возможности}
+
+<EditedSection page="start/account" index={2} />
+
+## Мобильное приложение {#мобильное-приложение}
+
+<EditedSection page="start/account" index={3} />

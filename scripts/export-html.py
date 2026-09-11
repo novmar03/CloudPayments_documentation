@@ -8,6 +8,8 @@ parser.add_argument('--output', type=Path, default=ROOT / 'index.html')
 args = parser.parse_args()
 groups = json.loads((SOURCE / 'src/components/navigation.json').read_text())
 pages = {}
+EDITOR_PAGES_FILE = ROOT / 'src/content/editor-pages.json'
+editor_pages = json.loads(EDITOR_PAGES_FILE.read_text()) if EDITOR_PAGES_FILE.exists() else {}
 internal_links = []
 api_data = json.loads((ROOT/'src/content/api-fragments.json').read_text(encoding='utf-8'))
 
@@ -96,6 +98,10 @@ def render(body):
 
 for g in groups:
     for item in g['items']:
+        if item['id'] in editor_pages:
+            edited = editor_pages[item['id']]
+            pages[item['id']] = {**item, 'group': g['id'], 'title': edited['title'], 'html': edited['html'], 'toc': edited['toc']}
+            continue
         raw=(SOURCE/'docs'/(item['id']+'.md')).read_text()
         body=re.sub(r'^---\n.*?\n---\n','',raw,flags=re.S)
         content,toc=render(body)
