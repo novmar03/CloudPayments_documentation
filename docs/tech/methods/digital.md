@@ -3,14 +3,30 @@ title: "Цифровой рубль"
 slug: /tech/methods/digital
 ---
 
-## Прием цифровых рублей с 1 сентября 2026 года
+import EditedSection from '@site/src/components/EditedSection';
 
-## На кого распространяются требования
+<EditedSection page="tech/methods/digital" index={0} />
 
-## Как будут расширяться требования
+## Прием цифровых рублей с 1 сентября 2026 года {#прием-цифровых-рублей-с-1-сентября-2026-года}
 
-## На кого требования не распространяются
+<EditedSection page="tech/methods/digital" index={1} />
 
-## Прием цифровых рублей в CloudPayments
+## На кого распространяются требования {#на-кого-распространяются-требования}
 
-## Как подключить
+<EditedSection page="tech/methods/digital" index={2} />
+
+## Как будут расширяться требования {#как-будут-расширяться-требования}
+
+<EditedSection page="tech/methods/digital" index={3} />
+
+## На кого требования не распространяются {#на-кого-требования-не-распространяются}
+
+<EditedSection page="tech/methods/digital" index={4} />
+
+## Прием цифровых рублей в CloudPayments {#прием-цифровых-рублей-в-cloudpayments}
+
+<EditedSection page="tech/methods/digital" index={5} />
+
+## Как подключить {#как-подключить}
+
+<EditedSection page="tech/methods/digital" index={6} />
