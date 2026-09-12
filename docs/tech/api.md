@@ -116,7 +116,7 @@ import EditedSection from '@site/src/components/EditedSection';
 
 <EditedSection page="tech/api" index={27} />
 
-#### Поиск подписок {#поиск-подписок}
+#### Поиск подписок  {#поиск-подписок}
 
 <EditedSection page="tech/api" index={28} />
 
