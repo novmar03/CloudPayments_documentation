@@ -108,7 +108,10 @@ for g in groups:
         content,toc=render(body)
         pages[item['id']]={**item,'group':g['id'],'html':content,'toc':toc}
 
+deleted_file = ROOT/'src/content/deleted-pages.json'
+deleted_pages = set(json.loads(deleted_file.read_text()) if deleted_file.exists() else [])
 for route,anchor in internal_links:
+    if route in deleted_pages: continue
     assert route in pages, route
     if anchor: assert 'id="'+html.escape(anchor,quote=True)+'"' in pages[route]['html'], (route,anchor)
 
@@ -129,3 +132,9 @@ out=args.output
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(template.replace('/* DOCUMENT_DATA */',data), encoding='utf-8')
 print(json.dumps({'file':str(out),'pages':len(pages),'internal_links':len(internal_links),'bytes':out.stat().st_size},ensure_ascii=False))
+
+# EDITOR_INTERACTIONS
+output = args.output
+with output.open(encoding='utf-8') as f: published = f.read()
+runtime = (ROOT/'src/components/editor-interactions.js').read_text(encoding='utf-8').replace('export function installInteractions', 'function installInteractions')
+output.write_text(published.replace('</body>', '<script>' + runtime + '\ninstallInteractions(document);</script></body>'), encoding='utf-8')

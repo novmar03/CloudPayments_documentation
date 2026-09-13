@@ -6,7 +6,8 @@
     "start": "docusaurus start",
     "build": "NO_UPDATE_NOTIFIER=1 docusaurus build",
     "build:html": "python3 scripts/export-html.py",
-    "check:html": "node scripts/check-html.cjs"
+    "check:html": "node scripts/check-html.cjs",
+    "test": "node --test tests/*.test.cjs && node scripts/check-search.cjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
