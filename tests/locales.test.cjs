@@ -14,7 +14,8 @@ test('locale URLs and search never mix Russian and English',()=>{
 });
 test('reader switches the current route, has a missing-translation state and keeps Russian intact',()=>{
  const html=fs.readFileSync(require('node:path').join(__dirname,'../index.html'),'utf8');
- const json=html.match(/<script id="document-data" type="application\/json">([\s\S]*?)<\/script>/)[1],data=JSON.parse(json);
+ const raw=html.match(/<script id="document-data" type="application\/json">([\s\S]*?)<\/script>/)[1],data=JSON.parse(raw);
+ data.translations={en:{pages:{}}};const json=JSON.stringify(data);
  const handlers={},elements={};
  const element=id=>({textContent:id==='document-data'?json:'',innerHTML:'',focus(){},scrollIntoView(){},setAttribute(){},classList:{remove(){},toggle(){}},addEventListener(e,fn){handlers[id+':'+e]=fn;},querySelectorAll(){return[]},querySelector(){return null}});
  for(const id of ['document-data','main','sidebar','menu-button'])elements[id]=element(id);
