@@ -3,20 +3,54 @@ title: "Платежные блоки"
 slug: /tech/blocks
 ---
 
-## Начало работы с платежными блоками
+import EditedSection from '@site/src/components/EditedSection';
 
-## Демо-конструктор
+<EditedSection page="tech/blocks" index={0} />
 
-## Полный скрипт
+## Демо платежных блоков {#demo-konstruktora}
 
-## Параметры инициализации
+<EditedSection page="tech/blocks" index={1} />
 
-## Параметры кастомизации
+## Отличия от виджета {#otlichiya-ot-vidzheta}
 
-## Обновление платежного блока
+<EditedSection page="tech/blocks" index={2} />
 
-## События и виды коллбэков
+## Установка платежного конструктора {#ustanovka-platezhnogo-konstruktora}
 
-## Отписка
+<EditedSection page="tech/blocks" index={3} />
 
-## Демонтаж из DOM
+## Демонтаж из DOM {#demontazh-iz-dom}
+
+<EditedSection page="tech/blocks" index={4} />
+
+## События (коллбэки) {#sobytiya-kollbeki}
+
+<EditedSection page="tech/blocks" index={5} />
+
+## Виды коллбэков {#vidy-kollbekov}
+
+<EditedSection page="tech/blocks" index={6} />
+
+## Отписка {#otpiska}
+
+<EditedSection page="tech/blocks" index={7} />
+
+## Пример вызова PaymentBlocks {#primer-vyzova-paymentblocks}
+
+<EditedSection page="tech/blocks" index={8} />
+
+## Параметры инициализации {#parametry-initsializatsii}
+
+<EditedSection page="tech/blocks" index={9} />
+
+## Обновление платежного конструктора {#obnovlenie-platezhnogo-konstruktora}
+
+<EditedSection page="tech/blocks" index={10} />
+
+## Кастомизация платежного конструктора {#kastomizatsiya-platezhnogo-konstruktora}
+
+<EditedSection page="tech/blocks" index={11} />
+
+## Параметры кастомизации {#parametry-kastomizatsii}
+
+<EditedSection page="tech/blocks" index={12} />
