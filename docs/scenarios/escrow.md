@@ -50,3 +50,23 @@ import EditedSection from '@site/src/components/EditedSection';
 ### Схема интеграции для Widget: {#shema-integratsii-dlya-widget-2}
 
 <EditedSection page="scenarios/escrow" index={11} />
+
+### Схема интеграции для API Checkout: {#shema-integratsii-dlya-api-checkout-2}
+
+<EditedSection page="scenarios/escrow" index={12} />
+
+### Ограничения {#ogranicheniya-2}
+
+<EditedSection page="scenarios/escrow" index={13} />
+
+## Получение по AccumulationId статуса операций {#poluchenie-po-accumulationid-statusa-operatsiy}
+
+<EditedSection page="scenarios/escrow" index={14} />
+
+## Метод для получения информации по БС для обоих типов сделки (N:1 и 1:N) {#metod-dlya-polucheniya-informatsii-po-bs-dlya-oboih-tipov-sdelki-n-1-i-1-n}
+
+<EditedSection page="scenarios/escrow" index={15} />
+
+### Значение поля Status для сделки: {#znachenie-polya-status-dlya-sdelki}
+
+<EditedSection page="scenarios/escrow" index={16} />
