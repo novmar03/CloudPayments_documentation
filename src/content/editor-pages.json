@@ -70423,7 +70423,7 @@
   },
   "methods/installments": {
     "title": "Рассрочка",
-    "html": "<div class=\"imported-api\"><p>Это возможность получать оплату за товары или услуги частями, при этом бизнес сразу получает всю сумму покупки, а клиент выплачивает ее поэтапно.</p><h3 id=\"section-853c166d-0c18-4fc3-9d12-9fc7cd2d06f6\"><strong>Как подключить рассрочку в платежной форме</strong></h3><p>При подключении к CloudPayments настройка рассрочки производится по запросу <u><a href=\"https://t.me/cloudassistant_bot\" target=\"_blank\" rel=\"noopener noreferrer\">в tg-боте</a></u> — для настройки оправьте в чат ИНН своей организации.</p><h3 id=\"section-de3a8561-9e13-446e-84b1-f5efc943a9db\"><strong>Как включить рассрочку в платежной форме</strong></h3><p><u><a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">В Личном кабинете CloudPayments →</a></u> раздел Сайты</p><h3 id=\"section-ddccac6d-0d9b-4082-9a6e-906c630f4d98\"><strong>Варианты интеграции платежной формы</strong></h3><ul><li><p>Виджет</p></li><li><p>Платежные ссылки и заказы</p></li><li><p>Отдельной кнопкой через WebSDK</p></li><li><p>Платежные блоки</p></li><li><p>CloudИнфошоп</p></li></ul><p><br></p></div>",
+    "html": "<div class=\"imported-api\"><p>Это возможность получать оплату за товары или услуги частями, при этом бизнес сразу получает всю сумму покупки, а клиент выплачивает ее поэтапно.</p><figure style=\"text-align:center\"><img src=\"static/img/editor/e7f5de5cf03fb6aa6789c029e73e6dc25bb2151d060b4edf6745eff08eb74aec.png\" alt=\"Снимок экрана — 2026-09-14 в 16.43.35.png\" style=\"width:71%;max-width:100%;height:auto\"></figure><h3 id=\"section-853c166d-0c18-4fc3-9d12-9fc7cd2d06f6\"><strong>Как подключить рассрочку в платежной форме</strong></h3><p>При подключении к CloudPayments настройка рассрочки производится по запросу <u><a href=\"https://t.me/cloudassistant_bot\" target=\"_blank\" rel=\"noopener noreferrer\">в tg-боте</a></u> — для настройки оправьте в чат ИНН своей организации.</p><h3 id=\"section-de3a8561-9e13-446e-84b1-f5efc943a9db\"><strong>Как включить рассрочку в платежной форме</strong></h3><p><u><a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">В Личном кабинете CloudPayments →</a></u> раздел Сайты</p><h3 id=\"section-ddccac6d-0d9b-4082-9a6e-906c630f4d98\"><strong>Варианты интеграции платежной формы</strong></h3><ul><li><p>Виджет</p></li><li><p>Платежные ссылки и заказы</p></li><li><p>Отдельной кнопкой через WebSDK</p></li><li><p>Платежные блоки</p></li><li><p>CloudИнфошоп</p></li></ul><p><br></p></div>",
     "toc": [
       {
         "id": "section-853c166d-0c18-4fc3-9d12-9fc7cd2d06f6",
@@ -70442,7 +70442,7 @@
       }
     ],
     "segments": [
-      "<p>Это возможность получать оплату за товары или услуги частями, при этом бизнес сразу получает всю сумму покупки, а клиент выплачивает ее поэтапно.</p>",
+      "<p>Это возможность получать оплату за товары или услуги частями, при этом бизнес сразу получает всю сумму покупки, а клиент выплачивает ее поэтапно.</p><figure style=\"text-align:center\"><img src=\"static/img/editor/e7f5de5cf03fb6aa6789c029e73e6dc25bb2151d060b4edf6745eff08eb74aec.png\" alt=\"Снимок экрана — 2026-09-14 в 16.43.35.png\" style=\"width:71%;max-width:100%;height:auto\"></figure>",
       "<p>При подключении к CloudPayments настройка рассрочки производится по запросу <u><a href=\"https://t.me/cloudassistant_bot\" target=\"_blank\" rel=\"noopener noreferrer\">в tg-боте</a></u> — для настройки оправьте в чат ИНН своей организации.</p>",
       "<p><u><a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">В Личном кабинете CloudPayments →</a></u> раздел Сайты</p>",
       "<ul><li><p>Виджет</p></li><li><p>Платежные ссылки и заказы</p></li><li><p>Отдельной кнопкой через WebSDK</p></li><li><p>Платежные блоки</p></li><li><p>CloudИнфошоп</p></li></ul><p><br></p>"
@@ -70461,6 +70461,19 @@
               "text": "Это возможность получать оплату за товары или услуги частями, при этом бизнес сразу получает всю сумму покупки, а клиент выплачивает ее поэтапно."
             }
           ]
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "static/img/editor/e7f5de5cf03fb6aa6789c029e73e6dc25bb2151d060b4edf6745eff08eb74aec.png",
+            "alt": "Снимок экрана — 2026-09-14 в 16.43.35.png",
+            "title": null,
+            "width": 71,
+            "height": null,
+            "assetPath": "editor-assets/31351f6c-ad65-437b-ad8d-84546b15d825.png",
+            "scriptNote": "",
+            "align": "center"
+          }
         },
         {
           "type": "heading",
