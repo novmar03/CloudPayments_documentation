@@ -295,6 +295,10 @@ function updateLanguageMenu(){
  picker?.querySelectorAll('[data-language]').forEach(link=>{const route=CPDocsLocales.route(location.hash),at=route.path.indexOf('@'),id=at<0?route.path:route.path.slice(0,at);let anchor='';try{anchor=at<0?'':decodeURIComponent(route.path.slice(at+1));}catch{}
  link.setAttribute('href',CPDocsLocales.url(link.dataset.language,id,anchor));link.setAttribute('aria-current',String(link.dataset.language===locale));});
  const label=document.querySelector?.('.header-label');if(label)label.textContent=locale==='en'?'Documentation':'Документация';
+ const skip=document.querySelector?.('.skip');if(skip)skip.textContent=locale==='en'?'Skip to content':'К содержанию';
+ const account=document.querySelector?.('.account');if(account)account.textContent=locale==='en'?'Merchant account ↗':'Личный кабинет ↗';
+ menuButton.setAttribute('aria-label',locale==='en'?'Open menu':'Открыть меню');
+ sidebar.setAttribute('aria-label',locale==='en'?'Documentation contents':'Содержание документации');
 }
 const languagePicker=document.getElementById('language-picker');
 languagePicker?.addEventListener('click',e=>{if(e.target.closest('[data-language]'))languagePicker.open=false;});

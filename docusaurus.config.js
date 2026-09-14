@@ -1,6 +1,7 @@
+const english=process.env.DOCUSAURUS_CURRENT_LOCALE==='en';
 module.exports = {
-  title: 'CloudPayments · Документация',
-  tagline: 'Подключение и прием платежей',
+  title: english?'CloudPayments · Documentation':'CloudPayments · Документация',
+  tagline: english?'Integration and payments':'Подключение и прием платежей',
   url: process.env.DOCS_URL || 'https://example.com',
   baseUrl: process.env.DOCS_BASE_URL || '/',
   favicon: 'favicon.svg',
@@ -22,8 +23,8 @@ module.exports = {
     navbar: {
       logo: {alt: 'CloudPayments', src: 'cloudpayments-logo.svg', width: 219, height: 34},
       items: [
-        {label: 'Документация', to: '/', position: 'left', activeBaseRegex: '.*'},
-        {label: 'Личный кабинет ↗', href: 'https://merchant.cloudpayments.ru', position: 'right'},
+        {label: english?'Documentation':'Документация', to: '/', position: 'left', activeBaseRegex: '.*'},
+        {label: english?'Merchant account ↗':'Личный кабинет ↗', href: 'https://merchant.cloudpayments.ru', position: 'right'},
         {type: 'custom-language', position: 'right'},
         {type: 'search', position: 'right'},
       ],
