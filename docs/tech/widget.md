@@ -3,22 +3,58 @@ title: "Виджет"
 slug: /tech/widget
 ---
 
-## Начало работы с виджетом
+import EditedSection from '@site/src/components/EditedSection';
 
-## Демо-конструктор
+<EditedSection page="tech/widget" index={0} />
 
-## Полный скрипт и параметры
+## Начало работы с виджетом {#начало-работы-с-виджетом}
 
-## Рекуррентные платежи
+<EditedSection page="tech/widget" index={1} />
 
-## Параметры кастомизации
+## Демо-конструктор {#section-1807c054-4763-49bf-bfca-7be4e7f41234}
 
-## Данные о плательщике
+<EditedSection page="tech/widget" index={2} />
 
-## Список товаров
+## Мобильный виджет {#mobilnyy-vidzhet}
 
-## Параметры чека
+<EditedSection page="tech/widget" index={3} />
 
-## Настройка безопасной сделки
+## Установка виджета {#ustanovka-vidzheta}
 
-## События (коллбэки)
+<EditedSection page="tech/widget" index={4} />
+
+## Полный скрипт и параметры {#section-1a3f12ec-0b5c-4767-82ea-12636d40e947}
+
+<EditedSection page="tech/widget" index={5} />
+
+### Скрипт {#section-a1e811f3-7fb1-4b48-8e8b-c2f0842ec60a}
+
+<EditedSection page="tech/widget" index={6} />
+
+### Параметры {#parametry}
+
+<EditedSection page="tech/widget" index={7} />
+
+## Рекуррентные платежи {#рекуррентные-платежи}
+
+<EditedSection page="tech/widget" index={8} />
+
+## Параметры кастомизации {#параметры-кастомизации}
+
+<EditedSection page="tech/widget" index={9} />
+
+## Данные о плательщике {#данные-о-плательщике}
+
+<EditedSection page="tech/widget" index={10} />
+
+## Список товаров {#список-товаров}
+
+<EditedSection page="tech/widget" index={11} />
+
+## Настройка безопасной сделки  {#section-41501fca-c2d1-4e54-ba8b-45412e525a0a}
+
+<EditedSection page="tech/widget" index={12} />
+
+## События (коллбэки) {#callbacks}
+
+<EditedSection page="tech/widget" index={13} />
