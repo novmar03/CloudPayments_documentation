@@ -3,6 +3,10 @@ title: "Тестирование"
 slug: /reference/testing
 ---
 
-## Тестовые карты
+import EditedSection from '@site/src/components/EditedSection';
 
-## Тестирование онлайн-кассы
+<EditedSection page="reference/testing" index={0} />
+
+## Тестирование онлайн-кассы {#testirovanie-onlayn-kassy}
+
+<EditedSection page="reference/testing" index={1} />
