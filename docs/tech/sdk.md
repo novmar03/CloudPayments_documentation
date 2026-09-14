@@ -3,14 +3,14 @@ title: "Мобильные SDK"
 slug: /tech/sdk
 ---
 
-## SDK для iOS
+import EditedSection from '@site/src/components/EditedSection';
 
-### Начало работы
+<EditedSection page="tech/sdk" index={0} />
 
-### Условия использования
+## SDK для iOS {#sdk-для-ios}
 
-## SDK для Android
+<EditedSection page="tech/sdk" index={1} />
 
-### Начало работы
+## SDK для Android {#sdk-для-android}
 
-### Условия использования
+<EditedSection page="tech/sdk" index={2} />
