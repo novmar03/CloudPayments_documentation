@@ -1,0 +1,30 @@
+const assert=require('node:assert/strict');
+const {test}=require('node:test');
+const fs=require('node:fs'),vm=require('node:vm');
+const locales=require('../src/components/document-locales.cjs');
+test('locale URLs and search never mix Russian and English',()=>{
+ const data={groups:[{id:'tech',items:[{id:'tech/api',title:'API'}]}],pages:{'tech/api':{id:'tech/api',title:'API',html:'Русский текст',toc:[]}}};
+ assert.deepEqual(locales.route('#/en/tech/api@charge'),{locale:'en',path:'tech/api@charge'});
+ assert.equal(locales.url('en','tech/api','charge'),'#/en/tech/api@charge');
+ assert.deepEqual(locales.view(data,'ru').pages,data.pages);
+ assert.deepEqual(locales.searchView(data,'en').pages,{});
+ data.translations={en:{pages:{'tech/api':{title:'English API',html:'English text',toc:[]}}}};
+ assert.equal(locales.searchView(data,'en').pages['tech/api'].html,'English text');
+ assert.equal(data.pages['tech/api'].html,'Русский текст');
+});
+test('reader switches the current route, has a missing-translation state and keeps Russian intact',()=>{
+ const html=fs.readFileSync(require('node:path').join(__dirname,'../index.html'),'utf8');
+ const json=html.match(/<script id="document-data" type="application\/json">([\s\S]*?)<\/script>/)[1],data=JSON.parse(json);
+ const handlers={},elements={};
+ const element=id=>({textContent:id==='document-data'?json:'',innerHTML:'',focus(){},scrollIntoView(){},setAttribute(){},classList:{remove(){},toggle(){}},addEventListener(e,fn){handlers[id+':'+e]=fn;},querySelectorAll(){return[]},querySelector(){return null}});
+ for(const id of ['document-data','main','sidebar','menu-button'])elements[id]=element(id);
+ const sandbox={document:{getElementById:id=>id==='documentation-search'?null:elements[id]||element(id),addEventListener(){},title:''},location:{hash:'#/tech/api'},window:{scrollTo(){},addEventListener(e,fn){handlers[e]=fn;}},history:{replaceState(){}},requestAnimationFrame:fn=>fn()};
+ vm.createContext(sandbox);vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],sandbox);
+ assert.ok(elements.main.innerHTML.includes(data.pages['tech/api'].html));
+ sandbox.location.hash='#/en/tech/api';handlers.hashchange();
+ assert.ok(elements.main.innerHTML.includes('has not been published'));
+ assert.ok(elements.main.innerHTML.includes('href="#/tech/api" lang="ru"'));
+ assert.ok(elements.sidebar.innerHTML.includes('#/en/'));
+ sandbox.location.hash='#/tech/api';handlers.hashchange();
+ assert.ok(elements.main.innerHTML.includes(data.pages['tech/api'].html));
+});

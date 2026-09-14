@@ -1,9 +1,13 @@
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import englishContent from '../content/editor-pages.en.json?render';
 import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import content from '../content/editor-pages.json?render';
+import russianContent from '../content/editor-pages.json?render';
 import {handleCodeCopy} from './document-ui';
 export default function EditedSection({page,index}) {
  const base=useBaseUrl('/');
+ const {i18n:{currentLocale}}=useDocusaurusContext();
+ const content=currentLocale==='en'?englishContent:russianContent;
  const html=(content[page]?.segments[index]||'').replaceAll('src="static/img/editor/', 'src="'+base+'img/editor/').replaceAll('__EDITOR_ASSET__/',base+'assets/editor-media/').replace(/href="#\/([^"@]+)(?:@([^"\s]+))?"/g,(_,route,anchor)=>'href="'+base+route+'/'+(anchor?'#'+anchor:'')+'"');
  return <div className="imported-api" onClick={handleCodeCopy} dangerouslySetInnerHTML={{__html:html}}/>;
 }

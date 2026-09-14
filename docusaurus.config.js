@@ -6,7 +6,7 @@ module.exports = {
   favicon: 'favicon.svg',
   trailingSlash: true,
   onBrokenLinks: 'throw',
-  i18n: {defaultLocale: 'ru', locales: ['ru']},
+  i18n: {defaultLocale: 'ru', locales: ['ru','en'], localeConfigs: {ru:{label:'Русский'},en:{label:'English'}}},
   plugins: [require.resolve('./plugins/documentation-search.cjs'), require.resolve('./plugins/editor-render-data.cjs')],
   presets: [['classic', {
     docs: {
@@ -15,7 +15,7 @@ module.exports = {
       showLastUpdateTime: false,
     },
     blog: false,
-    theme: {customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/imported-api.css'), require.resolve('./src/css/documentation-search.css')]},
+    theme: {customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/css/imported-api.css'), require.resolve('./src/css/documentation-search.css'), require.resolve('./src/css/language-picker.css')]},
   }]],
   themeConfig: {
     colorMode: {defaultMode: 'light', disableSwitch: true},
@@ -24,6 +24,7 @@ module.exports = {
       items: [
         {label: 'Документация', to: '/', position: 'left', activeBaseRegex: '.*'},
         {label: 'Личный кабинет ↗', href: 'https://merchant.cloudpayments.ru', position: 'right'},
+        {type: 'custom-language', position: 'right'},
         {type: 'search', position: 'right'},
       ],
     },

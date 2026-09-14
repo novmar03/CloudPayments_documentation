@@ -11,6 +11,8 @@ groups = json.loads((SOURCE / 'src/components/navigation.json').read_text())
 pages = {}
 EDITOR_PAGES_FILE = ROOT / 'src/content/editor-pages.json'
 editor_pages = json.loads(EDITOR_PAGES_FILE.read_text()) if EDITOR_PAGES_FILE.exists() else {}
+ENGLISH_PAGES_FILE = ROOT / 'src/content/editor-pages.en.json'
+english_pages = json.loads(ENGLISH_PAGES_FILE.read_text()) if ENGLISH_PAGES_FILE.exists() else {}
 internal_links = []
 api_data = json.loads((ROOT/'src/content/api-fragments.json').read_text(encoding='utf-8'))
 
@@ -117,17 +119,19 @@ for route,anchor in internal_links:
 
 template=(ROOT/'src/offline-template.html').read_text(encoding='utf-8')
 template=template.replace('/* IMPORTED_API_CSS */', (ROOT/'src/css/imported-api.css').read_text(encoding='utf-8'))
+template=template.replace('/* DOCUMENT_LOCALES */', (ROOT/'src/components/document-locales.cjs').read_text(encoding='utf-8'))
 template=template.replace('/* DOCUMENT_UI */', (ROOT/'src/components/document-ui.js').read_text(encoding='utf-8'))
 template=template.replace('/* DOCUMENT_SEARCH */', (ROOT/'src/components/documentation-search.cjs').read_text(encoding='utf-8'))
 template=template.replace('/* DOCUMENT_SEARCH_CSS */', (ROOT/'src/css/documentation-search.css').read_text(encoding='utf-8'))
 for placeholder, filename in [('__FAVICON_DATA_URI__', 'favicon.svg'), ('__LOGO_DATA_URI__', 'cloudpayments-logo.svg')]:
     asset = (ROOT/'static'/filename).read_bytes()
     template = template.replace(placeholder, 'data:image/svg+xml;base64,' + base64.b64encode(asset).decode('ascii'))
-data=json.dumps({'groups':groups,'pages':pages},ensure_ascii=False).replace('<','\\u003c')
+translations = {'en': {'pages': {key: {**pages[key], 'title': page['title'], 'html': page['html'], 'toc': page['toc']} for key, page in english_pages.items() if key in pages}}}
+data=json.dumps({'groups':groups,'pages':pages,'translations':translations},ensure_ascii=False).replace('<','\\u003c')
 if args.search_index:
     searchable = {key: {**page, 'html': re.sub(r'\ssrc="data:[^"]*"', '', page['html'])} for key, page in pages.items()}
     args.search_index.parent.mkdir(parents=True, exist_ok=True)
-    args.search_index.write_text(json.dumps({'groups': groups, 'pages': searchable}, ensure_ascii=False), encoding='utf-8')
+    args.search_index.write_text(json.dumps({'groups': groups, 'pages': searchable, 'translations': translations}, ensure_ascii=False), encoding='utf-8')
 out=args.output
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(template.replace('/* DOCUMENT_DATA */',data), encoding='utf-8')

@@ -71,11 +71,12 @@
     return (start ? '…' : '') + highlight(entry.text.slice(start,end),query) + (end<entry.text.length ? '…' : '');
   }
 
-  function mount(root, {getData, routeUrl, onNavigate = () => {}}) {
+  function mount(root, {getData, routeUrl, onNavigate = () => {}, locale = 'ru'}) {
     const doc = root.ownerDocument;
+    const ui=(ru,en)=>locale==='en'?en:ru;
     root.classList.add('documentation-search');
     const uid = 'doc-search-' + Math.random().toString(36).slice(2);
-    root.innerHTML = '<div class="doc-search-field"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" maxlength="160" autocomplete="off" spellcheck="false" placeholder="Поиск по документации" aria-label="Поиск по всей документации" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="'+uid+'"><button class="doc-search-clear" type="button" aria-label="Очистить поиск" hidden>×</button><kbd aria-hidden="true">/</kbd></div><div class="doc-search-panel" hidden><p class="doc-search-status" role="status" aria-live="polite"></p><div class="doc-search-results" role="listbox" id="'+uid+'" aria-label="Результаты поиска"></div></div>';
+    root.innerHTML = '<div class="doc-search-field"><svg aria-hidden="true" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" maxlength="160" autocomplete="off" spellcheck="false" placeholder="'+ui("Поиск по документации","Search documentation")+'" aria-label="'+ui("Поиск по всей документации","Search all documentation")+'" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="'+uid+'"><button class="doc-search-clear" type="button" aria-label="'+ui("Очистить поиск","Clear search")+'" hidden>×</button><kbd aria-hidden="true">/</kbd></div><div class="doc-search-panel" hidden><p class="doc-search-status" role="status" aria-live="polite"></p><div class="doc-search-results" role="listbox" id="'+uid+'" aria-label="'+ui("Результаты поиска","Search results")+'"></div></div>';
     const input = root.querySelector('input'), panel = root.querySelector('.doc-search-panel'), list = root.querySelector('.doc-search-results'), status = root.querySelector('.doc-search-status'), clear = root.querySelector('.doc-search-clear');
     let indexPromise, timer, serial=0, selected=-1, links=[], disposed=false;
     const listeners=[];
@@ -97,15 +98,15 @@
     async function update() {
       const turn=++serial, query=input.value.trim();
       clear.hidden=!input.value; panel.hidden=false; input.setAttribute('aria-expanded','true'); selected=-1; links=[]; list.innerHTML='';input.removeAttribute('aria-activedescendant');
-      if (!query) {status.textContent='Введите слово, название метода или параметр API';return;}
-      status.textContent='Ищем по всей документации…';
+      if (!query) {status.textContent=''+ui("Введите слово, название метода или параметр API","Enter a word, method name or API parameter")+'';return;}
+      status.textContent=''+ui("Ищем по всей документации…","Searching documentation…")+'';
       try {
         const results=find(await index(),query);
         if (disposed || turn!==serial) return;
-        status.textContent=results.length ? 'Найдено: '+results.length+(results.length>20?' · Показаны первые 20':'') : 'Ничего не найдено. Попробуйте другое слово.';
+        status.textContent=results.length ? ''+ui("Найдено: ","Results: ")+''+results.length+(results.length>20?''+ui(" · Показаны первые 20"," · Showing the first 20")+'':'') : ''+ui("Ничего не найдено. Попробуйте другое слово.","No results. Try another word.")+'';
         list.innerHTML=results.slice(0,20).map((entry,i)=>'<a class="doc-search-result" id="'+uid+'-'+i+'" role="option" aria-selected="false" href="'+escape(routeUrl(entry.pageId,entry.anchor))+'"><span class="doc-search-group">'+escape(entry.group)+' · '+highlight(entry.pageTitle,query)+'</span><strong>'+highlight(entry.heading || entry.pageTitle,query)+'</strong>'+(entry.text?'<span class="doc-search-excerpt">'+excerpt(entry,query)+'</span>':'')+'</a>').join('');
         links=[...list.querySelectorAll('a')];
-      } catch {if(turn===serial && !disposed) status.textContent='Не удалось загрузить поиск. Повторите ввод или обновите страницу.';}
+      } catch {if(turn===serial && !disposed) status.textContent=''+ui("Не удалось загрузить поиск. Повторите ввод или обновите страницу.","Search could not be loaded. Try again or reload the page.")+'';}
     }
     listen(input,'input',()=>{++serial;clearTimeout(timer);timer=setTimeout(update,100);});
     listen(input,'focus',update);
