@@ -115397,7 +115397,7 @@
   },
   "reference/testing": {
     "title": "Тестирование",
-    "html": "<div class=\"imported-api\"><p>Сразу после создания нового сайта в ЛК он находится в тестовом режиме работы — это значит, что платежи и прочие операции будут проходить в режиме эмуляции. </p><p>Для тестирования можно использовать карты:</p><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Номер карты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты по токену</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4242 4242 4242 4242</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5555 5555 5555 4444</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 0000 0004</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4012 8888 8888 1881</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5105 1051 0510 5100</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 2022 0220 2200</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5205 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4111 1111 1111 1111</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5200 8282 8282 8210</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 2222 2222</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0566 5566 5556</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5404 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2203 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr></table></div><aside class=\"api-callout \" role=\"note\"><strong class=\"callout-label\">Информация</strong><p>Срок действия — любой непросроченный, код CVV произвольный.</p></aside><h2 id=\"testirovanie-onlayn-kassy\"><strong>Тестирование онлайн-кассы</strong></h2><p>При работе в тестовом режиме кассовые чеки будут формироваться в демонстрационной ККТ с отладочным фискальным накопителем.</p><p><br></p></div>",
+    "html": "<div class=\"imported-api\"><p>Сразу после создания нового сайта в ЛК он находится в тестовом режиме работы — это значит, что платежи и прочие операции будут проходить в режиме эмуляции. </p><p>Для тестирования можно использовать карты:</p><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table style=\"table-layout:fixed;width:979px;min-width:0\"><colgroup><col style=\"width:253px\"><col style=\"width:211px\"><col style=\"width:219px\"><col style=\"width:296px\"></colgroup><tr><th colspan=\"1\" rowspan=\"1\"><p style=\"text-align:center\">Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Номер карты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты по токену</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4242 4242 4242 4242</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5555 5555 5555 4444</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 0000 0004</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4012 8888 8888 1881</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5105 1051 0510 5100</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 2022 0220 2200</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5205 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4111 1111 1111 1111</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5200 8282 8282 8210</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 2222 2222</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0566 5566 5556</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5404 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2203 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr></table></div><aside class=\"api-callout \" role=\"note\"><strong class=\"callout-label\">Информация</strong><p>Срок действия — любой непросроченный, код CVV произвольный.</p></aside><h2 id=\"testirovanie-onlayn-kassy\"><strong>Тестирование онлайн-кассы</strong></h2><p>При работе в тестовом режиме кассовые чеки будут формироваться в демонстрационной ККТ с отладочным фискальным накопителем.</p><p><br></p></div>",
     "toc": [
       {
         "id": "testirovanie-onlayn-kassy",
@@ -115406,7 +115406,7 @@
       }
     ],
     "segments": [
-      "<p>Сразу после создания нового сайта в ЛК он находится в тестовом режиме работы — это значит, что платежи и прочие операции будут проходить в режиме эмуляции. </p><p>Для тестирования можно использовать карты:</p><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Номер карты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты по токену</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4242 4242 4242 4242</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5555 5555 5555 4444</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 0000 0004</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4012 8888 8888 1881</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5105 1051 0510 5100</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 2022 0220 2200</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5205 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4111 1111 1111 1111</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5200 8282 8282 8210</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 2222 2222</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0566 5566 5556</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5404 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2203 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr></table></div><aside class=\"api-callout \" role=\"note\"><strong class=\"callout-label\">Информация</strong><p>Срок действия — любой непросроченный, код CVV произвольный.</p></aside>",
+      "<p>Сразу после создания нового сайта в ЛК он находится в тестовом режиме работы — это значит, что платежи и прочие операции будут проходить в режиме эмуляции. </p><p>Для тестирования можно использовать карты:</p><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table style=\"table-layout:fixed;width:979px;min-width:0\"><colgroup><col style=\"width:253px\"><col style=\"width:211px\"><col style=\"width:219px\"><col style=\"width:296px\"></colgroup><tr><th colspan=\"1\" rowspan=\"1\"><p style=\"text-align:center\">Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Номер карты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты</p></th><th colspan=\"1\" rowspan=\"1\"><p>Результат оплаты по токену</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4242 4242 4242 4242</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5555 5555 5555 4444</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 0000 0004</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4012 8888 8888 1881</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5105 1051 0510 5100</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР с 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 2022 0220 2200</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5205 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2202 0000 0000 3055</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4111 1111 1111 1111</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5200 8282 8282 8210</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2200 0000 2222 2222</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешный результат</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Visa без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>4000 0566 5566 5556</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта Mastercard без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>5404 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Карта МИР без 3-D Secure</p></td><td colspan=\"1\" rowspan=\"1\"><p>2203 0000 0000 0043</p></td><td colspan=\"1\" rowspan=\"1\"><p>Недостаточно средств на карте</p></td><td colspan=\"1\" rowspan=\"1\"><p>—</p></td></tr></table></div><aside class=\"api-callout \" role=\"note\"><strong class=\"callout-label\">Информация</strong><p>Срок действия — любой непросроченный, код CVV произвольный.</p></aside>",
       "<p>При работе в тестовом режиме кассовые чеки будут формироваться в демонстрационной ККТ с отладочным фискальным накопителем.</p><p><br></p>"
     ],
     "content": {
@@ -115447,14 +115447,16 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
                     {
                       "type": "paragraph",
                       "attrs": {
-                        "textAlign": null
+                        "textAlign": "center"
                       },
                       "content": [
                         {
@@ -115470,7 +115472,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115493,7 +115497,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115516,7 +115522,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115544,7 +115552,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -115567,7 +115577,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115590,7 +115602,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115613,7 +115627,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115641,7 +115657,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -115664,7 +115682,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115687,7 +115707,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115710,7 +115732,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115738,7 +115762,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -115761,7 +115787,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115784,7 +115812,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115807,7 +115837,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115835,7 +115867,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -115858,7 +115892,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115881,7 +115917,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115904,7 +115942,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115932,7 +115972,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -115955,7 +115997,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -115978,7 +116022,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116001,7 +116047,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116029,7 +116077,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116052,7 +116102,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116075,7 +116127,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116098,7 +116152,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116126,7 +116182,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116149,7 +116207,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116172,7 +116232,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116195,7 +116257,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116223,7 +116287,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116246,7 +116312,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116269,7 +116337,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116292,7 +116362,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116320,7 +116392,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116343,7 +116417,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116366,7 +116442,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116389,7 +116467,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116417,7 +116497,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116440,7 +116522,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116463,7 +116547,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116486,7 +116572,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116514,7 +116602,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116537,7 +116627,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116560,7 +116652,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116583,7 +116677,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116611,7 +116707,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116634,7 +116732,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116657,7 +116757,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116680,7 +116782,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116708,7 +116812,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116731,7 +116837,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116754,7 +116862,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116777,7 +116887,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116805,7 +116917,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116828,7 +116942,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116851,7 +116967,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116874,7 +116992,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116902,7 +117022,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      253
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -116925,7 +117047,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      211
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116948,7 +117072,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      219
+                    ],
                     "align": "center"
                   },
                   "content": [
@@ -116971,7 +117097,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      296
+                    ],
                     "align": "center"
                   },
                   "content": [
