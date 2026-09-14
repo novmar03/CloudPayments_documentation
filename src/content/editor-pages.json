@@ -69854,7 +69854,7 @@
   },
   "methods/sbp": {
     "title": "СБП",
-    "html": "<div class=\"imported-api\"><p>Оплата в один клик без ввода данных карты. Покупатель выбирает банк и подтверждает оплату в мобильном приложении банка. В десктопной версии оплата производится по QR-коду с подтверждением в мобильном банке.</p><p style=\"text-align:center\"><strong>ФОТО</strong></p><h3 id=\"section-ce455053-3d8c-4506-b5e1-9a45ae93375b\"><strong>Как подключить СБП в платежной форме</strong></h3><p>При подключении к CloudPayments настройка СБП производится по запросу <u><a href=\"https://t.me/cloudassistant_bot\" target=\"_blank\" rel=\"noopener noreferrer\">в tg-боте</a></u> — для настройки оправьте в чат ИНН своей организации.</p><h3 id=\"section-a66b94ef-377d-4ef4-8b17-295c5ed0e8dc\"><strong>Как включить СБП в платежной форме</strong></h3><p><u><a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">В Личном кабинете CloudPayments →</a></u> раздел Сайты</p><h3 id=\"section-a3775574-2852-47e8-8228-754d4d880e76\"><strong>Варианты интеграции платежной формы</strong></h3><ul><li><p>Виджет</p></li><li><p>Платежные ссылки и заказы</p></li><li><p>По API</p></li><li><p>В мобильном приложении через мобильный SDK для Android или iOS</p></li><li><p>Платежные блоки</p></li><li><p>CloudИнфошоп</p></li></ul><p><br></p></div>",
+    "html": "<div class=\"imported-api\"><p>Оплата в один клик без ввода данных карты. Покупатель выбирает банк и подтверждает оплату в мобильном приложении банка. В десктопной версии оплата производится по QR-коду с подтверждением в мобильном банке.</p><figure style=\"text-align:center\"><img src=\"static/img/editor/5dfbc8d62aed89191399a4f9e66b398cc4d120399f512bb9b9c0d3e34d2b07e4.png\" alt=\"сбп.png\" style=\"width:100%;max-width:100%;height:auto\"></figure><h3 id=\"section-ce455053-3d8c-4506-b5e1-9a45ae93375b\"><strong>Как подключить СБП в платежной форме</strong></h3><p>При подключении к CloudPayments настройка СБП производится по запросу <u><a href=\"https://t.me/cloudassistant_bot\" target=\"_blank\" rel=\"noopener noreferrer\">в tg-боте</a></u> — для настройки оправьте в чат ИНН своей организации.</p><h3 id=\"section-a66b94ef-377d-4ef4-8b17-295c5ed0e8dc\"><strong>Как включить СБП в платежной форме</strong></h3><p><u><a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">В Личном кабинете CloudPayments →</a></u> раздел Сайты</p><h3 id=\"section-a3775574-2852-47e8-8228-754d4d880e76\"><strong>Варианты интеграции платежной формы</strong></h3><ul><li><p>Виджет</p></li><li><p>Платежные ссылки и заказы</p></li><li><p>По API</p></li><li><p>В мобильном приложении через мобильный SDK для Android или iOS</p></li><li><p>Платежные блоки</p></li><li><p>CloudИнфошоп</p></li></ul><p><br></p></div>",
     "toc": [
       {
         "id": "section-ce455053-3d8c-4506-b5e1-9a45ae93375b",
@@ -69873,7 +69873,7 @@
       }
     ],
     "segments": [
-      "<p>Оплата в один клик без ввода данных карты. Покупатель выбирает банк и подтверждает оплату в мобильном приложении банка. В десктопной версии оплата производится по QR-коду с подтверждением в мобильном банке.</p><p style=\"text-align:center\"><strong>ФОТО</strong></p>",
+      "<p>Оплата в один клик без ввода данных карты. Покупатель выбирает банк и подтверждает оплату в мобильном приложении банка. В десктопной версии оплата производится по QR-коду с подтверждением в мобильном банке.</p><figure style=\"text-align:center\"><img src=\"static/img/editor/5dfbc8d62aed89191399a4f9e66b398cc4d120399f512bb9b9c0d3e34d2b07e4.png\" alt=\"сбп.png\" style=\"width:100%;max-width:100%;height:auto\"></figure>",
       "<p>При подключении к CloudPayments настройка СБП производится по запросу <u><a href=\"https://t.me/cloudassistant_bot\" target=\"_blank\" rel=\"noopener noreferrer\">в tg-боте</a></u> — для настройки оправьте в чат ИНН своей организации.</p>",
       "<p><u><a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">В Личном кабинете CloudPayments →</a></u> раздел Сайты</p>",
       "<ul><li><p>Виджет</p></li><li><p>Платежные ссылки и заказы</p></li><li><p>По API</p></li><li><p>В мобильном приложении через мобильный SDK для Android или iOS</p></li><li><p>Платежные блоки</p></li><li><p>CloudИнфошоп</p></li></ul><p><br></p>"
@@ -69894,21 +69894,17 @@
           ]
         },
         {
-          "type": "paragraph",
+          "type": "image",
           "attrs": {
-            "textAlign": "center"
-          },
-          "content": [
-            {
-              "type": "text",
-              "marks": [
-                {
-                  "type": "bold"
-                }
-              ],
-              "text": "ФОТО"
-            }
-          ]
+            "src": "static/img/editor/5dfbc8d62aed89191399a4f9e66b398cc4d120399f512bb9b9c0d3e34d2b07e4.png",
+            "alt": "сбп.png",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "assetPath": "editor-assets/2b708d2e-92da-485e-9367-6de5bd815f30.png",
+            "scriptNote": "",
+            "align": "center"
+          }
         },
         {
           "type": "heading",
