@@ -3,22 +3,46 @@ title: "Справочник"
 slug: /reference/directory
 ---
 
-## Языки
+import EditedSection from '@site/src/components/EditedSection';
 
-## Коды ошибок
+<EditedSection page="reference/directory" index={0} />
 
-## Коды обработки ответов на check уведомление
+## Языки {#cultures}
 
-## Типы операций
+<EditedSection page="reference/directory" index={1} />
 
-## Статусы операций
+## Коды ошибок {#kody-oshibok}
 
-## Статусы подписок (рекуррент)
+<EditedSection page="reference/directory" index={2} />
 
-## Список валют
+## Коды обработки ответов на check уведомление {#kody-obrabotki-otvetov-na-check-uvedomlenie}
 
-## Операторы фискальных данных
+<EditedSection page="reference/directory" index={3} />
 
-## Коды временных зон
+## Типы операций {#tipy-operatsiy}
 
-## Типы уведомлений
+<EditedSection page="reference/directory" index={4} />
+
+## Статусы операций {#statusy-operatsiy}
+
+<EditedSection page="reference/directory" index={5} />
+
+## Статусы подписок (рекуррент) {#statusy-podpisok-rekurrent}
+
+<EditedSection page="reference/directory" index={6} />
+
+## Список валют {#spisok-valyut}
+
+<EditedSection page="reference/directory" index={7} />
+
+## Операторы фискальных данных {#operatory-fiskalnyh-dannyh}
+
+<EditedSection page="reference/directory" index={8} />
+
+## Коды временных зон {#kody-vremennyh-zon}
+
+<EditedSection page="reference/directory" index={9} />
+
+## Типы уведомлений {#tipy-uvedomleniy}
+
+<EditedSection page="reference/directory" index={10} />
