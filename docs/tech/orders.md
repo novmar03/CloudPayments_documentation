@@ -3,20 +3,22 @@ title: "Одноразовые ссылки"
 slug: /tech/orders
 ---
 
-import ImportedApiSection from '@site/src/components/ImportedApiSection';
+import EditedSection from '@site/src/components/EditedSection';
 
-## Начало работы с заказами
+<EditedSection page="tech/orders" index={0} />
 
-## Демо-конструктор
+## Начало работы с заказами {#начало-работы-с-заказами}
 
-## Создание заказов с помощью API
+<EditedSection page="tech/orders" index={1} />
 
-<ImportedApiSection section="sozdanie-scheta-dlya-otpravki-po-pochte" />
+## Шаблоны заказов {#section-1d6c0668-858f-4278-bd06-7b5881ec3c6a}
 
-## Полный скрипт и параметры
+<EditedSection page="tech/orders" index={2} />
 
-## Параметры кастомизации
+## Создание заказов с помощью API {#создание-заказов-с-помощью-api}
 
-## Отмена созданного заказа
+<EditedSection page="tech/orders" index={3} />
 
-<ImportedApiSection section="otmena-sozdannogo-scheta" />
+## Отмена созданного заказа {#отмена-созданного-заказа}
+
+<EditedSection page="tech/orders" index={4} />
