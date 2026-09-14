@@ -154,3 +154,7 @@ import EditedSection from '@site/src/components/EditedSection';
 ### Как приходят деньги {#section-f3f24f69-4088-4e83-8854-f3a94e7a7048}
 
 <EditedSection page="reference/ecosystem" index={37} />
+
+## CloudSoft {#section-3a87281e-9d9b-4ef3-a956-af555f14b535}
+
+<EditedSection page="reference/ecosystem" index={38} />
