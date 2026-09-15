@@ -126,6 +126,9 @@ template=template.replace('/* DOCUMENT_SEARCH_CSS */', (ROOT/'src/css/documentat
 for placeholder, filename in [('__FAVICON_DATA_URI__', 'favicon.svg'), ('__LOGO_DATA_URI__', 'cloudpayments-logo.svg')]:
     asset = (ROOT/'static'/filename).read_bytes()
     template = template.replace(placeholder, 'data:image/svg+xml;base64,' + base64.b64encode(asset).decode('ascii'))
+english_hub=(ROOT/'i18n/en/docusaurus-plugin-content-docs/current/tech/methods.md').read_text()
+hub_html,hub_toc=render(re.sub(r'^---\n.*?\n---\n','',english_hub,flags=re.S))
+english_pages.setdefault('tech/methods', {'title':'Payment method setup','html':hub_html,'toc':hub_toc})
 translations = {'en': {'pages': {key: {**pages[key], 'title': page['title'], 'html': page['html'], 'toc': page['toc']} for key, page in english_pages.items() if key in pages}}}
 data=json.dumps({'groups':groups,'pages':pages,'translations':translations},ensure_ascii=False).replace('<','\\u003c')
 if args.search_index:

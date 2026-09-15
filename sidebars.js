@@ -11,4 +11,9 @@ function apiOutline(){
  const root=[],stack=[{level:1,items:root}];
  headings.forEach((h,i)=>{while(stack.length>1&&stack.at(-1).level>=h.level)stack.pop();const link={type:'link',label:h.title,href:'/tech/api/#'+encodeURIComponent(h.id),autoAddBaseUrl:true};if(headings[i+1]?.level>h.level){const category={type:'category',label:h.title,collapsed:true,items:[]};stack.at(-1).items.push(category);stack.push({level:h.level,items:category.items});}else stack.at(-1).items.push(link);});return root;
 }
-module.exports={docs:['index',...navigation.filter(g=>g.items.length).map(g=>({type:'category',label:g.title,collapsed:true,items:g.items.map(p=>p.id==='tech/api'?{type:'category',label:p.title,link:{type:'doc',id:p.id},collapsed:true,items:apiOutline()}:p.id)}))]};
+function sidebarItems(items,parentId){return items.filter(p=>p.parentId===parentId).map(p=>{
+ const children=items.filter(child=>child.parentId===p.id);
+ if(children.length)return {type:'category',label:p.title,link:{type:'doc',id:p.id},collapsed:true,items:sidebarItems(items,p.id)};
+ return p.id==='tech/api'?{type:'category',label:p.title,link:{type:'doc',id:p.id},collapsed:true,items:apiOutline()}:p.id;
+});}
+module.exports={docs:['index',...navigation.filter(g=>g.items.length).map(g=>({type:'category',label:g.title,collapsed:true,items:sidebarItems(g.items)}))]};

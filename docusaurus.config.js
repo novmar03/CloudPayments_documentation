@@ -24,7 +24,6 @@ module.exports = {
       logo: {alt: 'CloudPayments', src: 'cloudpayments-logo.svg', width: 219, height: 34},
       items: [
         {label: english?'Documentation':'Документация', to: '/', position: 'left', activeBaseRegex: '.*'},
-        {label: english?'Merchant account ↗':'Личный кабинет ↗', href: 'https://merchant.cloudpayments.ru', position: 'right'},
         {type: 'custom-language', position: 'right'},
         {type: 'search', position: 'right'},
       ],

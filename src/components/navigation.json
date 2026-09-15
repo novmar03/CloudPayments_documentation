@@ -178,28 +178,38 @@
         "title": "Уведомления"
       },
       {
+        "id": "tech/methods",
+        "title": "Настройка методов оплаты"
+      },
+      {
         "id": "tech/methods/tpay",
-        "title": "T-Pay"
+        "title": "T-Pay",
+        "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/sbp",
-        "title": "СБП"
+        "title": "СБП",
+        "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/digital",
-        "title": "Цифровой рубль"
+        "title": "Цифровой рубль",
+        "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/sberpay",
-        "title": "СберПэй"
+        "title": "СберПэй",
+        "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/mirpay",
-        "title": "МирПэй"
+        "title": "МирПэй",
+        "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/dolyami",
-        "title": "Долями"
+        "title": "Долями",
+        "parentId": "tech/methods"
       }
     ]
   },
@@ -232,10 +242,35 @@
       {
         "id": "reference/glossary",
         "title": "Глоссарий"
-      },
+      }
+    ]
+  },
+  {
+    "id": "additional",
+    "title": "Дополнительно",
+    "audience": "both",
+    "description": "Подробнее об экосистеме CloudPayments",
+    "items": [
       {
         "id": "reference/ecosystem",
         "title": "Экосистема CloudPayments"
+      }
+    ],
+    "links": [
+      {
+        "id": "reference/ecosystem",
+        "title": "CloudKassir",
+        "anchor": "section-aa230662-870b-41bc-a678-7de4084f6934"
+      },
+      {
+        "id": "reference/ecosystem",
+        "title": "CloudTips",
+        "anchor": "section-880a05fd-9e8b-43ab-b340-213c76b71dc7"
+      },
+      {
+        "id": "reference/ecosystem",
+        "title": "CloudSoft",
+        "anchor": "section-3a87281e-9d9b-4ef3-a956-af555f14b535"
       }
     ]
   }
