@@ -3,10 +3,22 @@ title: "Информационная безопасность"
 slug: /security
 ---
 
-## Соответствие требованиям
+import EditedSection from '@site/src/components/EditedSection';
 
-## Соответствие PCI DSS вместе с CloudPayments
+<EditedSection page="security" index={0} />
 
-## Технология Checkout
+## Соответствие требованиям {#sootvetstvie-trebovaniyam}
 
-## ASV-сканирование
+<EditedSection page="security" index={1} />
+
+## Соответствие PCI DSS вместе с CloudPayments {#sootvetstvie-pci-dss-vmeste-s-cloudpayments}
+
+<EditedSection page="security" index={2} />
+
+## Технология Checkout {#tehnologiya-checkout}
+
+<EditedSection page="security" index={3} />
+
+## ASV-сканирование {#asv-skanirovanie}
+
+<EditedSection page="security" index={4} />
