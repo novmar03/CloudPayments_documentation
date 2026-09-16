@@ -117876,5 +117876,30 @@
         }
       ]
     }
+  },
+  "solutions/infoshop": {
+    "title": "Инфошоп",
+    "html": "<div class=\"imported-api\"><p>бла бла бла </p></div>",
+    "toc": [],
+    "segments": [
+      "<p>бла бла бла </p>"
+    ],
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "бла бла бла "
+            }
+          ]
+        }
+      ]
+    }
   }
 }
