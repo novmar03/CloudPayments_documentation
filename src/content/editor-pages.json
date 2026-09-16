@@ -1301,6 +1301,7 @@
             "width": 100,
             "height": null,
             "assetPath": null,
+            "scriptNote": "",
             "align": "center"
           }
         },
