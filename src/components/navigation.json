@@ -7,13 +7,18 @@
     "items": [
       {
         "id": "start/connect",
-        "title": "Процесс подключения"
+        "title": "Процесс подключения",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "start/account",
-        "title": "Регистрация личного кабинета"
+        "title": "Регистрация личного кабинета",
+        "type": "page",
+        "audience": "business"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "solutions",
@@ -23,45 +28,66 @@
     "items": [
       {
         "id": "solutions/compare",
-        "title": "Сравнение платежных интерфейсов"
+        "title": "Сравнение платежных интерфейсов",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/widget",
-        "title": "Виджет"
+        "title": "Виджет",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/blocks",
-        "title": "Платежные блоки"
+        "title": "Платежные блоки",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/checkout",
-        "title": "Скрипт check-out"
+        "title": "Скрипт check-out",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/orders",
-        "title": "Одноразовые ссылки"
+        "title": "Одноразовые ссылки",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/links",
-        "title": "Многоразовые ссылки"
+        "title": "Многоразовые ссылки",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/charity",
-        "title": "Благотворительность"
+        "title": "Благотворительность",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/infoshop",
-        "title": "Инфошоп"
+        "title": "Инфошоп",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/sdk",
-        "title": "Мобильные SDK"
+        "title": "Мобильные SDK",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "solutions/api",
-        "title": "API"
+        "title": "API",
+        "type": "page",
+        "audience": "business"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "methods",
@@ -71,41 +97,60 @@
     "items": [
       {
         "id": "methods/card",
-        "title": "Банковская карта"
+        "title": "Банковская карта",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/tpay",
-        "title": "T-Pay"
+        "title": "T-Pay",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/sberpay",
-        "title": "СберПэй"
+        "title": "СберПэй",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/mirpay",
-        "title": "МирПэй"
+        "title": "МирПэй",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/sbp",
-        "title": "СБП"
+        "title": "СБП",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/dolyami",
-        "title": "Долями"
+        "title": "Долями",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/installments",
-        "title": "Рассрочка"
+        "title": "Рассрочка",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/foreign",
-        "title": "Иностранные карты"
+        "title": "Иностранные карты",
+        "type": "page",
+        "audience": "business"
       },
       {
         "id": "methods/digital",
-        "title": "Цифровой рубль"
+        "title": "Цифровой рубль",
+        "type": "page",
+        "audience": "business"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "scenarios",
@@ -115,21 +160,30 @@
     "items": [
       {
         "id": "scenarios/recurrent",
-        "title": "Рекурренты"
+        "title": "Рекурренты",
+        "type": "page",
+        "audience": "both"
       },
       {
         "id": "scenarios/recurring",
-        "title": "Рекарринг"
+        "title": "Рекарринг",
+        "type": "page",
+        "audience": "both"
       },
       {
         "id": "scenarios/escrow",
-        "title": "Безопасная сделка"
+        "title": "Безопасная сделка",
+        "type": "page",
+        "audience": "both"
       },
       {
         "id": "scenarios/customization",
-        "title": "Кастомизация платежных интерфейсов"
+        "title": "Кастомизация платежных интерфейсов",
+        "type": "page",
+        "audience": "both"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "tech",
@@ -139,79 +193,114 @@
     "items": [
       {
         "id": "tech/widget",
-        "title": "Виджет"
+        "title": "Виджет",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/blocks",
-        "title": "Платежные блоки"
+        "title": "Платежные блоки",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/checkout",
-        "title": "Скрипт check-out"
+        "title": "Скрипт check-out",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/orders",
-        "title": "Одноразовые ссылки"
+        "title": "Одноразовые ссылки",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/links",
-        "title": "Многоразовые ссылки"
+        "title": "Многоразовые ссылки",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/charity",
-        "title": "Благотворительность"
+        "title": "Благотворительность",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/infoshop",
-        "title": "Инфошоп"
+        "title": "Инфошоп",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/sdk",
-        "title": "Мобильные SDK"
+        "title": "Мобильные SDK",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/api",
-        "title": "API"
+        "title": "API",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/notifications",
-        "title": "Уведомления"
+        "title": "Уведомления",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/methods",
-        "title": "Настройка методов оплаты"
+        "title": "Настройка методов оплаты",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "tech/methods/tpay",
         "title": "T-Pay",
+        "type": "page",
+        "audience": "developer",
         "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/sbp",
         "title": "СБП",
+        "type": "page",
+        "audience": "developer",
         "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/digital",
         "title": "Цифровой рубль",
+        "type": "page",
+        "audience": "developer",
         "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/sberpay",
         "title": "СберПэй",
+        "type": "page",
+        "audience": "developer",
         "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/mirpay",
         "title": "МирПэй",
+        "type": "page",
+        "audience": "developer",
         "parentId": "tech/methods"
       },
       {
         "id": "tech/methods/dolyami",
         "title": "Долями",
+        "type": "page",
+        "audience": "developer",
         "parentId": "tech/methods"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "security",
@@ -221,9 +310,12 @@
     "items": [
       {
         "id": "security",
-        "title": "Информационная безопасность"
+        "title": "Информационная безопасность",
+        "type": "page",
+        "audience": "developer"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "reference",
@@ -233,17 +325,24 @@
     "items": [
       {
         "id": "reference/testing",
-        "title": "Тестирование"
+        "title": "Тестирование",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "reference/directory",
-        "title": "Справочник"
+        "title": "Справочник",
+        "type": "page",
+        "audience": "developer"
       },
       {
         "id": "reference/glossary",
-        "title": "Глоссарий"
+        "title": "Глоссарий",
+        "type": "page",
+        "audience": "developer"
       }
-    ]
+    ],
+    "root": false
   },
   {
     "id": "additional",
@@ -253,7 +352,9 @@
     "items": [
       {
         "id": "reference/ecosystem",
-        "title": "Экосистема CloudPayments"
+        "title": "Экосистема CloudPayments",
+        "type": "page",
+        "audience": "both"
       }
     ],
     "links": [
@@ -271,6 +372,22 @@
         "id": "reference/ecosystem",
         "title": "CloudSoft",
         "anchor": "section-3a87281e-9d9b-4ef3-a956-af555f14b535"
+      }
+    ],
+    "root": false
+  },
+  {
+    "id": "category/1c9cdbe5-69ae-46b3-a612-49491edac1ef",
+    "title": "Тестовый раздел",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": [
+      {
+        "id": "test_page",
+        "title": "Тестовая страница",
+        "type": "page",
+        "audience": "developer"
       }
     ]
   }

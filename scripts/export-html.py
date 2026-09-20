@@ -101,9 +101,11 @@ def render(body):
 
 for g in groups:
     for item in g['items']:
+        # EDITOR_STRUCTURE_V1
+        if item.get('type') == 'category': continue
         if item['id'] in editor_pages:
             edited = editor_pages[item['id']]
-            pages[item['id']] = {**item, 'group': g['id'], 'title': edited['title'], 'html': edited['html'], 'toc': edited['toc']}
+            pages[item['id']] = {**item, 'group': g['id'], 'title': item['title'], 'html': edited['html'], 'toc': edited['toc']}
             continue
         raw=(SOURCE/'docs'/(item['id']+'.md')).read_text()
         body=re.sub(r'^---\n.*?\n---\n','',raw,flags=re.S)

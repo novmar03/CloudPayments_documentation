@@ -8,7 +8,7 @@ function view(data,locale){
  if(locale!=='en')return {groups:data.groups,pages:data.pages};
  const translations=data.translations?.en?.pages||{},pages={};
  const groups=data.groups.map(g=>({...g,title:groupLabels[g.id]?.[0]||g.title,description:groupLabels[g.id]?.[1]||'',links:(g.links||[]).map(link=>({...link,anchor:translations[link.id]?.toc?.some(h=>h.id===link.anchor)?link.anchor:undefined})),items:g.items.map(p=>({...p,title:translations[p.id]?.title||names[p.id.split('/').pop()]||p.title}))}));
- for(const g of groups)for(const p of g.items){const en=translations[p.id];pages[p.id]={...data.pages[p.id],...p,group:g.id,html:en?.html||'',toc:en?.toc||[],translated:!!en};}
+ for(const g of groups)for(const p of g.items){if(p.type==='category')continue;const en=translations[p.id];pages[p.id]={...data.pages[p.id],...p,group:g.id,html:en?.html||'',toc:en?.toc||[],translated:!!en};}
  return {groups,pages};
 }
 function searchView(data,locale){const result=view(data,locale);if(locale==='en')result.pages=Object.fromEntries(Object.entries(result.pages).filter(([,p])=>p.translated));return result;}
