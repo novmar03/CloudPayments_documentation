@@ -100,4 +100,19 @@ languagePicker?.addEventListener('click',e=>{if(e.target.closest('[data-language
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&languagePicker?.open){languagePicker.open=false;languagePicker.querySelector('summary')?.focus();}});
 document.addEventListener('click',e=>{if(languagePicker&&!languagePicker.contains(e.target))languagePicker.open=false;});
 mountSearch();
-</script></body></html>
+</script><script id="editor-documentation-links">
+(function(){
+ function update(){
+  var data=document.getElementById('document-data');if(!data)return;
+  var pages;try{pages=JSON.parse(data.textContent).pages;}catch(e){return;}
+  document.querySelectorAll('a[href^="/"]').forEach(function(a){
+   var href=a.getAttribute('href');if(href.startsWith('//'))return;
+   var parts=href.split('#'),route=parts[0].replace(/^\/+|\/+$/g,''),id=route.replace(/^en\//,'');
+   if(!pages[id])return;
+   a.setAttribute('href','#/'+route+(parts[1]?'@'+parts.slice(1).join('#'):''));
+  });
+ }
+ update();new MutationObserver(update).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+</body></html>
