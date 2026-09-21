@@ -48,7 +48,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "root-platezhniy-widget",
@@ -71,7 +72,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/c02cca31-eb8d-4d6b-b1f0-a46212bcee11",
@@ -79,7 +81,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/2b89cb14-62e3-43cb-8a97-991bdc726e3a",
@@ -87,7 +90,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/3895ce50-1c45-46ed-8cc7-b31a3ad2f0a9",
@@ -95,7 +99,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/b9e7634b-b876-4191-9bbb-8774e4a9d659",
@@ -103,7 +108,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/98f8bbce-d5d5-4d4d-bcba-f425a937bd09",
@@ -111,7 +117,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/bebc6109-f376-4c65-8b48-320c1628be86",
@@ -119,7 +126,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/7e86a1de-1424-44a9-b240-fa7112ef8fed",
@@ -127,7 +135,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/81e02ac0-e6c3-40ea-bf25-8ba577955ab9",
