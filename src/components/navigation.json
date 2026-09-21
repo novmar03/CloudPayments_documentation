@@ -40,7 +40,8 @@
         "audience": "both",
         "hidden": true
       }
-    ]
+    ],
+    "hidden": true
   },
   {
     "id": "category/b8716057-b670-4753-97ee-b79d3430afd4",
@@ -50,21 +51,6 @@
     "root": false,
     "items": [],
     "hidden": true
-  },
-  {
-    "id": "root-platezhniy-widget",
-    "title": "Платежный виджет (страница)",
-    "audience": "both",
-    "description": "",
-    "root": true,
-    "items": [
-      {
-        "id": "platezhniy-widget",
-        "title": "Платежный виджет (страница)",
-        "type": "page",
-        "audience": "both"
-      }
-    ]
   },
   {
     "id": "category/bd910ad2-b86c-456b-8f50-894a1e299bed",
@@ -144,7 +130,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/b79d0cf7-2194-4a17-8cd0-202307b146b2",
@@ -152,7 +139,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/71893d6d-ac0c-473d-8ce2-ed7d1e327b6e",
@@ -160,7 +148,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/12c25c1a-aeb8-4eb2-9454-914f1e15eb64",
@@ -168,7 +157,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/2b47c52b-773b-45dd-9763-1b72c2cbacf0",
@@ -176,7 +166,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/db2a1af2-38c4-470d-ae96-a1097ee30e97",
@@ -184,7 +175,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/2e506509-16d7-4c7a-8074-8082b40e23e3",
@@ -192,7 +184,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/1ea2a7f2-4bbc-4ac7-837d-803991d68ca5",
@@ -200,7 +193,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/2527c36f-389c-4567-aba9-08a65f930082",
@@ -208,7 +202,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/093a0aa4-d0fb-447c-b0e1-110ff1dd2227",
@@ -216,7 +211,8 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
   },
   {
     "id": "category/6c0c8a96-7d95-438e-9e07-3321de6b4cbe",
@@ -224,6 +220,82 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [],
+    "hidden": true
+  },
+  {
+    "id": "root-obzhaya-informatsiya",
+    "title": "Общая информация",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "obzhaya-informatsiya",
+        "title": "Общая информация",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-platezhniy-widget",
+    "title": "Платежный виджет",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "platezhniy-widget",
+        "title": "Платежный виджет",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-platezhniy-konstructor",
+    "title": "Платежный конструктор",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "platezhniy-konstructor",
+        "title": "Платежный конструктор",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-script-checkout",
+    "title": "Скрипт checkout",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "script-checkout",
+        "title": "Скрипт checkout",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-recurrentniye-platezhi",
+    "title": "Рекуррентные платежи",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "recurrentniye-platezhi",
+        "title": "Рекуррентные платежи",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
   }
 ]
