@@ -81148,5 +81148,247 @@
         }
       ]
     }
+  },
+  "mirpay": {
+    "title": "MIR Pay",
+    "html": "<div class=\"imported-api\"><figure style=\"text-align:center\"><img data-image-id=\"ddb10111-6c07-4039-893f-5eacd649606c\" src=\"https://developers.cloudpayments.ru/images/mirpay_cloud-0895990b.png\" alt=\"mirpay_cloud\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>MIR Pay позволяет оплачивать покупки в одно касание картами платежной системы «МИР». Кнопка Pay-сервиса отображается на платёжной странице рядом с другими способами оплаты.</p><h2 id=\"vidy-integratsiy\"><strong>Виды интеграций</strong></h2><p>CloudPayments предлагает подключение MIR Pay по упрощенной схеме на странице оплаты (с помощью платежного виджета) и через мобильный SDK. Дополнительно интегрироваться с сервисом платежной системы «МИР» не нужно.</p><p>В ближайшее время MIR Pay будет доступен для других видов интеграций: платежные блоки, заказы и платежные ссылки.</p><h2 id=\"podklyuchenie-mir-pay\"><strong>Подключение MIR Pay</strong></h2><p><strong>Для включения кнопки MIR Pay в платежном виджете и мобильном SDK необходимо:</strong></p><p>Переключить «фича-тоггл» MIR Pay в Личном кабинете, в настройках сайта или написать в службу поддержки CloudPayments.</p><figure style=\"text-align:center\"><img data-image-id=\"a326a89a-63e7-4836-ab34-5e7c2f53054d\" src=\"https://developers.cloudpayments.ru/images/fichtoggle_mir-3a585243.png\" alt=\"fichtoggle\" style=\"width:100%;max-width:100%;height:auto\"></figure><h3 id=\"protsess-oplaty-s-pomoschyu-mir-pay\"><strong>Процесс оплаты с помощью MIR Pay</strong></h3><ul><li><p>Покупатель после нажатия кнопки «Оплатить» переходит на виджет CloudPayments, где может выбрать оплату по MIR Pay без ввода банковских реквизитов. </p></li><li><p>После оплаты покупатель видит сообщение об успешном платеже и автоматически возвращается обратно на сайт. Продавцу приходит уведомление о транзакции.</p></li><li><p>Продавцу не нужно интегрироваться с сервисом платежной системы «МИР», все необходимое реализовано на стороне CloudPayments.</p></li></ul><p><br></p></div>",
+    "toc": [
+      {
+        "id": "vidy-integratsiy",
+        "title": "Виды интеграций",
+        "level": 2
+      },
+      {
+        "id": "podklyuchenie-mir-pay",
+        "title": "Подключение MIR Pay",
+        "level": 2
+      },
+      {
+        "id": "protsess-oplaty-s-pomoschyu-mir-pay",
+        "title": "Процесс оплаты с помощью MIR Pay",
+        "level": 3
+      }
+    ],
+    "segments": [
+      "<figure style=\"text-align:center\"><img data-image-id=\"ddb10111-6c07-4039-893f-5eacd649606c\" src=\"https://developers.cloudpayments.ru/images/mirpay_cloud-0895990b.png\" alt=\"mirpay_cloud\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>MIR Pay позволяет оплачивать покупки в одно касание картами платежной системы «МИР». Кнопка Pay-сервиса отображается на платёжной странице рядом с другими способами оплаты.</p>",
+      "<p>CloudPayments предлагает подключение MIR Pay по упрощенной схеме на странице оплаты (с помощью платежного виджета) и через мобильный SDK. Дополнительно интегрироваться с сервисом платежной системы «МИР» не нужно.</p><p>В ближайшее время MIR Pay будет доступен для других видов интеграций: платежные блоки, заказы и платежные ссылки.</p>",
+      "<p><strong>Для включения кнопки MIR Pay в платежном виджете и мобильном SDK необходимо:</strong></p><p>Переключить «фича-тоггл» MIR Pay в Личном кабинете, в настройках сайта или написать в службу поддержки CloudPayments.</p><figure style=\"text-align:center\"><img data-image-id=\"a326a89a-63e7-4836-ab34-5e7c2f53054d\" src=\"https://developers.cloudpayments.ru/images/fichtoggle_mir-3a585243.png\" alt=\"fichtoggle\" style=\"width:100%;max-width:100%;height:auto\"></figure>",
+      "<ul><li><p>Покупатель после нажатия кнопки «Оплатить» переходит на виджет CloudPayments, где может выбрать оплату по MIR Pay без ввода банковских реквизитов. </p></li><li><p>После оплаты покупатель видит сообщение об успешном платеже и автоматически возвращается обратно на сайт. Продавцу приходит уведомление о транзакции.</p></li><li><p>Продавцу не нужно интегрироваться с сервисом платежной системы «МИР», все необходимое реализовано на стороне CloudPayments.</p></li></ul><p><br></p>"
+    ],
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/mirpay_cloud-0895990b.png",
+            "alt": "mirpay_cloud",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "ddb10111-6c07-4039-893f-5eacd649606c",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "MIR Pay позволяет оплачивать покупки в одно касание картами платежной системы «МИР». Кнопка Pay-сервиса отображается на платёжной странице рядом с другими способами оплаты."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "vidy-integratsiy",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Виды интеграций"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "CloudPayments предлагает подключение MIR Pay по упрощенной схеме на странице оплаты (с помощью платежного виджета) и через мобильный SDK. Дополнительно интегрироваться с сервисом платежной системы «МИР» не нужно."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "В ближайшее время MIR Pay будет доступен для других видов интеграций: платежные блоки, заказы и платежные ссылки."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "podklyuchenie-mir-pay",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Подключение MIR Pay"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Для включения кнопки MIR Pay в платежном виджете и мобильном SDK необходимо:"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Переключить «фича-тоггл» MIR Pay в Личном кабинете, в настройках сайта или написать в службу поддержки CloudPayments."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/fichtoggle_mir-3a585243.png",
+            "alt": "fichtoggle",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "a326a89a-63e7-4836-ab34-5e7c2f53054d",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "protsess-oplaty-s-pomoschyu-mir-pay",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Процесс оплаты с помощью MIR Pay"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Покупатель после нажатия кнопки «Оплатить» переходит на виджет CloudPayments, где может выбрать оплату по MIR Pay без ввода банковских реквизитов. "
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "После оплаты покупатель видит сообщение об успешном платеже и автоматически возвращается обратно на сайт. Продавцу приходит уведомление о транзакции."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Продавцу не нужно интегрироваться с сервисом платежной системы «МИР», все необходимое реализовано на стороне CloudPayments."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        }
+      ]
+    }
   }
 }
