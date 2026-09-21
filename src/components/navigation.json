@@ -406,7 +406,14 @@
     "audience": "both",
     "description": "",
     "root": false,
-    "items": []
+    "items": [
+      {
+        "id": "termini-i-opredeleniya",
+        "title": "Термины и определения",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
   },
   {
     "id": "category/b8716057-b670-4753-97ee-b79d3430afd4",
