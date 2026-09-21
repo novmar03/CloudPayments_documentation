@@ -78288,5 +78288,2865 @@
         }
       ]
     }
+  },
+  "sberpay": {
+    "title": "SberPay",
+    "html": "<div class=\"imported-api\"><figure style=\"text-align:center\"><img data-image-id=\"625856a4-3c77-4d36-9816-1a7f2c3b12be\" src=\"https://developers.cloudpayments.ru/images/sberpay_cloud-fbaf8c5d.png\" alt=\"sberpay_cloud\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>CloudPayments предлагает метод оплаты в один клик через SberPay. Покупатель может выбрать любой счет для списания в приложении Сбера, а также копить баллы «Спасибо» для последующих покупок.</p><h2 id=\"sberpay-poluchenie-ssylki-dlya-oplaty\"><strong>Получение ссылки для оплаты</strong></h2><h3 id=\"opisanie\"><strong>Описание</strong></h3><p>Метод для проведения оплаты по SberPay.<br>При оплате с мобильного устройства в ответе вернётся параметр <code>QrUrl</code> с URL-адресом для перенаправления клиента. Для проведения платежа клиента надо перенаправить на полученный URL-адрес.<br>При оплате с десктопа на номер телефона, который указан в параметре запроса <code>Phone</code>, будет отправлен push либо SMS-сообщение со ссылкой на оплату.</p><p>Авторизация <a href=\"https://en.wikipedia.org/wiki/Basic_access_authentication\" target=\"_blank\" rel=\"noopener noreferrer\">HTTP Basic Auth</a> для данного метода не требуется. Вместо неё используется параметр идентификатора терминала <code>PublicId</code> в теле запроса.</p><h3 id=\"adres-metoda\"><strong>Адрес метода</strong></h3><p><a href=\"https://api.cloudpayments.ru/payments/qr/sberpay/link\" target=\"_blank\" rel=\"noopener noreferrer\">https://api.cloudpayments.ru/payments/qr/sberpay/link</a></p><h3 id=\"sberpay-parametry-zaprosa\"><strong>Параметры запроса</strong></h3><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Параметр</p></th><th colspan=\"1\" rowspan=\"1\"><p>Формат</p></th><th colspan=\"1\" rowspan=\"1\"><p>Применение</p></th><th colspan=\"1\" rowspan=\"1\"><p>Описание</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>PublicId</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Идентификатор сайта, который находится в ЛК</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Amount</p></td><td colspan=\"1\" rowspan=\"1\"><p>Decimal</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Cумма платежа в рублях, разделитель точка. Количество не нулевых знаков после точки – 2</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Currency</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Валюта: RUB (см. <a href=\"https://developers.cloudpayments.ru/#spisok-valyut\" target=\"_blank\" rel=\"noopener noreferrer\">справочник</a>)</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Description</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Назначение платежа в свободной форме</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>AccountId</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Идентификатор пользователя, используется для создания подписки и получения токена</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Email</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>E-mail плательщика, на который будет отправлена квитанция об оплате</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>JsonData</p></td><td colspan=\"1\" rowspan=\"1\"><p>Json</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Любые другие данные, которые будут связаны с транзакцией, в том числе <a href=\"https://developers.cloudpayments.ru/#rekurrentnye-platezhi-podpiska\" target=\"_blank\" rel=\"noopener noreferrer\">инструкции</a> для создания подписки или формирования <a href=\"https://developers.cloudpayments.ru/#format-peredachi-dannyh-dlya-onlayn-cheka\" target=\"_blank\" rel=\"noopener noreferrer\">онлайн-чека</a> должны обёртываться в объект <code>cloudpayments</code>. Мы зарезервировали названия следующих параметров и отображаем их содержимое в реестре операций, выгружаемом в Личном Кабинете: <code>name</code>, <code>firstName</code>, <code>middleName</code>, <code>lastName</code>, <code>nick</code>, <code>phone</code>, <code>address</code>, <code>comment</code>, <code>birthDate</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>InvoiceId</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Идентификатор/номер счета.<br><br>Приходит в Check-уведомлении и может использоваться для сверки номера заказа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Scheme</p></td><td colspan=\"1\" rowspan=\"1\"><p>Enum String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Схема проведения платежа (см. <a href=\"https://developers.cloudpayments.ru/#vidy-operatsiy\" target=\"_blank\" rel=\"noopener noreferrer\">Виды операций</a>).<br>Возможные значения: <code>charge</code> - одностадийная оплата; <code>auth</code> - двухстадийная оплата</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>SuccessRedirectUrl</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Url для перенаправления клиента после успешной оплаты.<br>После проведения платежа, клиент будет перенаправлен на указанный адрес из мобильного приложения Банка.</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>IpAddress</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>IP-адрес плательщика</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Os</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Операционная система устройства плательщика.<br>Пример значения: <code>Android</code>, <code>iOS</code>, <code>Windows</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Webview</p></td><td colspan=\"1\" rowspan=\"1\"><p>Bool</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Признак открытия браузера в режиме webview.<br>Возможные значения: <code>true</code> - для оплат через webview <code>false</code> - для оплат без webview</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Device</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Признак устройства плательщика.<br>Возможные значения:<br><code>MobileApp</code> - вызов оплаты из мобильного приложения<br><code>DesktopWeb</code> - вызов оплаты из браузера с десктопа<br><code>Mobile</code> - вызов из браузера с мобильного устройства</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Phone</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Номер телефона плательщика.<br>Пример значения: <code>+79001234567</code><br>Обязательное значение для оплаты из браузера с десктопа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Browser</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Название браузера клиента на основании userAgent браузера.<br>Пример значения: <code>Chrome</code>, <code>Firefox</code>, <code>MIUI Browser</code>, <code>Opera</code></p></td></tr></table></div><p>В ответ сервер возвращает JSON с тремя составляющими:</p><ul><li><p>поле <strong>success</strong> — результат запроса;</p></li><li><p>поле <strong>message</strong> — описание ошибки;</p></li><li><p>объект <strong>model</strong> — расширенная информация.</p></li></ul><p>Возможные варианты ответа:</p><ol start=\"1\"><li><p>Некорректно сформирован запрос:</p><ul><li><p><strong>success</strong> — false</p></li><li><p><strong>message</strong> — описание ошибки</p></li></ul></li><li><p>Транзакция отклонена:</p><ul><li><p><strong>success</strong> — false</p></li><li><p><strong>model</strong> — информация о транзакции и код ошибки</p></li></ul></li><li><p>Транзакция принята:</p><ul><li><p><strong>success</strong> — true</p></li><li><p><strong>model</strong> — информация о транзакции</p></li></ul></li></ol><p>Результат запроса (поле Success) не отражает статус транзакции, а лишь свидетельствует об успешности/неуспешности запроса API. Статус транзакции отражен в дополнительном поле Status, также его можно узнать в результате получения <a href=\"https://developers.cloudpayments.ru/#uvedomleniya\" target=\"_blank\" rel=\"noopener noreferrer\">уведомлений</a>. Интерпретацию статусов транзакции смотрите в <a href=\"https://developers.cloudpayments.ru/#statusy-operatsiy\" target=\"_blank\" rel=\"noopener noreferrer\">справочнике</a>.</p><h3 id=\"sberpay-primer-zaprosa\"><strong>Пример запроса</strong></h3><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">{\n    &quot;PublicId&quot;: &quot;test_api_00000000000000000000002&quot;,\n    &quot;Os&quot; : &quot;Windows 7 home&quot;,\n    &quot;Webview&quot; : true,\n    &quot;Browser&quot; : &quot;Microsoft Edge 24.101&quot;,\n    &quot;Amount&quot;: 1000,\n    &quot;Currency&quot;: &quot;RUB&quot;,\n    &quot;Description&quot;: &quot;Оплата по SberPay&quot;,\n    &quot;AccountId&quot;: &quot;email@email.com&quot;,\n    &quot;Email&quot;: &quot;email@email.com&quot;,\n    &quot;InvoiceId&quot;: &quot;order_no4009&quot;,\n    &quot;Scheme&quot;: &quot;charge&quot;,\n    &quot;Device&quot;: &quot;DesktopWeb&quot;,\n    &quot;Phone&quot;: &quot;79001234567&quot;,\n    &quot;SuccessRedirectUrl&quot;: &quot;https://cp.ru&quot;,\n}\n</code></pre></div><h3 id=\"primer-otveta\"><strong>Пример ответа</strong></h3><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">{\n    &quot;Model&quot;: {\n        &quot;QrUrl&quot;: &quot;sberpay://invoicing/v2?bankInvoiceId=5628ecb3ef514a48abed24e16f818f03&amp;operationType=Web2App&quot;, // будет содержать url-адрес для редиректа\n        &quot;QrImage&quot;: null,                \n        &quot;TransactionId&quot;: 11122233344, // id транзакции CloudPayments\n        &quot;Amount&quot;: 10\n    },\n    &quot;Success&quot;: true,\n    &quot;Message&quot;: null\n}\n</code></pre></div><p><br></p></div>",
+    "toc": [
+      {
+        "id": "sberpay-poluchenie-ssylki-dlya-oplaty",
+        "title": "Получение ссылки для оплаты",
+        "level": 2
+      },
+      {
+        "id": "opisanie",
+        "title": "Описание",
+        "level": 3
+      },
+      {
+        "id": "adres-metoda",
+        "title": "Адрес метода",
+        "level": 3
+      },
+      {
+        "id": "sberpay-parametry-zaprosa",
+        "title": "Параметры запроса",
+        "level": 3
+      },
+      {
+        "id": "sberpay-primer-zaprosa",
+        "title": "Пример запроса",
+        "level": 3
+      },
+      {
+        "id": "primer-otveta",
+        "title": "Пример ответа",
+        "level": 3
+      }
+    ],
+    "segments": [
+      "<figure style=\"text-align:center\"><img data-image-id=\"625856a4-3c77-4d36-9816-1a7f2c3b12be\" src=\"https://developers.cloudpayments.ru/images/sberpay_cloud-fbaf8c5d.png\" alt=\"sberpay_cloud\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>CloudPayments предлагает метод оплаты в один клик через SberPay. Покупатель может выбрать любой счет для списания в приложении Сбера, а также копить баллы «Спасибо» для последующих покупок.</p>",
+      "",
+      "<p>Метод для проведения оплаты по SberPay.<br>При оплате с мобильного устройства в ответе вернётся параметр <code>QrUrl</code> с URL-адресом для перенаправления клиента. Для проведения платежа клиента надо перенаправить на полученный URL-адрес.<br>При оплате с десктопа на номер телефона, который указан в параметре запроса <code>Phone</code>, будет отправлен push либо SMS-сообщение со ссылкой на оплату.</p><p>Авторизация <a href=\"https://en.wikipedia.org/wiki/Basic_access_authentication\" target=\"_blank\" rel=\"noopener noreferrer\">HTTP Basic Auth</a> для данного метода не требуется. Вместо неё используется параметр идентификатора терминала <code>PublicId</code> в теле запроса.</p>",
+      "<p><a href=\"https://api.cloudpayments.ru/payments/qr/sberpay/link\" target=\"_blank\" rel=\"noopener noreferrer\">https://api.cloudpayments.ru/payments/qr/sberpay/link</a></p>",
+      "<div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Параметр</p></th><th colspan=\"1\" rowspan=\"1\"><p>Формат</p></th><th colspan=\"1\" rowspan=\"1\"><p>Применение</p></th><th colspan=\"1\" rowspan=\"1\"><p>Описание</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>PublicId</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Идентификатор сайта, который находится в ЛК</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Amount</p></td><td colspan=\"1\" rowspan=\"1\"><p>Decimal</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Cумма платежа в рублях, разделитель точка. Количество не нулевых знаков после точки – 2</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Currency</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Валюта: RUB (см. <a href=\"https://developers.cloudpayments.ru/#spisok-valyut\" target=\"_blank\" rel=\"noopener noreferrer\">справочник</a>)</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Description</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Назначение платежа в свободной форме</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>AccountId</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Идентификатор пользователя, используется для создания подписки и получения токена</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Email</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>E-mail плательщика, на который будет отправлена квитанция об оплате</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>JsonData</p></td><td colspan=\"1\" rowspan=\"1\"><p>Json</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Любые другие данные, которые будут связаны с транзакцией, в том числе <a href=\"https://developers.cloudpayments.ru/#rekurrentnye-platezhi-podpiska\" target=\"_blank\" rel=\"noopener noreferrer\">инструкции</a> для создания подписки или формирования <a href=\"https://developers.cloudpayments.ru/#format-peredachi-dannyh-dlya-onlayn-cheka\" target=\"_blank\" rel=\"noopener noreferrer\">онлайн-чека</a> должны обёртываться в объект <code>cloudpayments</code>. Мы зарезервировали названия следующих параметров и отображаем их содержимое в реестре операций, выгружаемом в Личном Кабинете: <code>name</code>, <code>firstName</code>, <code>middleName</code>, <code>lastName</code>, <code>nick</code>, <code>phone</code>, <code>address</code>, <code>comment</code>, <code>birthDate</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>InvoiceId</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Идентификатор/номер счета.<br><br>Приходит в Check-уведомлении и может использоваться для сверки номера заказа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Scheme</p></td><td colspan=\"1\" rowspan=\"1\"><p>Enum String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Схема проведения платежа (см. <a href=\"https://developers.cloudpayments.ru/#vidy-operatsiy\" target=\"_blank\" rel=\"noopener noreferrer\">Виды операций</a>).<br>Возможные значения: <code>charge</code> - одностадийная оплата; <code>auth</code> - двухстадийная оплата</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>SuccessRedirectUrl</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Url для перенаправления клиента после успешной оплаты.<br>После проведения платежа, клиент будет перенаправлен на указанный адрес из мобильного приложения Банка.</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>IpAddress</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>IP-адрес плательщика</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Os</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Операционная система устройства плательщика.<br>Пример значения: <code>Android</code>, <code>iOS</code>, <code>Windows</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Webview</p></td><td colspan=\"1\" rowspan=\"1\"><p>Bool</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Признак открытия браузера в режиме webview.<br>Возможные значения: <code>true</code> - для оплат через webview <code>false</code> - для оплат без webview</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Device</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Признак устройства плательщика.<br>Возможные значения:<br><code>MobileApp</code> - вызов оплаты из мобильного приложения<br><code>DesktopWeb</code> - вызов оплаты из браузера с десктопа<br><code>Mobile</code> - вызов из браузера с мобильного устройства</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Phone</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Номер телефона плательщика.<br>Пример значения: <code>+79001234567</code><br>Обязательное значение для оплаты из браузера с десктопа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Browser</p></td><td colspan=\"1\" rowspan=\"1\"><p>String</p></td><td colspan=\"1\" rowspan=\"1\"><p>Обязательный</p></td><td colspan=\"1\" rowspan=\"1\"><p>Название браузера клиента на основании userAgent браузера.<br>Пример значения: <code>Chrome</code>, <code>Firefox</code>, <code>MIUI Browser</code>, <code>Opera</code></p></td></tr></table></div><p>В ответ сервер возвращает JSON с тремя составляющими:</p><ul><li><p>поле <strong>success</strong> — результат запроса;</p></li><li><p>поле <strong>message</strong> — описание ошибки;</p></li><li><p>объект <strong>model</strong> — расширенная информация.</p></li></ul><p>Возможные варианты ответа:</p><ol start=\"1\"><li><p>Некорректно сформирован запрос:</p><ul><li><p><strong>success</strong> — false</p></li><li><p><strong>message</strong> — описание ошибки</p></li></ul></li><li><p>Транзакция отклонена:</p><ul><li><p><strong>success</strong> — false</p></li><li><p><strong>model</strong> — информация о транзакции и код ошибки</p></li></ul></li><li><p>Транзакция принята:</p><ul><li><p><strong>success</strong> — true</p></li><li><p><strong>model</strong> — информация о транзакции</p></li></ul></li></ol><p>Результат запроса (поле Success) не отражает статус транзакции, а лишь свидетельствует об успешности/неуспешности запроса API. Статус транзакции отражен в дополнительном поле Status, также его можно узнать в результате получения <a href=\"https://developers.cloudpayments.ru/#uvedomleniya\" target=\"_blank\" rel=\"noopener noreferrer\">уведомлений</a>. Интерпретацию статусов транзакции смотрите в <a href=\"https://developers.cloudpayments.ru/#statusy-operatsiy\" target=\"_blank\" rel=\"noopener noreferrer\">справочнике</a>.</p>",
+      "<div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">{\n    &quot;PublicId&quot;: &quot;test_api_00000000000000000000002&quot;,\n    &quot;Os&quot; : &quot;Windows 7 home&quot;,\n    &quot;Webview&quot; : true,\n    &quot;Browser&quot; : &quot;Microsoft Edge 24.101&quot;,\n    &quot;Amount&quot;: 1000,\n    &quot;Currency&quot;: &quot;RUB&quot;,\n    &quot;Description&quot;: &quot;Оплата по SberPay&quot;,\n    &quot;AccountId&quot;: &quot;email@email.com&quot;,\n    &quot;Email&quot;: &quot;email@email.com&quot;,\n    &quot;InvoiceId&quot;: &quot;order_no4009&quot;,\n    &quot;Scheme&quot;: &quot;charge&quot;,\n    &quot;Device&quot;: &quot;DesktopWeb&quot;,\n    &quot;Phone&quot;: &quot;79001234567&quot;,\n    &quot;SuccessRedirectUrl&quot;: &quot;https://cp.ru&quot;,\n}\n</code></pre></div>",
+      "<div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">{\n    &quot;Model&quot;: {\n        &quot;QrUrl&quot;: &quot;sberpay://invoicing/v2?bankInvoiceId=5628ecb3ef514a48abed24e16f818f03&amp;operationType=Web2App&quot;, // будет содержать url-адрес для редиректа\n        &quot;QrImage&quot;: null,                \n        &quot;TransactionId&quot;: 11122233344, // id транзакции CloudPayments\n        &quot;Amount&quot;: 10\n    },\n    &quot;Success&quot;: true,\n    &quot;Message&quot;: null\n}\n</code></pre></div><p><br></p>"
+    ],
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/sberpay_cloud-fbaf8c5d.png",
+            "alt": "sberpay_cloud",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "625856a4-3c77-4d36-9816-1a7f2c3b12be",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "CloudPayments предлагает метод оплаты в один клик через SberPay. Покупатель может выбрать любой счет для списания в приложении Сбера, а также копить баллы «Спасибо» для последующих покупок."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "sberpay-poluchenie-ssylki-dlya-oplaty",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Получение ссылки для оплаты"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "opisanie",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Описание"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Метод для проведения оплаты по SberPay."
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "При оплате с мобильного устройства в ответе вернётся параметр "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "code"
+                }
+              ],
+              "text": "QrUrl"
+            },
+            {
+              "type": "text",
+              "text": " с URL-адресом для перенаправления клиента. Для проведения платежа клиента надо перенаправить на полученный URL-адрес."
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "При оплате с десктопа на номер телефона, который указан в параметре запроса "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "code"
+                }
+              ],
+              "text": "Phone"
+            },
+            {
+              "type": "text",
+              "text": ", будет отправлен push либо SMS-сообщение со ссылкой на оплату."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Авторизация "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://en.wikipedia.org/wiki/Basic_access_authentication",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "HTTP Basic Auth"
+            },
+            {
+              "type": "text",
+              "text": " для данного метода не требуется. Вместо неё используется параметр идентификатора терминала "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "code"
+                }
+              ],
+              "text": "PublicId"
+            },
+            {
+              "type": "text",
+              "text": " в теле запроса."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "adres-metoda",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Адрес метода"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://api.cloudpayments.ru/payments/qr/sberpay/link",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "https://api.cloudpayments.ru/payments/qr/sberpay/link"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "sberpay-parametry-zaprosa",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Параметры запроса"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "content": [
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Параметр"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Формат"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Применение"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Описание"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "PublicId"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Идентификатор сайта, который находится в ЛК"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Amount"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Decimal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Cумма платежа в рублях, разделитель точка. Количество не нулевых знаков после точки – 2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Currency"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Валюта: RUB (см. "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://developers.cloudpayments.ru/#spisok-valyut",
+                                "target": "_blank",
+                                "rel": "noopener noreferrer",
+                                "class": null,
+                                "title": null
+                              }
+                            }
+                          ],
+                          "text": "справочник"
+                        },
+                        {
+                          "type": "text",
+                          "text": ")"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Description"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Назначение платежа в свободной форме"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "AccountId"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Идентификатор пользователя, используется для создания подписки и получения токена"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Email"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "E-mail плательщика, на который будет отправлена квитанция об оплате"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "JsonData"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Json"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Любые другие данные, которые будут связаны с транзакцией, в том числе "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://developers.cloudpayments.ru/#rekurrentnye-platezhi-podpiska",
+                                "target": "_blank",
+                                "rel": "noopener noreferrer",
+                                "class": null,
+                                "title": null
+                              }
+                            }
+                          ],
+                          "text": "инструкции"
+                        },
+                        {
+                          "type": "text",
+                          "text": " для создания подписки или формирования "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://developers.cloudpayments.ru/#format-peredachi-dannyh-dlya-onlayn-cheka",
+                                "target": "_blank",
+                                "rel": "noopener noreferrer",
+                                "class": null,
+                                "title": null
+                              }
+                            }
+                          ],
+                          "text": "онлайн-чека"
+                        },
+                        {
+                          "type": "text",
+                          "text": " должны обёртываться в объект "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "cloudpayments"
+                        },
+                        {
+                          "type": "text",
+                          "text": ". Мы зарезервировали названия следующих параметров и отображаем их содержимое в реестре операций, выгружаемом в Личном Кабинете: "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "name"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "firstName"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "middleName"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "lastName"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "nick"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "phone"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "address"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "comment"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "birthDate"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "InvoiceId"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Идентификатор/номер счета."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Приходит в Check-уведомлении и может использоваться для сверки номера заказа"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Scheme"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Enum String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Схема проведения платежа (см. "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://developers.cloudpayments.ru/#vidy-operatsiy",
+                                "target": "_blank",
+                                "rel": "noopener noreferrer",
+                                "class": null,
+                                "title": null
+                              }
+                            }
+                          ],
+                          "text": "Виды операций"
+                        },
+                        {
+                          "type": "text",
+                          "text": ")."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Возможные значения: "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "charge"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - одностадийная оплата; "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "auth"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - двухстадийная оплата"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "SuccessRedirectUrl"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Url для перенаправления клиента после успешной оплаты."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "После проведения платежа, клиент будет перенаправлен на указанный адрес из мобильного приложения Банка."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "IpAddress"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "IP-адрес плательщика"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Os"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Операционная система устройства плательщика."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Пример значения: "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "Android"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "iOS"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "Windows"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Webview"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Bool"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Признак открытия браузера в режиме webview."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Возможные значения: "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "true"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - для оплат через webview "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "false"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - для оплат без webview"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Device"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Признак устройства плательщика."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Возможные значения:"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "MobileApp"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - вызов оплаты из мобильного приложения"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "DesktopWeb"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - вызов оплаты из браузера с десктопа"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "Mobile"
+                        },
+                        {
+                          "type": "text",
+                          "text": " - вызов из браузера с мобильного устройства"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Phone"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Необязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Номер телефона плательщика."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Пример значения: "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "+79001234567"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Обязательное значение для оплаты из браузера с десктопа"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Browser"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Обязательный"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "colspan": 1,
+                    "rowspan": 1,
+                    "colwidth": null,
+                    "align": "left"
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "textAlign": null
+                      },
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Название браузера клиента на основании userAgent браузера."
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Пример значения: "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "Chrome"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "Firefox"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "MIUI Browser"
+                        },
+                        {
+                          "type": "text",
+                          "text": ", "
+                        },
+                        {
+                          "type": "text",
+                          "marks": [
+                            {
+                              "type": "code"
+                            }
+                          ],
+                          "text": "Opera"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "В ответ сервер возвращает JSON с тремя составляющими:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "поле "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "success"
+                    },
+                    {
+                      "type": "text",
+                      "text": " — результат запроса;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "поле "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "message"
+                    },
+                    {
+                      "type": "text",
+                      "text": " — описание ошибки;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "объект "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "text": "model"
+                    },
+                    {
+                      "type": "text",
+                      "text": " — расширенная информация."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Возможные варианты ответа:"
+            }
+          ]
+        },
+        {
+          "type": "orderedList",
+          "attrs": {
+            "start": 1,
+            "type": null
+          },
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Некорректно сформирован запрос:"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "success"
+                            },
+                            {
+                              "type": "text",
+                              "text": " — false"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "message"
+                            },
+                            {
+                              "type": "text",
+                              "text": " — описание ошибки"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Транзакция отклонена:"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "success"
+                            },
+                            {
+                              "type": "text",
+                              "text": " — false"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "model"
+                            },
+                            {
+                              "type": "text",
+                              "text": " — информация о транзакции и код ошибки"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Транзакция принята:"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "success"
+                            },
+                            {
+                              "type": "text",
+                              "text": " — true"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "model"
+                            },
+                            {
+                              "type": "text",
+                              "text": " — информация о транзакции"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Результат запроса (поле Success) не отражает статус транзакции, а лишь свидетельствует об успешности/неуспешности запроса API. Статус транзакции отражен в дополнительном поле Status, также его можно узнать в результате получения "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#uvedomleniya",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "уведомлений"
+            },
+            {
+              "type": "text",
+              "text": ". Интерпретацию статусов транзакции смотрите в "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#statusy-operatsiy",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "справочнике"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "sberpay-primer-zaprosa",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Пример запроса"
+            }
+          ]
+        },
+        {
+          "type": "codeBlock",
+          "attrs": {
+            "language": "text"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "{\n    \"PublicId\": \"test_api_00000000000000000000002\",\n    \"Os\" : \"Windows 7 home\",\n    \"Webview\" : true,\n    \"Browser\" : \"Microsoft Edge 24.101\",\n    \"Amount\": 1000,\n    \"Currency\": \"RUB\",\n    \"Description\": \"Оплата по SberPay\",\n    \"AccountId\": \"email@email.com\",\n    \"Email\": \"email@email.com\",\n    \"InvoiceId\": \"order_no4009\",\n    \"Scheme\": \"charge\",\n    \"Device\": \"DesktopWeb\",\n    \"Phone\": \"79001234567\",\n    \"SuccessRedirectUrl\": \"https://cp.ru\",\n}\n"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "primer-otveta",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Пример ответа"
+            }
+          ]
+        },
+        {
+          "type": "codeBlock",
+          "attrs": {
+            "language": "text"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "{\n    \"Model\": {\n        \"QrUrl\": \"sberpay://invoicing/v2?bankInvoiceId=5628ecb3ef514a48abed24e16f818f03&operationType=Web2App\", // будет содержать url-адрес для редиректа\n        \"QrImage\": null,                \n        \"TransactionId\": 11122233344, // id транзакции CloudPayments\n        \"Amount\": 10\n    },\n    \"Success\": true,\n    \"Message\": null\n}\n"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        }
+      ]
+    }
   }
 }
