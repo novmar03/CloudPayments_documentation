@@ -297,5 +297,245 @@
         "audience": "both"
       }
     ]
+  },
+  {
+    "id": "root-bezopasnaya-sdelka",
+    "title": "Безопасная сделка",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "bezopasnaya-sdelka",
+        "title": "Безопасная сделка",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-SDK-dlya-iOS",
+    "title": "SDK для iOS",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "SDK-dlya-iOS",
+        "title": "SDK для iOS",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-SDK-dlya-Android",
+    "title": "SDK для Android",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "SDK-dlya-Android",
+        "title": "SDK для Android",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-api",
+    "title": "API",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "api",
+        "title": "API",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-uvedomleniya",
+    "title": "Уведомления",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "uvedomleniya",
+        "title": "Уведомления",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-t-pay",
+    "title": "T-Pay",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "t-pay",
+        "title": "T-Pay",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-sbp",
+    "title": "СБП",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "sbp",
+        "title": "СБП",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-digital-ruble",
+    "title": "Цифровой рубль",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "digital-ruble",
+        "title": "Цифровой рубль",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-sberpay",
+    "title": "SberPay",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "sberpay",
+        "title": "SberPay",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-mirpay",
+    "title": "MIR Pay",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "mirpay",
+        "title": "MIR Pay",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-dolyami",
+    "title": "Долями",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "dolyami",
+        "title": "Долями",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-scenarii-integracii",
+    "title": "Сценарии интеграции",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "scenarii-integracii",
+        "title": "Сценарии интеграции",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-pci-dss",
+    "title": "PCI DSS",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "pci-dss",
+        "title": "PCI DSS",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-online-kassa",
+    "title": "Онлайн-касса для интернет-расчетов",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "online-kassa",
+        "title": "Онлайн-касса для интернет-расчетов",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-testirovaniye",
+    "title": "Тестирование",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "testirovaniye",
+        "title": "Тестирование",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
+  },
+  {
+    "id": "root-spravochniki",
+    "title": "Справочники",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "spravochniki",
+        "title": "Справочники",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
   }
 ]

@@ -1,0 +1,4 @@
+---
+title: "SberPay"
+slug: /sberpay/
+---
