@@ -86931,5 +86931,1376 @@
         }
       ]
     }
+  },
+  "online-kassa": {
+    "title": "Онлайн-касса для интернет-расчетов",
+    "html": "<div class=\"imported-api\"><h2 id=\"54-fz\"><strong>54-ФЗ</strong></h2><p>Закон 54-ФЗ &quot;О применении контрольно-кассовой техники&quot; с изменениями от 03.07.2016 предписывает интернет-сервисам при осуществлении расчетов с использованием электронного средства платежа (в т.ч. банковской картой) использовать контрольно-кассовую технику (ККТ) и отправлять покупателю электронный чек в момент расчета.</p><h2 id=\"osnovnye-polozheniya-zakona\"><strong>Основные положения закона</strong></h2><ul><li><p>Необходимо использовать кассу нового образца с установленным фискальным накопителем (ФН).</p></li><li><p>Необходимо заключить договор с <a href=\"https://developers.cloudpayments.ru/#operatory-fiskalnyh-dannyh\" target=\"_blank\" rel=\"noopener noreferrer\">оператором фискальных данных</a> (ОФД) для передачи данных с ККТ в режиме онлайн в ФНС.</p></li><li><p>Необходимо указывать в чеке все товарные позиции: наименование, цена, количество, сумма, ставка НДС.</p></li><li><p>Необходимо подключить кассу к интернету.</p></li><li><p>Необходимо выдавать чек покупателю непосредственно в момент расчета: для интернет-платежей с использованием банковской карты отправлять чек на e-mail или телефон.</p></li><li><p>Необходимо менять ФН в двух случаях:<br></p><ul><li><p>по истечении его срока действия;</p></li><li><p>при заполнении памяти до истечения срока действия;<br>и хранить его в течение 5-ти лет.</p></li></ul></li><li><p>Нет необходимости заключать договор с ЦТО на обслуживание.</p></li><li><p>Нет необходимости предъявлять кассу инспектору ФНС, все регистрационные действия можно выполнить дистанционно в личном кабинете налогоплательщика на сайте ФНС.</p></li></ul><h2 id=\"onlayn-fiskalizatsiya\"><strong>Онлайн-фискализация</strong></h2><p>Компания CloudPayments предлагает своим партнерам облачное решение &quot;под ключ&quot; для онлайн-фискализации интернет-платежей, и в рамках соблюдения закона 54-ФЗ для любого бизнеса вы получите:</p><ul><li><p>выделенную онлайн-кассу, зарегистрированную в ФНС на вашу компанию;</p></li><li><p>фискальный накопитель;</p></li><li><p>подключение к оператору фискальных данных;</p></li><li><p>автоматическое формирование чеков прихода и возврата в момент проведения расчета;</p></li><li><p>полный отчет по операциям в личном кабинете.</p></li></ul><p>Касса будет находиться в дата-центре 24/7, с подключением к интернету и питанию, работать круглосуточно и без перебоев. Наши сотрудники будут следить за ее техническим состоянием и своевременно менять фискальные накопители, а специальное программное обеспечение — корректировать ошибки, открывать и закрывать смену по расписанию, в &quot;облаке&quot; ставить чеки в очередь при большой нагрузке и гарантированно отправлять покупателям.</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"a2f317f0-63fa-4cc4-91a7-978b7ee88b32\" src=\"https://developers.cloudpayments.ru/images/cloud-scheme-7a60ffb1.png\" alt=\"cloud-scheme\" style=\"width:100%;max-width:100%;height:auto\"></figure><h2 id=\"onlayn-kassa\"><strong>Онлайн-касса</strong></h2><p>Мы используем кассы MicroPay-ФАС и MicroPay-ФС с подключением к любому <a href=\"https://developers.cloudpayments.ru/#operatory-fiskalnyh-dannyh\" target=\"_blank\" rel=\"noopener noreferrer\">оператору фискальных данных</a>.</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"3fc2d3b8-d54f-4fd6-9cea-9610c9014ea4\" src=\"https://developers.cloudpayments.ru/images/cash_registers-7f581163.png\" alt=\"cash_registers\" style=\"width:100%;max-width:100%;height:auto\"></figure><h3 id=\"stoimost\"><strong>Стоимость</strong></h3><p>Стоимость услуг по онлайн-фискализации и сопровождению можно узнать на сайте сервиса <a href=\"https://cloudkassir.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">CloudKassir</a> и/или уточнить у менеджера.</p><h2 id=\"poryadok-podklyucheniya\"><strong>Порядок подключения</strong></h2><p>Для подключения услуги онлайн-фискализации необходимо:</p><ul><li><p>подключиться к сервису онлайн фискализации CloudKassir;</p></li><li><p>получить квалифицированную электронную подпись для работы с сайтом ФНС;</p></li><li><p>зарегистрироваться в личном кабинете налоговой службы: — для юридических лиц — для индивидуальных предпринимателей;</p></li><li><p>заключить договор на онлайн-фискализацию с CloudKassir.</p></li></ul><p>После подписания договора и оплаты счета вам будут предоставлены номер ККТ и ФН для регистрации в ФНС.</p><h2 id=\"format-peredachi-dannyh-dlya-onlayn-cheka\"><strong>Формат передачи данных для онлайн-чека</strong></h2><p>В данном разделе описаны параметры объекта <strong>receipt</strong>, который передается в рамках вызова виджета или платежного конструктора и отвечает за формирование чека.</p><p>Описание параметров для формирования объекта <strong>СustomerReceipt</strong> в рамках вызова API CloudKassir смотрите в документации сервиса <a href=\"https://developers.cloudkassir.ru/#customerreceipt\" target=\"_blank\" rel=\"noopener noreferrer\">CloudKassir</a>.</p><p>Данные для чека в рамках вызова виджета или платежного конструктора необходимо передавать в формате json по примеру ниже:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">var receipt = {\n        Items: [ \n            {\n                label: &quot;Пластырь&quot;, // - обязательное поле\n                price: 500, // цена одного товара - обязательное поле\n                quantity: 1, // количество товара - обязательное поле\n                amount: 500, // Сумма товара (price x quantity) - обязательное поле\n                vat: 20, // Ставка НДС - обязательное поле,\n            },\n            {\n                label: &quot;Доставка&quot;, //, обязательное поле\n                price: 500, // цена одного товара, обязательное поле\n                quantity: 1, // количество товара, обязательное поле\n                amount: 500, // сумма товара (price x quantity), обязательное поле\n                vat : 20, // ставка НДС, обязательное поле\n            }\n        ],\n        amounts : {\n            electronic: 1000 // Сумма оплаты электронными деньгами\n        }\n    };\n\n    const intentParams = {\n      publicTerminalId: &quot;test_api_00000000000000000000002&quot;, // идентификатор терминала\n      description: &quot;Basket of oranges&quot;, // описание списания\n      paymentSchema: &#39;Single&#39;, // схема\n      currency: &quot;RUB&quot;, // валюта\n      amount: 1000, // сумма\n      receipt: receipt\n    }\n\nwidget.start(intentParams).then(function(widgetResult) {\n    console.log(&#39;result&#39;, widgetResult);\n}).catch(function(error) {\n    console.log(&#39;error&#39;, error);\n});\n</code></pre></div><p><strong>Пример использования </strong><strong><a href=\"https://developers.cloudpayments.ru/#spisok-tovarov\" target=\"_blank\" rel=\"noopener noreferrer\">списка товаров</a></strong>:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">var receipt = {\n        Items: [ \n            {\n                id: &quot;some_id_1&quot;, // id для поиска товара в списке товаров\n                // label: &quot;Пластырь&quot;, // - не передаём, так как берём из списка товаров\n                // price: 500, // не передаём, так как берём из списка товаров\n                // quantity: 1, // не передаём, так как берём из списка товаров\n                amount: 500, // Сумма товара (items.price x items.count) - обязательное поле\n                vat: 20, // Ставка НДС - обязательное поле,\n            },\n            {\n                id: &quot;some_id_2&quot;, // id для поиска товара в списке товаров\n                // label: &quot;Доставка&quot;, //, не передаём, так как берём из списка товаров\n                // price: 500, // не передаём, так как берём из списка товаров\n                // quantity: 1, // не передаём, так как берём из списка товаров\n                amount: 500, // сумма товара (items.price x items.count) - обязательное поле\n                vat : 20, // ставка НДС, обязательное поле\n            }\n        ],\n        amounts : {\n            electronic: 1000 // Сумма оплаты электронными деньгами\n        }\n    };\n\nvar items = [\n              {\n                id: &quot;some_id_1&quot;,\n                count: 1.0,\n                name: &quot;Пластырь&quot;,\n                price: 500,\n              },\n              {\n                id: &quot;some_id_2&quot;,\n                count: 1.0,\n                name: &quot;Доставка&quot;,\n                price: 500,\n              },\n            ],\n\n    const intentParams = {\n      publicTerminalId: &quot;test_api_00000000000000000000002&quot;, // идентификатор терминала\n      description: &quot;Basket of oranges&quot;, // описание списания\n      paymentSchema: &#39;Single&#39;, // схема\n      currency: &quot;RUB&quot;, // валюта\n      amount: 1000, // сумма\n      receipt: receipt,\n      items: items\n    }\n\nwidget.start(intentParams).then(function(widgetResult) {\n    console.log(&#39;result&#39;, widgetResult);\n}).catch(function(error) {\n    console.log(&#39;error&#39;, error);\n});\n</code></pre></div><h2 id=\"usloviya-uspeshnogo-sozdaniya-cheka\"><strong>Условия успешного создания чека</strong></h2><ul><li><p>В чеке есть хотя бы одна позиция;</p></li><li><p>Во всех позициях указано наименование;</p></li><li><p>Цена и сумма позиции не отрицательная;</p></li><li><p>Общая сумма всех позиций больше нуля;</p></li><li><p>Входная строка наименования товара длиной не более 128 символов, более длинные строки будут обрезаны;</p></li><li><p>Указанная система налогообложения должна совпадать с одним из вариантов, зарегистрированных в ККТ;</p></li><li><p>Числовые значения переданы с точностью не более двух знаков после точки;</p></li><li><p>Передан ИНН, если он требуется в документации.</p></li></ul><p>Данные для онлайн-чека можно передавать в <a href=\"https://developers.cloudpayments.ru/#parametry\" target=\"_blank\" rel=\"noopener noreferrer\">параметры виджета</a>, при <a href=\"https://developers.cloudpayments.ru/#oplata-po-kriptogramme\" target=\"_blank\" rel=\"noopener noreferrer\">оплате по криптограмме</a> или <a href=\"https://developers.cloudpayments.ru/#oplata-po-tokenu-rekarring\" target=\"_blank\" rel=\"noopener noreferrer\">токену</a>, при <a href=\"https://developers.cloudpayments.ru/#podtverzhdenie-oplaty\" target=\"_blank\" rel=\"noopener noreferrer\">подтверждении оплаты</a>, при <a href=\"https://developers.cloudpayments.ru/#vozvrat-deneg\" target=\"_blank\" rel=\"noopener noreferrer\">проведении возврата</a>, а также через специальный <a href=\"https://developers.cloudkassir.ru/#api-kassy\" target=\"_blank\" rel=\"noopener noreferrer\">API кассы</a>.</p><h2 id=\"otpravka-pokupatelyu-onlayn-cheka\"><strong>Отправка покупателю онлайн-чека</strong></h2><p>На выбор покупателя кассовый чек необходимо отправить в письме на e-mail адрес или в СМС, Viber, WhatsApp, Telegram сообщении на номер телефона. Чек может быть отправлен системой CloudPayments автоматически, при условии передачи e-mail адреса или номера телефона покупателя, или же вы самостоятельно можете отправлять чек — все необходимые реквизиты система передает в уведомлении <a href=\"https://developers.cloudkassir.ru/#receipt\" target=\"_blank\" rel=\"noopener noreferrer\">Receipt</a>.</p><h2 id=\"moment-otpravki-cheka\"><strong>Момент отправки чека</strong></h2><p>Чек должен быть отправлен покупателю в момент расчета. Для <a href=\"https://developers.cloudpayments.ru/#shemy-provedeniya-platezha\" target=\"_blank\" rel=\"noopener noreferrer\">одностадийных платежей</a> чек формируется сразу же после прохождения оплаты, для <a href=\"https://developers.cloudpayments.ru/#shemy-provedeniya-platezha\" target=\"_blank\" rel=\"noopener noreferrer\">двухстадийных</a> — при подтверждении операции.</p><p>Формирование и отправка чека происходит после обновления статуса транзакции на “Завершена“ и выполняются процессы асинхронно. Для чего может потребоваться некоторое время.</p><h2 id=\"testirovanie-onlayn-cheka\"><strong>Тестирование онлайн-чека</strong></h2><p>При работе в тестовом режиме кассовые чеки будут формироваться в демонстрационной ККТ с отладочным фискальным накопителем. Вы можете передать <a href=\"https://developers.cloudpayments.ru/#format-peredachi-dannyh-dlya-onlayn-cheka\" target=\"_blank\" rel=\"noopener noreferrer\">данные для онлайн-чека</a> при оплате в тестовом режиме и проверить работу онлайн-кассы.</p></div>",
+    "toc": [
+      {
+        "id": "54-fz",
+        "title": "54-ФЗ",
+        "level": 2
+      },
+      {
+        "id": "osnovnye-polozheniya-zakona",
+        "title": "Основные положения закона",
+        "level": 2
+      },
+      {
+        "id": "onlayn-fiskalizatsiya",
+        "title": "Онлайн-фискализация",
+        "level": 2
+      },
+      {
+        "id": "onlayn-kassa",
+        "title": "Онлайн-касса",
+        "level": 2
+      },
+      {
+        "id": "stoimost",
+        "title": "Стоимость",
+        "level": 3
+      },
+      {
+        "id": "poryadok-podklyucheniya",
+        "title": "Порядок подключения",
+        "level": 2
+      },
+      {
+        "id": "format-peredachi-dannyh-dlya-onlayn-cheka",
+        "title": "Формат передачи данных для онлайн-чека",
+        "level": 2
+      },
+      {
+        "id": "usloviya-uspeshnogo-sozdaniya-cheka",
+        "title": "Условия успешного создания чека",
+        "level": 2
+      },
+      {
+        "id": "otpravka-pokupatelyu-onlayn-cheka",
+        "title": "Отправка покупателю онлайн-чека",
+        "level": 2
+      },
+      {
+        "id": "moment-otpravki-cheka",
+        "title": "Момент отправки чека",
+        "level": 2
+      },
+      {
+        "id": "testirovanie-onlayn-cheka",
+        "title": "Тестирование онлайн-чека",
+        "level": 2
+      }
+    ],
+    "segments": [
+      "",
+      "<p>Закон 54-ФЗ &quot;О применении контрольно-кассовой техники&quot; с изменениями от 03.07.2016 предписывает интернет-сервисам при осуществлении расчетов с использованием электронного средства платежа (в т.ч. банковской картой) использовать контрольно-кассовую технику (ККТ) и отправлять покупателю электронный чек в момент расчета.</p>",
+      "<ul><li><p>Необходимо использовать кассу нового образца с установленным фискальным накопителем (ФН).</p></li><li><p>Необходимо заключить договор с <a href=\"https://developers.cloudpayments.ru/#operatory-fiskalnyh-dannyh\" target=\"_blank\" rel=\"noopener noreferrer\">оператором фискальных данных</a> (ОФД) для передачи данных с ККТ в режиме онлайн в ФНС.</p></li><li><p>Необходимо указывать в чеке все товарные позиции: наименование, цена, количество, сумма, ставка НДС.</p></li><li><p>Необходимо подключить кассу к интернету.</p></li><li><p>Необходимо выдавать чек покупателю непосредственно в момент расчета: для интернет-платежей с использованием банковской карты отправлять чек на e-mail или телефон.</p></li><li><p>Необходимо менять ФН в двух случаях:<br></p><ul><li><p>по истечении его срока действия;</p></li><li><p>при заполнении памяти до истечения срока действия;<br>и хранить его в течение 5-ти лет.</p></li></ul></li><li><p>Нет необходимости заключать договор с ЦТО на обслуживание.</p></li><li><p>Нет необходимости предъявлять кассу инспектору ФНС, все регистрационные действия можно выполнить дистанционно в личном кабинете налогоплательщика на сайте ФНС.</p></li></ul>",
+      "<p>Компания CloudPayments предлагает своим партнерам облачное решение &quot;под ключ&quot; для онлайн-фискализации интернет-платежей, и в рамках соблюдения закона 54-ФЗ для любого бизнеса вы получите:</p><ul><li><p>выделенную онлайн-кассу, зарегистрированную в ФНС на вашу компанию;</p></li><li><p>фискальный накопитель;</p></li><li><p>подключение к оператору фискальных данных;</p></li><li><p>автоматическое формирование чеков прихода и возврата в момент проведения расчета;</p></li><li><p>полный отчет по операциям в личном кабинете.</p></li></ul><p>Касса будет находиться в дата-центре 24/7, с подключением к интернету и питанию, работать круглосуточно и без перебоев. Наши сотрудники будут следить за ее техническим состоянием и своевременно менять фискальные накопители, а специальное программное обеспечение — корректировать ошибки, открывать и закрывать смену по расписанию, в &quot;облаке&quot; ставить чеки в очередь при большой нагрузке и гарантированно отправлять покупателям.</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"a2f317f0-63fa-4cc4-91a7-978b7ee88b32\" src=\"https://developers.cloudpayments.ru/images/cloud-scheme-7a60ffb1.png\" alt=\"cloud-scheme\" style=\"width:100%;max-width:100%;height:auto\"></figure>",
+      "<p>Мы используем кассы MicroPay-ФАС и MicroPay-ФС с подключением к любому <a href=\"https://developers.cloudpayments.ru/#operatory-fiskalnyh-dannyh\" target=\"_blank\" rel=\"noopener noreferrer\">оператору фискальных данных</a>.</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"3fc2d3b8-d54f-4fd6-9cea-9610c9014ea4\" src=\"https://developers.cloudpayments.ru/images/cash_registers-7f581163.png\" alt=\"cash_registers\" style=\"width:100%;max-width:100%;height:auto\"></figure>",
+      "<p>Стоимость услуг по онлайн-фискализации и сопровождению можно узнать на сайте сервиса <a href=\"https://cloudkassir.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">CloudKassir</a> и/или уточнить у менеджера.</p>",
+      "<p>Для подключения услуги онлайн-фискализации необходимо:</p><ul><li><p>подключиться к сервису онлайн фискализации CloudKassir;</p></li><li><p>получить квалифицированную электронную подпись для работы с сайтом ФНС;</p></li><li><p>зарегистрироваться в личном кабинете налоговой службы: — для юридических лиц — для индивидуальных предпринимателей;</p></li><li><p>заключить договор на онлайн-фискализацию с CloudKassir.</p></li></ul><p>После подписания договора и оплаты счета вам будут предоставлены номер ККТ и ФН для регистрации в ФНС.</p>",
+      "<p>В данном разделе описаны параметры объекта <strong>receipt</strong>, который передается в рамках вызова виджета или платежного конструктора и отвечает за формирование чека.</p><p>Описание параметров для формирования объекта <strong>СustomerReceipt</strong> в рамках вызова API CloudKassir смотрите в документации сервиса <a href=\"https://developers.cloudkassir.ru/#customerreceipt\" target=\"_blank\" rel=\"noopener noreferrer\">CloudKassir</a>.</p><p>Данные для чека в рамках вызова виджета или платежного конструктора необходимо передавать в формате json по примеру ниже:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">var receipt = {\n        Items: [ \n            {\n                label: &quot;Пластырь&quot;, // - обязательное поле\n                price: 500, // цена одного товара - обязательное поле\n                quantity: 1, // количество товара - обязательное поле\n                amount: 500, // Сумма товара (price x quantity) - обязательное поле\n                vat: 20, // Ставка НДС - обязательное поле,\n            },\n            {\n                label: &quot;Доставка&quot;, //, обязательное поле\n                price: 500, // цена одного товара, обязательное поле\n                quantity: 1, // количество товара, обязательное поле\n                amount: 500, // сумма товара (price x quantity), обязательное поле\n                vat : 20, // ставка НДС, обязательное поле\n            }\n        ],\n        amounts : {\n            electronic: 1000 // Сумма оплаты электронными деньгами\n        }\n    };\n\n    const intentParams = {\n      publicTerminalId: &quot;test_api_00000000000000000000002&quot;, // идентификатор терминала\n      description: &quot;Basket of oranges&quot;, // описание списания\n      paymentSchema: &#39;Single&#39;, // схема\n      currency: &quot;RUB&quot;, // валюта\n      amount: 1000, // сумма\n      receipt: receipt\n    }\n\nwidget.start(intentParams).then(function(widgetResult) {\n    console.log(&#39;result&#39;, widgetResult);\n}).catch(function(error) {\n    console.log(&#39;error&#39;, error);\n});\n</code></pre></div><p><strong>Пример использования </strong><strong><a href=\"https://developers.cloudpayments.ru/#spisok-tovarov\" target=\"_blank\" rel=\"noopener noreferrer\">списка товаров</a></strong>:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">var receipt = {\n        Items: [ \n            {\n                id: &quot;some_id_1&quot;, // id для поиска товара в списке товаров\n                // label: &quot;Пластырь&quot;, // - не передаём, так как берём из списка товаров\n                // price: 500, // не передаём, так как берём из списка товаров\n                // quantity: 1, // не передаём, так как берём из списка товаров\n                amount: 500, // Сумма товара (items.price x items.count) - обязательное поле\n                vat: 20, // Ставка НДС - обязательное поле,\n            },\n            {\n                id: &quot;some_id_2&quot;, // id для поиска товара в списке товаров\n                // label: &quot;Доставка&quot;, //, не передаём, так как берём из списка товаров\n                // price: 500, // не передаём, так как берём из списка товаров\n                // quantity: 1, // не передаём, так как берём из списка товаров\n                amount: 500, // сумма товара (items.price x items.count) - обязательное поле\n                vat : 20, // ставка НДС, обязательное поле\n            }\n        ],\n        amounts : {\n            electronic: 1000 // Сумма оплаты электронными деньгами\n        }\n    };\n\nvar items = [\n              {\n                id: &quot;some_id_1&quot;,\n                count: 1.0,\n                name: &quot;Пластырь&quot;,\n                price: 500,\n              },\n              {\n                id: &quot;some_id_2&quot;,\n                count: 1.0,\n                name: &quot;Доставка&quot;,\n                price: 500,\n              },\n            ],\n\n    const intentParams = {\n      publicTerminalId: &quot;test_api_00000000000000000000002&quot;, // идентификатор терминала\n      description: &quot;Basket of oranges&quot;, // описание списания\n      paymentSchema: &#39;Single&#39;, // схема\n      currency: &quot;RUB&quot;, // валюта\n      amount: 1000, // сумма\n      receipt: receipt,\n      items: items\n    }\n\nwidget.start(intentParams).then(function(widgetResult) {\n    console.log(&#39;result&#39;, widgetResult);\n}).catch(function(error) {\n    console.log(&#39;error&#39;, error);\n});\n</code></pre></div>",
+      "<ul><li><p>В чеке есть хотя бы одна позиция;</p></li><li><p>Во всех позициях указано наименование;</p></li><li><p>Цена и сумма позиции не отрицательная;</p></li><li><p>Общая сумма всех позиций больше нуля;</p></li><li><p>Входная строка наименования товара длиной не более 128 символов, более длинные строки будут обрезаны;</p></li><li><p>Указанная система налогообложения должна совпадать с одним из вариантов, зарегистрированных в ККТ;</p></li><li><p>Числовые значения переданы с точностью не более двух знаков после точки;</p></li><li><p>Передан ИНН, если он требуется в документации.</p></li></ul><p>Данные для онлайн-чека можно передавать в <a href=\"https://developers.cloudpayments.ru/#parametry\" target=\"_blank\" rel=\"noopener noreferrer\">параметры виджета</a>, при <a href=\"https://developers.cloudpayments.ru/#oplata-po-kriptogramme\" target=\"_blank\" rel=\"noopener noreferrer\">оплате по криптограмме</a> или <a href=\"https://developers.cloudpayments.ru/#oplata-po-tokenu-rekarring\" target=\"_blank\" rel=\"noopener noreferrer\">токену</a>, при <a href=\"https://developers.cloudpayments.ru/#podtverzhdenie-oplaty\" target=\"_blank\" rel=\"noopener noreferrer\">подтверждении оплаты</a>, при <a href=\"https://developers.cloudpayments.ru/#vozvrat-deneg\" target=\"_blank\" rel=\"noopener noreferrer\">проведении возврата</a>, а также через специальный <a href=\"https://developers.cloudkassir.ru/#api-kassy\" target=\"_blank\" rel=\"noopener noreferrer\">API кассы</a>.</p>",
+      "<p>На выбор покупателя кассовый чек необходимо отправить в письме на e-mail адрес или в СМС, Viber, WhatsApp, Telegram сообщении на номер телефона. Чек может быть отправлен системой CloudPayments автоматически, при условии передачи e-mail адреса или номера телефона покупателя, или же вы самостоятельно можете отправлять чек — все необходимые реквизиты система передает в уведомлении <a href=\"https://developers.cloudkassir.ru/#receipt\" target=\"_blank\" rel=\"noopener noreferrer\">Receipt</a>.</p>",
+      "<p>Чек должен быть отправлен покупателю в момент расчета. Для <a href=\"https://developers.cloudpayments.ru/#shemy-provedeniya-platezha\" target=\"_blank\" rel=\"noopener noreferrer\">одностадийных платежей</a> чек формируется сразу же после прохождения оплаты, для <a href=\"https://developers.cloudpayments.ru/#shemy-provedeniya-platezha\" target=\"_blank\" rel=\"noopener noreferrer\">двухстадийных</a> — при подтверждении операции.</p><p>Формирование и отправка чека происходит после обновления статуса транзакции на “Завершена“ и выполняются процессы асинхронно. Для чего может потребоваться некоторое время.</p>",
+      "<p>При работе в тестовом режиме кассовые чеки будут формироваться в демонстрационной ККТ с отладочным фискальным накопителем. Вы можете передать <a href=\"https://developers.cloudpayments.ru/#format-peredachi-dannyh-dlya-onlayn-cheka\" target=\"_blank\" rel=\"noopener noreferrer\">данные для онлайн-чека</a> при оплате в тестовом режиме и проверить работу онлайн-кассы.</p>"
+    ],
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "54-fz",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "54-ФЗ"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Закон 54-ФЗ \"О применении контрольно-кассовой техники\" с изменениями от 03.07.2016 предписывает интернет-сервисам при осуществлении расчетов с использованием электронного средства платежа (в т.ч. банковской картой) использовать контрольно-кассовую технику (ККТ) и отправлять покупателю электронный чек в момент расчета."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "osnovnye-polozheniya-zakona",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Основные положения закона"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Необходимо использовать кассу нового образца с установленным фискальным накопителем (ФН)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Необходимо заключить договор с "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#operatory-fiskalnyh-dannyh",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "оператором фискальных данных"
+                    },
+                    {
+                      "type": "text",
+                      "text": " (ОФД) для передачи данных с ККТ в режиме онлайн в ФНС."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Необходимо указывать в чеке все товарные позиции: наименование, цена, количество, сумма, ставка НДС."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Необходимо подключить кассу к интернету."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Необходимо выдавать чек покупателю непосредственно в момент расчета: для интернет-платежей с использованием банковской карты отправлять чек на e-mail или телефон."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Необходимо менять ФН в двух случаях:"
+                    },
+                    {
+                      "type": "hardBreak"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "по истечении его срока действия;"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "при заполнении памяти до истечения срока действия;"
+                            },
+                            {
+                              "type": "hardBreak"
+                            },
+                            {
+                              "type": "text",
+                              "text": "и хранить его в течение 5-ти лет."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Нет необходимости заключать договор с ЦТО на обслуживание."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Нет необходимости предъявлять кассу инспектору ФНС, все регистрационные действия можно выполнить дистанционно в личном кабинете налогоплательщика на сайте ФНС."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "onlayn-fiskalizatsiya",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Онлайн-фискализация"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Компания CloudPayments предлагает своим партнерам облачное решение \"под ключ\" для онлайн-фискализации интернет-платежей, и в рамках соблюдения закона 54-ФЗ для любого бизнеса вы получите:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "выделенную онлайн-кассу, зарегистрированную в ФНС на вашу компанию;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "фискальный накопитель;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "подключение к оператору фискальных данных;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "автоматическое формирование чеков прихода и возврата в момент проведения расчета;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "полный отчет по операциям в личном кабинете."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Касса будет находиться в дата-центре 24/7, с подключением к интернету и питанию, работать круглосуточно и без перебоев. Наши сотрудники будут следить за ее техническим состоянием и своевременно менять фискальные накопители, а специальное программное обеспечение — корректировать ошибки, открывать и закрывать смену по расписанию, в \"облаке\" ставить чеки в очередь при большой нагрузке и гарантированно отправлять покупателям."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/cloud-scheme-7a60ffb1.png",
+            "alt": "cloud-scheme",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "a2f317f0-63fa-4cc4-91a7-978b7ee88b32",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "onlayn-kassa",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Онлайн-касса"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Мы используем кассы MicroPay-ФАС и MicroPay-ФС с подключением к любому "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#operatory-fiskalnyh-dannyh",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "оператору фискальных данных"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/cash_registers-7f581163.png",
+            "alt": "cash_registers",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "3fc2d3b8-d54f-4fd6-9cea-9610c9014ea4",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "stoimost",
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Стоимость"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Стоимость услуг по онлайн-фискализации и сопровождению можно узнать на сайте сервиса "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://cloudkassir.ru/",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "CloudKassir"
+            },
+            {
+              "type": "text",
+              "text": " и/или уточнить у менеджера."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "poryadok-podklyucheniya",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Порядок подключения"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Для подключения услуги онлайн-фискализации необходимо:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "подключиться к сервису онлайн фискализации CloudKassir;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "получить квалифицированную электронную подпись для работы с сайтом ФНС;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "зарегистрироваться в личном кабинете налоговой службы: — для юридических лиц — для индивидуальных предпринимателей;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "заключить договор на онлайн-фискализацию с CloudKassir."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "После подписания договора и оплаты счета вам будут предоставлены номер ККТ и ФН для регистрации в ФНС."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "format-peredachi-dannyh-dlya-onlayn-cheka",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Формат передачи данных для онлайн-чека"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "В данном разделе описаны параметры объекта "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "receipt"
+            },
+            {
+              "type": "text",
+              "text": ", который передается в рамках вызова виджета или платежного конструктора и отвечает за формирование чека."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Описание параметров для формирования объекта "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "СustomerReceipt"
+            },
+            {
+              "type": "text",
+              "text": " в рамках вызова API CloudKassir смотрите в документации сервиса "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudkassir.ru/#customerreceipt",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "CloudKassir"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Данные для чека в рамках вызова виджета или платежного конструктора необходимо передавать в формате json по примеру ниже:"
+            }
+          ]
+        },
+        {
+          "type": "codeBlock",
+          "attrs": {
+            "language": "text"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "var receipt = {\n        Items: [ \n            {\n                label: \"Пластырь\", // - обязательное поле\n                price: 500, // цена одного товара - обязательное поле\n                quantity: 1, // количество товара - обязательное поле\n                amount: 500, // Сумма товара (price x quantity) - обязательное поле\n                vat: 20, // Ставка НДС - обязательное поле,\n            },\n            {\n                label: \"Доставка\", //, обязательное поле\n                price: 500, // цена одного товара, обязательное поле\n                quantity: 1, // количество товара, обязательное поле\n                amount: 500, // сумма товара (price x quantity), обязательное поле\n                vat : 20, // ставка НДС, обязательное поле\n            }\n        ],\n        amounts : {\n            electronic: 1000 // Сумма оплаты электронными деньгами\n        }\n    };\n\n    const intentParams = {\n      publicTerminalId: \"test_api_00000000000000000000002\", // идентификатор терминала\n      description: \"Basket of oranges\", // описание списания\n      paymentSchema: 'Single', // схема\n      currency: \"RUB\", // валюта\n      amount: 1000, // сумма\n      receipt: receipt\n    }\n\nwidget.start(intentParams).then(function(widgetResult) {\n    console.log('result', widgetResult);\n}).catch(function(error) {\n    console.log('error', error);\n});\n"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Пример использования "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#spisok-tovarov",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                },
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "списка товаров"
+            },
+            {
+              "type": "text",
+              "text": ":"
+            }
+          ]
+        },
+        {
+          "type": "codeBlock",
+          "attrs": {
+            "language": "text"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "var receipt = {\n        Items: [ \n            {\n                id: \"some_id_1\", // id для поиска товара в списке товаров\n                // label: \"Пластырь\", // - не передаём, так как берём из списка товаров\n                // price: 500, // не передаём, так как берём из списка товаров\n                // quantity: 1, // не передаём, так как берём из списка товаров\n                amount: 500, // Сумма товара (items.price x items.count) - обязательное поле\n                vat: 20, // Ставка НДС - обязательное поле,\n            },\n            {\n                id: \"some_id_2\", // id для поиска товара в списке товаров\n                // label: \"Доставка\", //, не передаём, так как берём из списка товаров\n                // price: 500, // не передаём, так как берём из списка товаров\n                // quantity: 1, // не передаём, так как берём из списка товаров\n                amount: 500, // сумма товара (items.price x items.count) - обязательное поле\n                vat : 20, // ставка НДС, обязательное поле\n            }\n        ],\n        amounts : {\n            electronic: 1000 // Сумма оплаты электронными деньгами\n        }\n    };\n\nvar items = [\n              {\n                id: \"some_id_1\",\n                count: 1.0,\n                name: \"Пластырь\",\n                price: 500,\n              },\n              {\n                id: \"some_id_2\",\n                count: 1.0,\n                name: \"Доставка\",\n                price: 500,\n              },\n            ],\n\n    const intentParams = {\n      publicTerminalId: \"test_api_00000000000000000000002\", // идентификатор терминала\n      description: \"Basket of oranges\", // описание списания\n      paymentSchema: 'Single', // схема\n      currency: \"RUB\", // валюта\n      amount: 1000, // сумма\n      receipt: receipt,\n      items: items\n    }\n\nwidget.start(intentParams).then(function(widgetResult) {\n    console.log('result', widgetResult);\n}).catch(function(error) {\n    console.log('error', error);\n});\n"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "usloviya-uspeshnogo-sozdaniya-cheka",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Условия успешного создания чека"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "В чеке есть хотя бы одна позиция;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Во всех позициях указано наименование;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Цена и сумма позиции не отрицательная;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Общая сумма всех позиций больше нуля;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Входная строка наименования товара длиной не более 128 символов, более длинные строки будут обрезаны;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Указанная система налогообложения должна совпадать с одним из вариантов, зарегистрированных в ККТ;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Числовые значения переданы с точностью не более двух знаков после точки;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Передан ИНН, если он требуется в документации."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Данные для онлайн-чека можно передавать в "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#parametry",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "параметры виджета"
+            },
+            {
+              "type": "text",
+              "text": ", при "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#oplata-po-kriptogramme",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "оплате по криптограмме"
+            },
+            {
+              "type": "text",
+              "text": " или "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#oplata-po-tokenu-rekarring",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "токену"
+            },
+            {
+              "type": "text",
+              "text": ", при "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#podtverzhdenie-oplaty",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "подтверждении оплаты"
+            },
+            {
+              "type": "text",
+              "text": ", при "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#vozvrat-deneg",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "проведении возврата"
+            },
+            {
+              "type": "text",
+              "text": ", а также через специальный "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudkassir.ru/#api-kassy",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "API кассы"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "otpravka-pokupatelyu-onlayn-cheka",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Отправка покупателю онлайн-чека"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "На выбор покупателя кассовый чек необходимо отправить в письме на e-mail адрес или в СМС, Viber, WhatsApp, Telegram сообщении на номер телефона. Чек может быть отправлен системой CloudPayments автоматически, при условии передачи e-mail адреса или номера телефона покупателя, или же вы самостоятельно можете отправлять чек — все необходимые реквизиты система передает в уведомлении "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudkassir.ru/#receipt",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "Receipt"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "moment-otpravki-cheka",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Момент отправки чека"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Чек должен быть отправлен покупателю в момент расчета. Для "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#shemy-provedeniya-platezha",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "одностадийных платежей"
+            },
+            {
+              "type": "text",
+              "text": " чек формируется сразу же после прохождения оплаты, для "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#shemy-provedeniya-platezha",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "двухстадийных"
+            },
+            {
+              "type": "text",
+              "text": " — при подтверждении операции."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Формирование и отправка чека происходит после обновления статуса транзакции на “Завершена“ и выполняются процессы асинхронно. Для чего может потребоваться некоторое время."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "testirovanie-onlayn-cheka",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Тестирование онлайн-чека"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "При работе в тестовом режиме кассовые чеки будут формироваться в демонстрационной ККТ с отладочным фискальным накопителем. Вы можете передать "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#format-peredachi-dannyh-dlya-onlayn-cheka",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "данные для онлайн-чека"
+            },
+            {
+              "type": "text",
+              "text": " при оплате в тестовом режиме и проверить работу онлайн-кассы."
+            }
+          ]
+        }
+      ]
+    }
   }
 }
