@@ -122,8 +122,6 @@
             "title": null,
             "width": 67,
             "height": null,
-            "assetPath": "editor-assets/cd6303a6-2de9-4718-a3a8-7e85bbc925b5.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -727,8 +725,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/554719d5-6647-4105-867f-0f8c6327a74f.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -829,8 +825,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -995,8 +989,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/d8059cf7-64da-43b8-9926-da387656d28e.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -1320,8 +1312,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -1465,7 +1455,6 @@
             "title": null,
             "width": 94,
             "height": null,
-            "assetPath": "editor-assets/6dc539d3-3594-46ec-bf32-93017e3d9dc5.png",
             "align": "center"
           }
         },
@@ -1723,7 +1712,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/b21bb2ba-8f4e-4063-8aa5-6b63e1b6e3d6.png",
                         "align": "center"
                       }
                     }
@@ -1913,7 +1901,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/84acfa9f-db71-4f28-997a-0d1761bc5155.png",
                         "align": "center"
                       }
                     }
@@ -2103,7 +2090,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/28418bf6-167e-42da-b5af-bd65f33ea878.png",
                         "align": "center"
                       }
                     }
@@ -2479,7 +2465,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/fec96252-27ce-4ac4-abab-806fada8b98d.png",
                         "align": "center"
                       }
                     }
@@ -2778,7 +2763,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/370e196e-2b04-4276-918e-8666bb2424f6.png",
                         "align": "center"
                       }
                     }
@@ -3183,7 +3167,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/c90dd126-c0d3-43cc-b4ef-15cd692d39e1.png",
                         "align": "center"
                       }
                     }
@@ -26562,7 +26545,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/f0d51efb-fd2a-4d75-ac94-5dd0030cab72.png",
             "align": "center"
           }
         },
@@ -29856,7 +29838,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/ecb035ac-19ea-4ba8-b516-123b231cec78.png",
             "align": "center"
           }
         },
@@ -36256,7 +36237,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/5472f51e-3371-4386-b020-71d89824d421.png",
             "align": "center"
           }
         },
@@ -39260,7 +39240,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/0f8ff56d-f994-4e30-b18c-83b093b98692.jpg",
             "align": "center"
           }
         },
@@ -63701,8 +63680,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "@startuml\n\nskinparam backgroundColor white\nskinparam shadowing true\n\nskinparam sequence {\n    ArrowColor #C00030\n    LifeLineBorderColor #C00030\n    ParticipantBorderColor #C00030\n    ParticipantBackgroundColor #FFFACD\n    ParticipantFontColor black\n    MessageFontColor black\n}\n\nparticipant Client\nparticipant MerchantFront\nparticipant MerchantAPI\nparticipant OrdersMPF\nparticipant IntentApi\nparticipant BillingApi\n\nMerchantFront -> MerchantAPI : post/orders/create\\nЗапрос на создание заказа\n\nMerchantAPI -> IntentApi : CreateIntent()\\nСоздание интента в момент создания заказа в ЛК\n\nIntentApi -> IntentApi : Validate()\nIntentApi -> IntentApi : CreateIntent()\n\nIntentApi --> MerchantAPI : paymentLink\nMerchantAPI --> MerchantFront : paymentLink\nMerchantFront --> Client : paymentLink\n\nClient -> OrdersMPF : переход по ссылке\n\nOrdersMPF -> IntentApi : get api/intent/{Id}\nIntentApi --> OrdersMPF : Intent, настройки терминала\n\nClient -> OrdersMPF : выбор способа оплаты картой\n\nOrdersMPF -> IntentApi : api/intent/pay()\\n{intentId, cryptogram}\n\nIntentApi -> BillingApi : Charge() / Auth()\nIntentApi -> IntentApi : Status = Processing\n\nBillingApi -> BillingApi : CreateTransaction()\\n{paymentData}\nBillingApi -> BillingApi : ChangeTransStatus\n\nBillingApi --> IntentApi : TransactionId\n\nIntentApi -> IntentApi : AddTransaction()\nIntentApi -> IntentApi : Status = RequiresAction\n\nIntentApi --> OrdersMPF : Success\n\nOrdersMPF -> IntentApi : 3ds()\nIntentApi -> BillingApi : 3ds()\nBillingApi --> IntentApi : Success()\n\nIntentApi -> IntentApi : Status = Succeeded\nIntentApi --> OrdersMPF : Success()\n\nOrdersMPF --> Client : Сообщение об успешной оплате\n\nalt Неуспешная оплата\n    BillingApi --> IntentApi : Fail()\n    IntentApi -> IntentApi : Status = Decline\n    IntentApi --> OrdersMPF : Fail()\n    OrdersMPF --> Client : Сообщение о неуспешной оплате\nend\n\n@enduml",
             "align": "center"
           }
         },
@@ -64000,7 +63977,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/d2ae5d93-91f8-4786-a0c4-b7203e817ece.png",
             "align": "center"
           }
         },
@@ -64215,8 +64191,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/d1a70849-4002-4f92-a744-158045eb052d.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -65064,8 +65038,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/3e77772d-2e24-453a-bef9-3eeaf386eb9c.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -69102,8 +69074,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/c14e3bc9-cbff-41b5-9837-a0d7fdc3e591.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -69408,8 +69378,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/244b9fca-5831-4788-875f-1d6198f2b03e.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -69678,8 +69646,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/3cbec306-b937-4aee-a7f1-d23a01a58108.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -69948,8 +69914,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/462fca85-df78-4973-b8c6-7005e4ce9d4b.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -70201,8 +70165,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/2b708d2e-92da-485e-9367-6de5bd815f30.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -70494,8 +70456,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/41bdd91e-cbc6-44a1-be42-d6ee1ebee90e.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -70770,8 +70730,6 @@
             "title": null,
             "width": 71,
             "height": null,
-            "assetPath": "editor-assets/31351f6c-ad65-437b-ad8d-84546b15d825.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -71046,8 +71004,6 @@
             "title": null,
             "width": 90,
             "height": null,
-            "assetPath": "editor-assets/9e1990b5-a8ca-4d71-bcf5-4f77dea8279d.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -72702,8 +72658,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/a543bef8-95cd-49b5-b13a-3088ec1a3dfc.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -75723,8 +75677,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/49d40b32-2fac-41fc-94ea-b283189eafcc.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -75767,8 +75719,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/495311cf-ec88-4984-bcee-e32730f0320c.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -77871,8 +77821,6 @@
                         "title": null,
                         "width": 100,
                         "height": null,
-                        "assetPath": "editor-assets/a951d287-de97-4158-87dc-871d7ddfa5be.png",
-                        "scriptNote": "",
                         "align": "center"
                       }
                     },
@@ -79726,8 +79674,6 @@
                         "title": null,
                         "width": 64,
                         "height": null,
-                        "assetPath": "editor-assets/ca2ef5d9-701d-4023-880a-5dfb9ea02058.png",
-                        "scriptNote": "",
                         "align": "center"
                       }
                     },
@@ -79763,8 +79709,6 @@
                         "title": null,
                         "width": 67,
                         "height": null,
-                        "assetPath": "editor-assets/3f537a31-e7c7-4184-905d-8608175b8077.png",
-                        "scriptNote": "",
                         "align": "center"
                       }
                     },
@@ -87728,8 +87672,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -95495,8 +95437,6 @@
             "title": null,
             "width": 28,
             "height": null,
-            "assetPath": "editor-assets/bd97ab35-07fe-48f3-934e-f70ac2d6d7f0.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -95539,8 +95479,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/6f70fb74-3021-49bf-bb5f-ec423f539edb.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -95607,8 +95545,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/e97011f5-4761-42ca-85e1-9b3731baa314.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -98709,8 +98645,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/4b367715-d931-4734-a750-6f1df50a5dda.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -99119,8 +99053,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -99905,8 +99837,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -100271,8 +100201,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -100487,8 +100415,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -100712,8 +100638,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -100780,8 +100704,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -101088,8 +101010,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -101235,8 +101155,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -101318,8 +101236,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": null,
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -117386,8 +117302,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/ae4046b9-c150-4337-922b-b31db447af00.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -117492,8 +117406,6 @@
             "title": null,
             "width": 100,
             "height": null,
-            "assetPath": "editor-assets/dc03a68b-46cd-4e97-9028-b961be8066ad.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -118681,8 +118593,6 @@
             "width": 100,
             "height": null,
             "caption": "",
-            "assetPath": "editor-assets/2c868ab8-3e88-4eb9-a37b-c617bd34ee74.png",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -118730,8 +118640,6 @@
             "width": 77,
             "height": null,
             "caption": "",
-            "assetPath": "editor-assets/bd3ff0f4-fbb4-4000-8878-ad8b661f81cd.png",
-            "scriptNote": "@startuml\n\nskinparam backgroundColor white\nskinparam shadowing true\n\nskinparam sequence {\n    ArrowColor #C00030\n    LifeLineBorderColor #C00030\n    ParticipantBorderColor #C00030\n    ParticipantBackgroundColor #FFFACD\n    ParticipantFontColor black\n    MessageFontColor black\n}\n\nparticipant Client\nparticipant MerchantAPI\nparticipant OrdersMPF\nparticipant IntentApi\nparticipant BillingApi\n\nMerchantAPI --> IntentApi : post/orders/create\\nсоздание интента в момент создания заказа в ЛК\n\nIntentApi -> IntentApi : Validate()\nIntentApi -> IntentApi : CreateIntent()\n\nIntentApi --> MerchantAPI : paymentLink\nMerchantAPI --> Client : paymentLink\n\nClient -> OrdersMPF : переход по ссылке\n\nOrdersMPF -> IntentApi : get api/intent/{Id}\nIntentApi --> OrdersMPF : Intent, настройки терминала\n\nClient -> OrdersMPF : выбор способа оплаты картой\n\nOrdersMPF -> IntentApi : api/intent/pay()\\n{intentId, cryptogram}\n\nIntentApi -> BillingApi : Charge() / Auth()\nIntentApi -> IntentApi : Status = Processing\n\nBillingApi -> BillingApi : CreateTransaction()\\n{paymentData}\nBillingApi -> BillingApi : ChangeTransStatus\n\nBillingApi --> IntentApi : TransactionId\n\nIntentApi -> IntentApi : AddTransaction()\nIntentApi -> IntentApi : Status = RequiresAction\n\nIntentApi --> OrdersMPF : Success\n\nOrdersMPF -> IntentApi : 3ds()\nIntentApi -> BillingApi : 3ds()\nBillingApi --> IntentApi : Success()\n\nIntentApi -> IntentApi : Status = Succeeded\nIntentApi --> OrdersMPF : Success()\n\nOrdersMPF --> Client : Сообщение об успешной оплате\n\nalt Неуспешная оплата\n    BillingApi --> IntentApi : Fail()\n    IntentApi -> IntentApi : Status = Decline\n    IntentApi --> OrdersMPF : Fail()\n    OrdersMPF --> Client : Сообщение о неуспешной оплате\nend\n\n@enduml",
             "align": "center"
           }
         },
@@ -118768,8 +118676,6 @@
             "width": 36,
             "height": null,
             "caption": "",
-            "assetPath": "editor-assets/4e5e8cdf-e826-41ce-aebb-5cec5107c13b.gif",
-            "scriptNote": "",
             "align": "center"
           }
         },
@@ -118800,8 +118706,6 @@
                 "width": 100,
                 "height": null,
                 "caption": "Регистрация личного кабинета",
-                "assetPath": null,
-                "scriptNote": "",
                 "align": "center"
               }
             },
@@ -118814,8 +118718,6 @@
                 "width": 100,
                 "height": null,
                 "caption": "Подпись",
-                "assetPath": null,
-                "scriptNote": "",
                 "align": "center"
               }
             },
@@ -118828,8 +118730,6 @@
                 "width": 100,
                 "height": null,
                 "caption": "",
-                "assetPath": null,
-                "scriptNote": "",
                 "align": "center"
               }
             }
