@@ -1,5 +1,5 @@
 ---
-title: "Общая информация"
+title: "Термины и определения"
 slug: /termini-i-opredeleniya/
 ---
 

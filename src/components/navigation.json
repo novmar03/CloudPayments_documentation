@@ -8,9 +8,37 @@
     "items": [
       {
         "id": "termini-i-opredeleniya",
-        "title": "Общая информация",
+        "title": "Термины и определения",
         "type": "page",
         "audience": "both"
+      },
+      {
+        "id": "vidi-operaciy",
+        "title": "Виды операций",
+        "type": "page",
+        "audience": "both",
+        "hidden": true
+      },
+      {
+        "id": "shemi-provedeniya-platezha",
+        "title": "Схемы проведения платежа",
+        "type": "page",
+        "audience": "both",
+        "hidden": true
+      },
+      {
+        "id": "sposobi-oplati",
+        "title": "3D Secure",
+        "type": "page",
+        "audience": "both",
+        "hidden": true
+      },
+      {
+        "id": "3d-secure",
+        "title": "3D Secure",
+        "type": "page",
+        "audience": "both",
+        "hidden": true
       }
     ]
   },
@@ -21,6 +49,21 @@
     "description": "",
     "root": false,
     "items": []
+  },
+  {
+    "id": "root-platezhniy-widget",
+    "title": "Платежный виджет (страница)",
+    "audience": "both",
+    "description": "",
+    "root": true,
+    "items": [
+      {
+        "id": "platezhniy-widget",
+        "title": "Платежный виджет (страница)",
+        "type": "page",
+        "audience": "both"
+      }
+    ]
   },
   {
     "id": "category/bd910ad2-b86c-456b-8f50-894a1e299bed",
