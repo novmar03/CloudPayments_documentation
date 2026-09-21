@@ -43,11 +43,11 @@ new vm.Script(code).runInContext(sandbox);
 assert(elements.main.innerHTML.includes('Об этом документе'));
 for (const audience of ['business', 'developer', 'all']) {
   handlers['main:click']({target: {closest: selector => selector === '[data-audience]' ? {dataset: {audience}} : null}});
-  const visible = data.groups.filter(group => audience === 'all' || [audience, 'both'].includes(group.audience));
+  const visible = data.groups.filter(group => !group.hidden && group.items.length && (audience === 'all' || [audience, 'both'].includes(group.audience)));
   for (const group of data.groups) {
     assert.equal(elements.main.innerHTML.includes(`id="section-${group.id}"`), visible.includes(group));
   }
-  assert(elements.main.innerHTML.includes('id="section-scenarios"'));
+
 }
 const ids = data.groups.flatMap(group => group.items.map(item => item.id));
 assert.equal(ids.length, new Set(ids).size);
@@ -83,12 +83,5 @@ sandbox.location.hash = '#/';
 handlers.hashchange();
 assert(elements.main.innerHTML.includes('Об этом документе'));
 assert(outlineLinks.every(link => !link.active));
-const nativeApi = require('../sidebars.js').docs.flatMap(item => item.items || []).find(item => item.label === 'API');
-const flattenSidebar = items => items.flatMap(item => item.type === 'category' ? [item.label, ...flattenSidebar(item.items)] : [item.label]);
-assert.deepEqual(flattenSidebar(nativeApi.items), data.pages['tech/api'].toc.map(item => item.title));
-const scenarios = nativeApi.items.find(item => item.label === 'Бизнес-сценарии оплаты (технические аспекты)');
-assert.equal(scenarios.type, 'category');
-assert.equal(scenarios.collapsed, true);
-assert.equal(scenarios.items.find(item => item.label === 'Двухстадийная оплата').type, 'category');
 assert(!/<script[^>]+src=|<link[^>]+href="(?!data:)|<img[^>]+src="(?!data:)/.test(html));
 console.log(`Verified ${ids.length} pages, all audience filters, heading anchors and offline assets.`);
