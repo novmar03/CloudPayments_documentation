@@ -85193,5 +85193,1433 @@
         }
       ]
     }
+  },
+  "scenarii-integracii": {
+    "title": "Сценарии интеграции",
+    "html": "<div class=\"imported-api\"><p>Система предлагает различные варианты интеграции от очень простого до бесконечно функционального в зависимости от требований.</p><p>Интеграция без проверки платежей не рекомендуется.<br>Обязательно сверять сумму, номер заказа и идентификатор аккаунта плательщика.</p><h2 id=\"platezhnaya-forma\"><strong>Платежная форма</strong></h2><p>Если вам не требуется проверять платежи перед оплатой и фиксировать факт после оплаты:</p><ul><li><p>пропишите на свой сайт <a href=\"https://developers.cloudpayments.ru/#ustanovka-vidzheta\" target=\"_blank\" rel=\"noopener noreferrer\">скрипт установки виджета</a>;</p></li><li><p>настройте в <a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">личном кабинете</a> e-mail адрес для уведомлений о платежах.</p></li></ul><h2 id=\"registratsiya-platezhey\"><strong>Регистрация платежей</strong></h2><p>Если вам необходимо регистрировать платежи в своей системе, но нет необходимости проверять перед оплатой, то ваши действия следующие:</p><ul><li><p>пропишите на свой сайт <a href=\"https://developers.cloudpayments.ru/#ustanovka-vidzheta\" target=\"_blank\" rel=\"noopener noreferrer\">скрипт виджета</a>;</p></li><li><p>настройте регистрацию платежей:</p><ul><li><p>создайте скрипт обработки <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay уведомления</a>, например, <strong><a href=\"https://site.ru/webhooks/cloudpayments/pay\" target=\"_blank\" rel=\"noopener noreferrer\">https://site.ru/webhooks/cloudpayments/pay</a></strong>;</p></li><li><p>пропишите в обработчике логику регистрации платежей и ответ в JSON-формате;</p></li><li><p>включите в <a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">личном кабинете</a> отправку Pay-уведомлений.</p></li></ul></li></ul><h2 id=\"proverka-i-registratsiya-platezhey\"><strong>Проверка и регистрация платежей</strong></h2><p>Если вам необходимо проверять и регистрировать платежи в своей системе, ваши действия следующие:</p><ul><li><p>пропишите на свой сайт скрипт установки виджета;</p></li><li><p>настройте проверку платежей:</p><ul><li><p>создайте скрипт обработки <a href=\"https://developers.cloudpayments.ru/#check\" target=\"_blank\" rel=\"noopener noreferrer\">Check уведомления</a>, например, <strong><a href=\"https://site.ru/webhooks/cloudpayments/check\" target=\"_blank\" rel=\"noopener noreferrer\">https://site.ru/webhooks/cloudpayments/check</a></strong>;</p></li><li><p>пропишите в обработчике логику проверки платежей и ответ в JSON-формате;</p></li></ul></li><li><p>настройте регистрацию платежей:</p><ul><li><p>создайте скрипт обработки <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay уведомления</a>, например, <strong><a href=\"https://site.ru/webhooks/cloudpayments/pay\" target=\"_blank\" rel=\"noopener noreferrer\">https://site.ru/webhooks/cloudpayments/pay</a></strong>;</p></li><li><p>пропишите в обработчике логику регистрации платежей и ответ в JSON-формате;</p></li></ul></li><li><p>включите в личном кабинете отправку Check и Pay-уведомлений.</p></li></ul><h2 id=\"avtoplatezhi-dlya-internet-provayderov\"><strong>Автоплатежи для интернет-провайдеров</strong></h2><p>Платежное решение подходит для интернет-провайдеров, операторов связи и телекомов. Уведомления на проверку и регистрацию платежей могут быть настроены как в формате CloudPayments, так и в формате QIWI (ОСМП).</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"a4832400-e7e4-477d-be88-7ec3d51f42a0\" src=\"https://developers.cloudpayments.ru/images/provider_bill-cb76a5ac.png\" alt=\"provider_bill\" style=\"width:100%;max-width:100%;height:auto\"></figure><p><strong>Код формы:</strong></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">    this.paySample3 = function () {\n    var widget = new cp.CloudPayments();\n\n    var userInfo = {};\n    var auto = $(&#39;#recurrent-sample-3&#39;).is(&#39;:checked&#39;); //проверка\n\n    if (auto) { //включаем подписку\n\n        var accountId = $(&#39;#account-sample-3&#39;).val();\n        var date = new Date(); //текущая дата\n        date.setMonth(date.getMonth() + 1); //следующий месяц\n        date.setDate(date.getDate() - 1); //минус один день\n\n        var recurrent = { interval: &#39;Month&#39;, period: 1, startDate: date }; //один раз в месяц начиная со следующего месяца за минусом одного дня\n\n        userInfo.accountId = &quot;accountId&quot; //идентификатор плательщика (обязательно для создания подписки)\n    }\n\n    var amount = parseFloat($(&#39;#amount-sample-3&#39;).val());\n\n    widget.start({ \n        publicTerminalId: &#39;test_api_00000000000000000000002&#39;, //id из личного кабинета\n        description: &#39;Пополнение счета абонента &#39; + accountId, //назначение\n        paymentSchema: &quot;Single&quot; // Одностадийная оплата\n        amount: amount, //сумма\n        currency: &#39;RUB&#39;, //валюта\n        recurrent: recurrent\n        userInfo: userInfo\n    },\n    function (options) { // success\n        //действие при успешной оплате\n    },\n    function (reason, options) { // fail\n        //действие при неуспешной оплате\n    });\n};\n\n$(&#39;#checkout-sample-3&#39;).click(paySample3);\n\n</code></pre></div><p>В примере используется библиотека jquery.</p><h2 id=\"avtoplatezhi-dlya-blagotvoritelnyh-fondov\"><strong>Автоплатежи для благотворительных фондов</strong></h2><p>Платежное решение подходит для благотворительных фондов. Имя, фамилия, телефон, e-mail и любые другие данные с формы будут сохранены в виджете и переданы на ваш сервер через <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay-уведомление</a>.</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"f98a52ad-61db-4399-ad20-8e44ab94a4a2\" src=\"https://developers.cloudpayments.ru/images/fond_donation-5890303d.png\" alt=\"fond_donation\" style=\"width:100%;max-width:100%;height:auto\"></figure><p><strong>Код формы:</strong></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">    this.paySample4 = function () {\n    var widget = new cp.CloudPayments();\n\n    var userInfo = { //данные дарителя\n        name: $(&#39;#name-sample-4&#39;).val(),\n        lastName: $(&#39;#lastName-sample-4&#39;).val(),\n        phone: $(&#39;#phone-sample-4&#39;).val(),\n        accountId = $(&#39;#email-sample-4&#39;).val(); //идентификатор плательщика (обязательно для создания подписки)\n    };\n\n    var recurrent = {};\n    var auto = $(&#39;#recurrent-sample-4&#39;).is(&#39;:checked&#39;); //проверка\n\n    if (auto) { //включаем подписку\n        recurrent = { interval: &#39;Month&#39;, period: 1 } //один раз в месяц начиная со следующего месяца\n    }\n    var amount = parseFloat($(&#39;#amount-sample-4&#39;).val());\n\n    widget.start({ \n        publicTerminalId: &#39;test_api_00000000000000000000002&#39;, //id из личного кабинета\n        description: &#39;Пожертвование в фонд ...&#39;, //назначение\n        amount: amount, //сумма\n        currency: &#39;RUB&#39;, //валюта\n        email: userInfo.accountId,\n        userInfo: userInfo,\n        recurrent: recurrent\n    },\n    function (options) { // success\n        //действие при успешной оплате\n    },\n    function (reason, options) { // fail\n        //действие при неуспешной оплате\n    });\n};\n\n$(&#39;#checkout-sample-4&#39;).click(paySample4);\n</code></pre></div><p>В примере используется библиотека jquery.</p><h2 id=\"platezhi-po-podpiske\"><strong>Платежи по подписке</strong></h2><p>Если вам нужно брать с ваших покупателей плату на регулярной основе, по расписанию, сценарий может быть следующим:</p><ul><li><p>На вашем сайте необходима авторизация пользователей с доступом в личный кабинет.</p></li><li><p>Перед созданием плана подписки, проинформируйте пользователя о тарифном плане, периодичности платежей и предложите указать карточные данные.</p></li></ul><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"54e7fc40-e786-4946-8e91-34efefbd8de7\" src=\"https://developers.cloudpayments.ru/images/recurrent-0b6616c5.png\" alt=\"recurrent\" style=\"width:100%;max-width:100%;height:auto\"></figure><ul><li><p>В соответствии с вашим бизнес-процессом сделайте авторизацию на 1 рубль для проверки карты или оплату на сумму первого периода подписки.</p></li><li><p>Получите токен карты через любой метод оплаты по API или <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay-уведомление</a> и <a href=\"https://developers.cloudpayments.ru/#sozdanie-podpiski-na-rekurrentnye-platezhi\" target=\"_blank\" rel=\"noopener noreferrer\">создайте план рекуррентных платежей</a>.</p></li></ul><p>Обязательным условием получения токена является передача идентификатора пользователя в параметре AccountId.</p><ul><li><p>Подпишитесь на <a href=\"https://developers.cloudpayments.ru/#fail\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-</a> и <a href=\"https://developers.cloudpayments.ru/#reccurent\" target=\"_blank\" rel=\"noopener noreferrer\">Recurrent</a>-уведомления. После получения уведомления о неуспешном платеже проинформируйте пользователя, что ему необходимо проверить карту. При окончании срока подписки или отмене завершите предоставление услуг.</p></li><li><p>Сделайте раздел с историей платежей, которая включает в себя как минимум дату и сумму оплаты.</p></li></ul><h2 id=\"platezhi-v-odin-klik\"><strong>Платежи в один клик</strong></h2><p>Если вам нужно сохранять данные карт на стороне платежного шлюза для последующей оплаты в один клик без ввода карточных данных и без 3-D Secure, сценарий может быть следующим:</p><ul><li><p>На вашем сайте необходима авторизация пользователей с доступом в личный кабинет.</p></li><li><p>При первой оплате предложите пользователю привязать карту, чтобы не вводить реквизиты при каждом платеже.</p></li></ul><figure style=\"text-align:center\"><img data-image-id=\"45a250c5-ae28-4e29-a586-498dee17a93f\" src=\"https://developers.cloudpayments.ru/images/1cl-1-0149b3ed.png\" alt=\"1cl-1\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>Если пользователь согласится, сохраните после оплаты в его профиле маску карты (тип и последние 4 цифры), а также токен. Параметры карты и токен система возвращает в <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay</a>-уведомлении и через API.</p><p><br></p><p>Обязательным условием получения токена является передача идентификатора пользователя в параметре AccountId.</p><p><br></p><ul><li><p>При последующих оплатах предлагайте пользователю оплатить с ранее привязанной карты.</p></li></ul><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"b0d212ad-40ad-4cac-9a22-8d6148da7c52\" src=\"https://developers.cloudpayments.ru/images/1cl-2-2ee547e2.png\" alt=\"1cl-2\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>Если пользователь выбирает ранее использованную карту — вызывайте <a href=\"https://developers.cloudpayments.ru/#oplata-po-tokenu-rekarring\" target=\"_blank\" rel=\"noopener noreferrer\">метод оплаты по токену</a> через API.</p><ul><li><p>Предоставьте пользователю возможность управлять своими картами.</p></li></ul><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"0a06d763-8371-4c71-a6c1-a8905b2db89d\" src=\"https://developers.cloudpayments.ru/images/1cl-3-be99bab5.png\" alt=\"1cl-3\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>Если пользователь не желает более платить с привязанной карты, удалите маску и токен из его профиля.</p><ul><li><p>Сделайте раздел с историей платежей, которая включает в себя как минимум дату и сумму оплаты.</p></li></ul><p><br></p></div>",
+    "toc": [
+      {
+        "id": "platezhnaya-forma",
+        "title": "Платежная форма",
+        "level": 2
+      },
+      {
+        "id": "registratsiya-platezhey",
+        "title": "Регистрация платежей",
+        "level": 2
+      },
+      {
+        "id": "proverka-i-registratsiya-platezhey",
+        "title": "Проверка и регистрация платежей",
+        "level": 2
+      },
+      {
+        "id": "avtoplatezhi-dlya-internet-provayderov",
+        "title": "Автоплатежи для интернет-провайдеров",
+        "level": 2
+      },
+      {
+        "id": "avtoplatezhi-dlya-blagotvoritelnyh-fondov",
+        "title": "Автоплатежи для благотворительных фондов",
+        "level": 2
+      },
+      {
+        "id": "platezhi-po-podpiske",
+        "title": "Платежи по подписке",
+        "level": 2
+      },
+      {
+        "id": "platezhi-v-odin-klik",
+        "title": "Платежи в один клик",
+        "level": 2
+      }
+    ],
+    "segments": [
+      "<p>Система предлагает различные варианты интеграции от очень простого до бесконечно функционального в зависимости от требований.</p><p>Интеграция без проверки платежей не рекомендуется.<br>Обязательно сверять сумму, номер заказа и идентификатор аккаунта плательщика.</p>",
+      "<p>Если вам не требуется проверять платежи перед оплатой и фиксировать факт после оплаты:</p><ul><li><p>пропишите на свой сайт <a href=\"https://developers.cloudpayments.ru/#ustanovka-vidzheta\" target=\"_blank\" rel=\"noopener noreferrer\">скрипт установки виджета</a>;</p></li><li><p>настройте в <a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">личном кабинете</a> e-mail адрес для уведомлений о платежах.</p></li></ul>",
+      "<p>Если вам необходимо регистрировать платежи в своей системе, но нет необходимости проверять перед оплатой, то ваши действия следующие:</p><ul><li><p>пропишите на свой сайт <a href=\"https://developers.cloudpayments.ru/#ustanovka-vidzheta\" target=\"_blank\" rel=\"noopener noreferrer\">скрипт виджета</a>;</p></li><li><p>настройте регистрацию платежей:</p><ul><li><p>создайте скрипт обработки <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay уведомления</a>, например, <strong><a href=\"https://site.ru/webhooks/cloudpayments/pay\" target=\"_blank\" rel=\"noopener noreferrer\">https://site.ru/webhooks/cloudpayments/pay</a></strong>;</p></li><li><p>пропишите в обработчике логику регистрации платежей и ответ в JSON-формате;</p></li><li><p>включите в <a href=\"https://merchant.cloudpayments.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">личном кабинете</a> отправку Pay-уведомлений.</p></li></ul></li></ul>",
+      "<p>Если вам необходимо проверять и регистрировать платежи в своей системе, ваши действия следующие:</p><ul><li><p>пропишите на свой сайт скрипт установки виджета;</p></li><li><p>настройте проверку платежей:</p><ul><li><p>создайте скрипт обработки <a href=\"https://developers.cloudpayments.ru/#check\" target=\"_blank\" rel=\"noopener noreferrer\">Check уведомления</a>, например, <strong><a href=\"https://site.ru/webhooks/cloudpayments/check\" target=\"_blank\" rel=\"noopener noreferrer\">https://site.ru/webhooks/cloudpayments/check</a></strong>;</p></li><li><p>пропишите в обработчике логику проверки платежей и ответ в JSON-формате;</p></li></ul></li><li><p>настройте регистрацию платежей:</p><ul><li><p>создайте скрипт обработки <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay уведомления</a>, например, <strong><a href=\"https://site.ru/webhooks/cloudpayments/pay\" target=\"_blank\" rel=\"noopener noreferrer\">https://site.ru/webhooks/cloudpayments/pay</a></strong>;</p></li><li><p>пропишите в обработчике логику регистрации платежей и ответ в JSON-формате;</p></li></ul></li><li><p>включите в личном кабинете отправку Check и Pay-уведомлений.</p></li></ul>",
+      "<p>Платежное решение подходит для интернет-провайдеров, операторов связи и телекомов. Уведомления на проверку и регистрацию платежей могут быть настроены как в формате CloudPayments, так и в формате QIWI (ОСМП).</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"a4832400-e7e4-477d-be88-7ec3d51f42a0\" src=\"https://developers.cloudpayments.ru/images/provider_bill-cb76a5ac.png\" alt=\"provider_bill\" style=\"width:100%;max-width:100%;height:auto\"></figure><p><strong>Код формы:</strong></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">    this.paySample3 = function () {\n    var widget = new cp.CloudPayments();\n\n    var userInfo = {};\n    var auto = $(&#39;#recurrent-sample-3&#39;).is(&#39;:checked&#39;); //проверка\n\n    if (auto) { //включаем подписку\n\n        var accountId = $(&#39;#account-sample-3&#39;).val();\n        var date = new Date(); //текущая дата\n        date.setMonth(date.getMonth() + 1); //следующий месяц\n        date.setDate(date.getDate() - 1); //минус один день\n\n        var recurrent = { interval: &#39;Month&#39;, period: 1, startDate: date }; //один раз в месяц начиная со следующего месяца за минусом одного дня\n\n        userInfo.accountId = &quot;accountId&quot; //идентификатор плательщика (обязательно для создания подписки)\n    }\n\n    var amount = parseFloat($(&#39;#amount-sample-3&#39;).val());\n\n    widget.start({ \n        publicTerminalId: &#39;test_api_00000000000000000000002&#39;, //id из личного кабинета\n        description: &#39;Пополнение счета абонента &#39; + accountId, //назначение\n        paymentSchema: &quot;Single&quot; // Одностадийная оплата\n        amount: amount, //сумма\n        currency: &#39;RUB&#39;, //валюта\n        recurrent: recurrent\n        userInfo: userInfo\n    },\n    function (options) { // success\n        //действие при успешной оплате\n    },\n    function (reason, options) { // fail\n        //действие при неуспешной оплате\n    });\n};\n\n$(&#39;#checkout-sample-3&#39;).click(paySample3);\n\n</code></pre></div><p>В примере используется библиотека jquery.</p>",
+      "<p>Платежное решение подходит для благотворительных фондов. Имя, фамилия, телефон, e-mail и любые другие данные с формы будут сохранены в виджете и переданы на ваш сервер через <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay-уведомление</a>.</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"f98a52ad-61db-4399-ad20-8e44ab94a4a2\" src=\"https://developers.cloudpayments.ru/images/fond_donation-5890303d.png\" alt=\"fond_donation\" style=\"width:100%;max-width:100%;height:auto\"></figure><p><strong>Код формы:</strong></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">    this.paySample4 = function () {\n    var widget = new cp.CloudPayments();\n\n    var userInfo = { //данные дарителя\n        name: $(&#39;#name-sample-4&#39;).val(),\n        lastName: $(&#39;#lastName-sample-4&#39;).val(),\n        phone: $(&#39;#phone-sample-4&#39;).val(),\n        accountId = $(&#39;#email-sample-4&#39;).val(); //идентификатор плательщика (обязательно для создания подписки)\n    };\n\n    var recurrent = {};\n    var auto = $(&#39;#recurrent-sample-4&#39;).is(&#39;:checked&#39;); //проверка\n\n    if (auto) { //включаем подписку\n        recurrent = { interval: &#39;Month&#39;, period: 1 } //один раз в месяц начиная со следующего месяца\n    }\n    var amount = parseFloat($(&#39;#amount-sample-4&#39;).val());\n\n    widget.start({ \n        publicTerminalId: &#39;test_api_00000000000000000000002&#39;, //id из личного кабинета\n        description: &#39;Пожертвование в фонд ...&#39;, //назначение\n        amount: amount, //сумма\n        currency: &#39;RUB&#39;, //валюта\n        email: userInfo.accountId,\n        userInfo: userInfo,\n        recurrent: recurrent\n    },\n    function (options) { // success\n        //действие при успешной оплате\n    },\n    function (reason, options) { // fail\n        //действие при неуспешной оплате\n    });\n};\n\n$(&#39;#checkout-sample-4&#39;).click(paySample4);\n</code></pre></div><p>В примере используется библиотека jquery.</p>",
+      "<p>Если вам нужно брать с ваших покупателей плату на регулярной основе, по расписанию, сценарий может быть следующим:</p><ul><li><p>На вашем сайте необходима авторизация пользователей с доступом в личный кабинет.</p></li><li><p>Перед созданием плана подписки, проинформируйте пользователя о тарифном плане, периодичности платежей и предложите указать карточные данные.</p></li></ul><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"54e7fc40-e786-4946-8e91-34efefbd8de7\" src=\"https://developers.cloudpayments.ru/images/recurrent-0b6616c5.png\" alt=\"recurrent\" style=\"width:100%;max-width:100%;height:auto\"></figure><ul><li><p>В соответствии с вашим бизнес-процессом сделайте авторизацию на 1 рубль для проверки карты или оплату на сумму первого периода подписки.</p></li><li><p>Получите токен карты через любой метод оплаты по API или <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay-уведомление</a> и <a href=\"https://developers.cloudpayments.ru/#sozdanie-podpiski-na-rekurrentnye-platezhi\" target=\"_blank\" rel=\"noopener noreferrer\">создайте план рекуррентных платежей</a>.</p></li></ul><p>Обязательным условием получения токена является передача идентификатора пользователя в параметре AccountId.</p><ul><li><p>Подпишитесь на <a href=\"https://developers.cloudpayments.ru/#fail\" target=\"_blank\" rel=\"noopener noreferrer\">Fail-</a> и <a href=\"https://developers.cloudpayments.ru/#reccurent\" target=\"_blank\" rel=\"noopener noreferrer\">Recurrent</a>-уведомления. После получения уведомления о неуспешном платеже проинформируйте пользователя, что ему необходимо проверить карту. При окончании срока подписки или отмене завершите предоставление услуг.</p></li><li><p>Сделайте раздел с историей платежей, которая включает в себя как минимум дату и сумму оплаты.</p></li></ul>",
+      "<p>Если вам нужно сохранять данные карт на стороне платежного шлюза для последующей оплаты в один клик без ввода карточных данных и без 3-D Secure, сценарий может быть следующим:</p><ul><li><p>На вашем сайте необходима авторизация пользователей с доступом в личный кабинет.</p></li><li><p>При первой оплате предложите пользователю привязать карту, чтобы не вводить реквизиты при каждом платеже.</p></li></ul><figure style=\"text-align:center\"><img data-image-id=\"45a250c5-ae28-4e29-a586-498dee17a93f\" src=\"https://developers.cloudpayments.ru/images/1cl-1-0149b3ed.png\" alt=\"1cl-1\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>Если пользователь согласится, сохраните после оплаты в его профиле маску карты (тип и последние 4 цифры), а также токен. Параметры карты и токен система возвращает в <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay</a>-уведомлении и через API.</p><p><br></p><p>Обязательным условием получения токена является передача идентификатора пользователя в параметре AccountId.</p><p><br></p><ul><li><p>При последующих оплатах предлагайте пользователю оплатить с ранее привязанной карты.</p></li></ul><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"b0d212ad-40ad-4cac-9a22-8d6148da7c52\" src=\"https://developers.cloudpayments.ru/images/1cl-2-2ee547e2.png\" alt=\"1cl-2\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>Если пользователь выбирает ранее использованную карту — вызывайте <a href=\"https://developers.cloudpayments.ru/#oplata-po-tokenu-rekarring\" target=\"_blank\" rel=\"noopener noreferrer\">метод оплаты по токену</a> через API.</p><ul><li><p>Предоставьте пользователю возможность управлять своими картами.</p></li></ul><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"0a06d763-8371-4c71-a6c1-a8905b2db89d\" src=\"https://developers.cloudpayments.ru/images/1cl-3-be99bab5.png\" alt=\"1cl-3\" style=\"width:100%;max-width:100%;height:auto\"></figure><p>Если пользователь не желает более платить с привязанной карты, удалите маску и токен из его профиля.</p><ul><li><p>Сделайте раздел с историей платежей, которая включает в себя как минимум дату и сумму оплаты.</p></li></ul><p><br></p>"
+    ],
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Система предлагает различные варианты интеграции от очень простого до бесконечно функционального в зависимости от требований."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Интеграция без проверки платежей не рекомендуется."
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "Обязательно сверять сумму, номер заказа и идентификатор аккаунта плательщика."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "platezhnaya-forma",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Платежная форма"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если вам не требуется проверять платежи перед оплатой и фиксировать факт после оплаты:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "пропишите на свой сайт "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#ustanovka-vidzheta",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "скрипт установки виджета"
+                    },
+                    {
+                      "type": "text",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "настройте в "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://merchant.cloudpayments.ru/",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "личном кабинете"
+                    },
+                    {
+                      "type": "text",
+                      "text": " e-mail адрес для уведомлений о платежах."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "registratsiya-platezhey",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Регистрация платежей"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если вам необходимо регистрировать платежи в своей системе, но нет необходимости проверять перед оплатой, то ваши действия следующие:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "пропишите на свой сайт "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#ustanovka-vidzheta",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "скрипт виджета"
+                    },
+                    {
+                      "type": "text",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "настройте регистрацию платежей:"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "создайте скрипт обработки "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://developers.cloudpayments.ru/#pay",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                }
+                              ],
+                              "text": "Pay уведомления"
+                            },
+                            {
+                              "type": "text",
+                              "text": ", например, "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://site.ru/webhooks/cloudpayments/pay",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                },
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "https://site.ru/webhooks/cloudpayments/pay"
+                            },
+                            {
+                              "type": "text",
+                              "text": ";"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "пропишите в обработчике логику регистрации платежей и ответ в JSON-формате;"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "включите в "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://merchant.cloudpayments.ru/",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                }
+                              ],
+                              "text": "личном кабинете"
+                            },
+                            {
+                              "type": "text",
+                              "text": " отправку Pay-уведомлений."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "proverka-i-registratsiya-platezhey",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Проверка и регистрация платежей"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если вам необходимо проверять и регистрировать платежи в своей системе, ваши действия следующие:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "пропишите на свой сайт скрипт установки виджета;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "настройте проверку платежей:"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "создайте скрипт обработки "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://developers.cloudpayments.ru/#check",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                }
+                              ],
+                              "text": "Check уведомления"
+                            },
+                            {
+                              "type": "text",
+                              "text": ", например, "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://site.ru/webhooks/cloudpayments/check",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                },
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "https://site.ru/webhooks/cloudpayments/check"
+                            },
+                            {
+                              "type": "text",
+                              "text": ";"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "пропишите в обработчике логику проверки платежей и ответ в JSON-формате;"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "настройте регистрацию платежей:"
+                    }
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "создайте скрипт обработки "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://developers.cloudpayments.ru/#pay",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                }
+                              ],
+                              "text": "Pay уведомления"
+                            },
+                            {
+                              "type": "text",
+                              "text": ", например, "
+                            },
+                            {
+                              "type": "text",
+                              "marks": [
+                                {
+                                  "type": "link",
+                                  "attrs": {
+                                    "href": "https://site.ru/webhooks/cloudpayments/pay",
+                                    "target": "_blank",
+                                    "rel": "noopener noreferrer",
+                                    "class": null,
+                                    "title": null
+                                  }
+                                },
+                                {
+                                  "type": "bold"
+                                }
+                              ],
+                              "text": "https://site.ru/webhooks/cloudpayments/pay"
+                            },
+                            {
+                              "type": "text",
+                              "text": ";"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "attrs": {
+                            "textAlign": null
+                          },
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "пропишите в обработчике логику регистрации платежей и ответ в JSON-формате;"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "включите в личном кабинете отправку Check и Pay-уведомлений."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "avtoplatezhi-dlya-internet-provayderov",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Автоплатежи для интернет-провайдеров"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Платежное решение подходит для интернет-провайдеров, операторов связи и телекомов. Уведомления на проверку и регистрацию платежей могут быть настроены как в формате CloudPayments, так и в формате QIWI (ОСМП)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/provider_bill-cb76a5ac.png",
+            "alt": "provider_bill",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "a4832400-e7e4-477d-be88-7ec3d51f42a0",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Код формы:"
+            }
+          ]
+        },
+        {
+          "type": "codeBlock",
+          "attrs": {
+            "language": "text"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "    this.paySample3 = function () {\n    var widget = new cp.CloudPayments();\n\n    var userInfo = {};\n    var auto = $('#recurrent-sample-3').is(':checked'); //проверка\n\n    if (auto) { //включаем подписку\n\n        var accountId = $('#account-sample-3').val();\n        var date = new Date(); //текущая дата\n        date.setMonth(date.getMonth() + 1); //следующий месяц\n        date.setDate(date.getDate() - 1); //минус один день\n\n        var recurrent = { interval: 'Month', period: 1, startDate: date }; //один раз в месяц начиная со следующего месяца за минусом одного дня\n\n        userInfo.accountId = \"accountId\" //идентификатор плательщика (обязательно для создания подписки)\n    }\n\n    var amount = parseFloat($('#amount-sample-3').val());\n\n    widget.start({ \n        publicTerminalId: 'test_api_00000000000000000000002', //id из личного кабинета\n        description: 'Пополнение счета абонента ' + accountId, //назначение\n        paymentSchema: \"Single\" // Одностадийная оплата\n        amount: amount, //сумма\n        currency: 'RUB', //валюта\n        recurrent: recurrent\n        userInfo: userInfo\n    },\n    function (options) { // success\n        //действие при успешной оплате\n    },\n    function (reason, options) { // fail\n        //действие при неуспешной оплате\n    });\n};\n\n$('#checkout-sample-3').click(paySample3);\n\n"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "В примере используется библиотека jquery."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "avtoplatezhi-dlya-blagotvoritelnyh-fondov",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Автоплатежи для благотворительных фондов"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Платежное решение подходит для благотворительных фондов. Имя, фамилия, телефон, e-mail и любые другие данные с формы будут сохранены в виджете и переданы на ваш сервер через "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#pay",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "Pay-уведомление"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/fond_donation-5890303d.png",
+            "alt": "fond_donation",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "f98a52ad-61db-4399-ad20-8e44ab94a4a2",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Код формы:"
+            }
+          ]
+        },
+        {
+          "type": "codeBlock",
+          "attrs": {
+            "language": "text"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "    this.paySample4 = function () {\n    var widget = new cp.CloudPayments();\n\n    var userInfo = { //данные дарителя\n        name: $('#name-sample-4').val(),\n        lastName: $('#lastName-sample-4').val(),\n        phone: $('#phone-sample-4').val(),\n        accountId = $('#email-sample-4').val(); //идентификатор плательщика (обязательно для создания подписки)\n    };\n\n    var recurrent = {};\n    var auto = $('#recurrent-sample-4').is(':checked'); //проверка\n\n    if (auto) { //включаем подписку\n        recurrent = { interval: 'Month', period: 1 } //один раз в месяц начиная со следующего месяца\n    }\n    var amount = parseFloat($('#amount-sample-4').val());\n\n    widget.start({ \n        publicTerminalId: 'test_api_00000000000000000000002', //id из личного кабинета\n        description: 'Пожертвование в фонд ...', //назначение\n        amount: amount, //сумма\n        currency: 'RUB', //валюта\n        email: userInfo.accountId,\n        userInfo: userInfo,\n        recurrent: recurrent\n    },\n    function (options) { // success\n        //действие при успешной оплате\n    },\n    function (reason, options) { // fail\n        //действие при неуспешной оплате\n    });\n};\n\n$('#checkout-sample-4').click(paySample4);\n"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "В примере используется библиотека jquery."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "platezhi-po-podpiske",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Платежи по подписке"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если вам нужно брать с ваших покупателей плату на регулярной основе, по расписанию, сценарий может быть следующим:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "На вашем сайте необходима авторизация пользователей с доступом в личный кабинет."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Перед созданием плана подписки, проинформируйте пользователя о тарифном плане, периодичности платежей и предложите указать карточные данные."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/recurrent-0b6616c5.png",
+            "alt": "recurrent",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "54e7fc40-e786-4946-8e91-34efefbd8de7",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "В соответствии с вашим бизнес-процессом сделайте авторизацию на 1 рубль для проверки карты или оплату на сумму первого периода подписки."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Получите токен карты через любой метод оплаты по API или "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#pay",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "Pay-уведомление"
+                    },
+                    {
+                      "type": "text",
+                      "text": " и "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#sozdanie-podpiski-na-rekurrentnye-platezhi",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "создайте план рекуррентных платежей"
+                    },
+                    {
+                      "type": "text",
+                      "text": "."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Обязательным условием получения токена является передача идентификатора пользователя в параметре AccountId."
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Подпишитесь на "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#fail",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "Fail-"
+                    },
+                    {
+                      "type": "text",
+                      "text": " и "
+                    },
+                    {
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://developers.cloudpayments.ru/#reccurent",
+                            "target": "_blank",
+                            "rel": "noopener noreferrer",
+                            "class": null,
+                            "title": null
+                          }
+                        }
+                      ],
+                      "text": "Recurrent"
+                    },
+                    {
+                      "type": "text",
+                      "text": "-уведомления. После получения уведомления о неуспешном платеже проинформируйте пользователя, что ему необходимо проверить карту. При окончании срока подписки или отмене завершите предоставление услуг."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Сделайте раздел с историей платежей, которая включает в себя как минимум дату и сумму оплаты."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "textAlign": null,
+            "id": "platezhi-v-odin-klik",
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Платежи в один клик"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если вам нужно сохранять данные карт на стороне платежного шлюза для последующей оплаты в один клик без ввода карточных данных и без 3-D Secure, сценарий может быть следующим:"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "На вашем сайте необходима авторизация пользователей с доступом в личный кабинет."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "При первой оплате предложите пользователю привязать карту, чтобы не вводить реквизиты при каждом платеже."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/1cl-1-0149b3ed.png",
+            "alt": "1cl-1",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "45a250c5-ae28-4e29-a586-498dee17a93f",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если пользователь согласится, сохраните после оплаты в его профиле маску карты (тип и последние 4 цифры), а также токен. Параметры карты и токен система возвращает в "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#pay",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "Pay"
+            },
+            {
+              "type": "text",
+              "text": "-уведомлении и через API."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Обязательным условием получения токена является передача идентификатора пользователя в параметре AccountId."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "При последующих оплатах предлагайте пользователю оплатить с ранее привязанной карты."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/1cl-2-2ee547e2.png",
+            "alt": "1cl-2",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "b0d212ad-40ad-4cac-9a22-8d6148da7c52",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если пользователь выбирает ранее использованную карту — вызывайте "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://developers.cloudpayments.ru/#oplata-po-tokenu-rekarring",
+                    "target": "_blank",
+                    "rel": "noopener noreferrer",
+                    "class": null,
+                    "title": null
+                  }
+                }
+              ],
+              "text": "метод оплаты по токену"
+            },
+            {
+              "type": "text",
+              "text": " через API."
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Предоставьте пользователю возможность управлять своими картами."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        },
+        {
+          "type": "image",
+          "attrs": {
+            "src": "https://developers.cloudpayments.ru/images/1cl-3-be99bab5.png",
+            "alt": "1cl-3",
+            "title": null,
+            "width": 100,
+            "height": null,
+            "imageId": "0a06d763-8371-4c71-a6c1-a8905b2db89d",
+            "caption": "",
+            "align": "center"
+          }
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Если пользователь не желает более платить с привязанной карты, удалите маску и токен из его профиля."
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "attrs": {
+                    "textAlign": null
+                  },
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Сделайте раздел с историей платежей, которая включает в себя как минимум дату и сумму оплаты."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "textAlign": null
+          }
+        }
+      ]
+    }
   }
 }
