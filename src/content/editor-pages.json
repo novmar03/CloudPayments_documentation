@@ -118593,6 +118593,8 @@
             "width": 100,
             "height": null,
             "caption": "",
+            "assetPath": "editor-assets/2c868ab8-3e88-4eb9-a37b-c617bd34ee74.png",
+            "scriptNote": "",
             "align": "center"
           }
         },
@@ -118640,6 +118642,8 @@
             "width": 77,
             "height": null,
             "caption": "",
+            "assetPath": "editor-assets/bd3ff0f4-fbb4-4000-8878-ad8b661f81cd.png",
+            "scriptNote": "@startuml\n\nskinparam backgroundColor white\nskinparam shadowing true\n\nskinparam sequence {\n    ArrowColor #C00030\n    LifeLineBorderColor #C00030\n    ParticipantBorderColor #C00030\n    ParticipantBackgroundColor #FFFACD\n    ParticipantFontColor black\n    MessageFontColor black\n}\n\nparticipant Client\nparticipant MerchantFront\nparticipant MerchantAPI\nparticipant OrdersMPF\nparticipant IntentApi\nparticipant BillingApi\n\nMerchantFront -> MerchantAPI : post/orders/create\\nЗапрос на создание заказа\n\nMerchantAPI -> IntentApi : CreateIntent()\\nСоздание интента в момент создания заказа в ЛК\n\nIntentApi -> IntentApi : Validate()\nIntentApi -> IntentApi : CreateIntent()\n\nIntentApi --> MerchantAPI : paymentLink\nMerchantAPI --> MerchantFront : paymentLink\nMerchantFront --> Client : paymentLink\n\nClient -> OrdersMPF : переход по ссылке\n\nOrdersMPF -> IntentApi : get api/intent/{Id}\nIntentApi --> OrdersMPF : Intent, настройки терминала\n\nClient -> OrdersMPF : выбор способа оплаты картой\n\nOrdersMPF -> IntentApi : api/intent/pay()\\n{intentId, cryptogram}\n\nIntentApi -> BillingApi : Charge() / Auth()\nIntentApi -> IntentApi : Status = Processing\n\nBillingApi -> BillingApi : CreateTransaction()\\n{paymentData}\nBillingApi -> BillingApi : ChangeTransStatus\n\nBillingApi --> IntentApi : TransactionId\n\nIntentApi -> IntentApi : AddTransaction()\nIntentApi -> IntentApi : Status = RequiresAction\n\nIntentApi --> OrdersMPF : Success\n\nOrdersMPF -> IntentApi : 3ds()\nIntentApi -> BillingApi : 3ds()\nBillingApi --> IntentApi : Success()\n\nIntentApi -> IntentApi : Status = Succeeded\nIntentApi --> OrdersMPF : Success()\n\nOrdersMPF --> Client : Сообщение об успешной оплате\n\nalt Неуспешная оплата\n    BillingApi --> IntentApi : Fail()\n    IntentApi -> IntentApi : Status = Decline\n    IntentApi --> OrdersMPF : Fail()\n    OrdersMPF --> Client : Сообщение о неуспешной оплате\nend\n\n@enduml",
             "align": "center"
           }
         },
@@ -118676,6 +118680,8 @@
             "width": 36,
             "height": null,
             "caption": "",
+            "assetPath": "editor-assets/4e5e8cdf-e826-41ce-aebb-5cec5107c13b.gif",
+            "scriptNote": "",
             "align": "center"
           }
         },
@@ -118706,6 +118712,8 @@
                 "width": 100,
                 "height": null,
                 "caption": "Регистрация личного кабинета",
+                "assetPath": null,
+                "scriptNote": "",
                 "align": "center"
               }
             },
@@ -118718,6 +118726,8 @@
                 "width": 100,
                 "height": null,
                 "caption": "Подпись",
+                "assetPath": null,
+                "scriptNote": "",
                 "align": "center"
               }
             },
@@ -118730,6 +118740,8 @@
                 "width": 100,
                 "height": null,
                 "caption": "",
+                "assetPath": null,
+                "scriptNote": "",
                 "align": "center"
               }
             }
