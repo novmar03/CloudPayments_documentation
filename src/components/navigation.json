@@ -18,7 +18,8 @@
         "audience": "business"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "solutions",
@@ -87,7 +88,8 @@
         "audience": "business"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "methods",
@@ -150,7 +152,8 @@
         "audience": "business"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "scenarios",
@@ -183,7 +186,8 @@
         "audience": "both"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "tech",
@@ -300,7 +304,8 @@
         "parentId": "tech/methods"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "security",
@@ -315,7 +320,8 @@
         "audience": "developer"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "reference",
@@ -342,7 +348,8 @@
         "audience": "developer"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "additional",
@@ -374,7 +381,8 @@
         "anchor": "section-3a87281e-9d9b-4ef3-a956-af555f14b535"
       }
     ],
-    "root": false
+    "root": false,
+    "hidden": true
   },
   {
     "id": "category/1c9cdbe5-69ae-46b3-a612-49491edac1ef",
@@ -389,6 +397,175 @@
         "type": "page",
         "audience": "developer"
       }
-    ]
+    ],
+    "hidden": true
+  },
+  {
+    "id": "category/1b3e52fd-aa98-4fcf-b2fe-1661467d792f",
+    "title": "Общая информация",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/b8716057-b670-4753-97ee-b79d3430afd4",
+    "title": "Платежный виджет",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/bd910ad2-b86c-456b-8f50-894a1e299bed",
+    "title": "Платежный конструктор",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/c02cca31-eb8d-4d6b-b1f0-a46212bcee11",
+    "title": "Скрипт check-out",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/2b89cb14-62e3-43cb-8a97-991bdc726e3a",
+    "title": "Рекуррентные платежи",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/3895ce50-1c45-46ed-8cc7-b31a3ad2f0a9",
+    "title": "Безопасная сделка",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/b9e7634b-b876-4191-9bbb-8774e4a9d659",
+    "title": "SDK для iOS",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/98f8bbce-d5d5-4d4d-bcba-f425a937bd09",
+    "title": "SDK для Android",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/bebc6109-f376-4c65-8b48-320c1628be86",
+    "title": "API",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/7e86a1de-1424-44a9-b240-fa7112ef8fed",
+    "title": "Уведомления",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/81e02ac0-e6c3-40ea-bf25-8ba577955ab9",
+    "title": "T-Pay",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/b79d0cf7-2194-4a17-8cd0-202307b146b2",
+    "title": "СБП",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/71893d6d-ac0c-473d-8ce2-ed7d1e327b6e",
+    "title": "Цифровой рубль",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/12c25c1a-aeb8-4eb2-9454-914f1e15eb64",
+    "title": "SberPay",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/2b47c52b-773b-45dd-9763-1b72c2cbacf0",
+    "title": "MIR Pay",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/db2a1af2-38c4-470d-ae96-a1097ee30e97",
+    "title": "Долями",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/2e506509-16d7-4c7a-8074-8082b40e23e3",
+    "title": "Сценарии интеграции",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/1ea2a7f2-4bbc-4ac7-837d-803991d68ca5",
+    "title": "PCI DSS",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/2527c36f-389c-4567-aba9-08a65f930082",
+    "title": "Онлайн-касса для интернет-расчетов",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/093a0aa4-d0fb-447c-b0e1-110ff1dd2227",
+    "title": "Тестирование",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
+  },
+  {
+    "id": "category/6c0c8a96-7d95-438e-9e07-3321de6b4cbe",
+    "title": "Справочники",
+    "audience": "both",
+    "description": "",
+    "root": false,
+    "items": []
   }
 ]
