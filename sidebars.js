@@ -1,6 +1,7 @@
 const english=process.env.DOCUSAURUS_CURRENT_LOCALE==='en';
 const fs=require('node:fs');const path=require('node:path');
 const sourceNavigation=require('./src/components/navigation.json');
+const settings=require('./src/content/documentation-settings.json');
 const navigation=english?require('./src/components/document-locales.cjs').view({groups:sourceNavigation,pages:{}},'en').groups:sourceNavigation;
 const editorPagesPath=path.join(__dirname,'src/content/editor-pages'+(english?'.en':'')+'.json');
 const editorPages=fs.existsSync(editorPagesPath)?JSON.parse(fs.readFileSync(editorPagesPath,'utf8')):{};
@@ -28,4 +29,4 @@ function sidebarItems(items,parentId){return items.filter(p=>p.parentId===parent
  if(children.length||p.type==='category')return {type:'category',key:p.id,label:p.title,...(p.type==='category'?{}:{link:{type:'doc',id:p.id}}),collapsed:true,items:sidebarItems(items,p.id)};
  return p.id==='tech/api'?{type:'category',key:p.id,label:p.title,link:{type:'doc',id:p.id},collapsed:true,items:apiOutline()}:{type:'doc',id:p.id,key:p.id,label:p.title};
 });}
-module.exports={docs:['index',...visibleNavigation(navigation).flatMap(g=>g.root?sidebarItems(g.items):[{type:'category',key:'section-'+g.id,label:g.title,collapsed:true,items:sidebarItems(g.items)}])]};
+module.exports={docs:[...(settings.showOverviewPage!==false?['index']:[]),...visibleNavigation(navigation).flatMap(g=>g.root?sidebarItems(g.items):[{type:'category',key:'section-'+g.id,label:g.title,collapsed:true,items:sidebarItems(g.items)}])]};

@@ -8,7 +8,7 @@ module.exports = {
   trailingSlash: true,
   onBrokenLinks: 'throw',
   i18n: {defaultLocale: 'ru', locales: ['ru','en'], localeConfigs: {ru:{label:'Русский'},en:{label:'English'}}},
-  plugins: [require.resolve('./plugins/documentation-search.cjs'), require.resolve('./plugins/editor-render-data.cjs')],
+  plugins: [require.resolve('./plugins/documentation-search.cjs'), require.resolve('./plugins/editor-render-data.cjs'), require.resolve('./plugins/documentation-overview.cjs')],
   presets: [['classic', {
     docs: {
       routeBasePath: '/',

@@ -33,8 +33,9 @@ elements.sidebar.querySelectorAll = () => {
   return outlineLinks;
 };
 const sandbox = {
+  URLSearchParams,
   document: {getElementById: id => id === 'documentation-search' ? null : elements[id] || element(id), addEventListener() {}, title: ''},
-  location: {hash: '#/'}, history: {replaceState() {}},
+  location: {hash: '#/',search:'',pathname:'/index.html'}, history: {replaceState(_state,_title,value) {const url=new URL(value,'https://example.test/index.html');Object.assign(sandbox.location,{hash:url.hash,search:url.search,pathname:url.pathname});}},
   window: {scrollTo() {}, addEventListener(event, callback) {handlers[event] = callback;}},
   requestAnimationFrame: callback => callback(),
 };

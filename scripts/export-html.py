@@ -8,6 +8,8 @@ parser.add_argument('--output', type=Path, default=ROOT / 'index.html')
 parser.add_argument('--search-index', type=Path, help='Optional index for the Docusaurus search bar.')
 args = parser.parse_args()
 groups = json.loads((SOURCE / 'src/components/navigation.json').read_text())
+settings_file = SOURCE / 'src/content/documentation-settings.json'
+settings = json.loads(settings_file.read_text()) if settings_file.exists() else {'showOverviewPage': True}
 pages = {}
 EDITOR_PAGES_FILE = ROOT / 'src/content/editor-pages.json'
 editor_pages = json.loads(EDITOR_PAGES_FILE.read_text()) if EDITOR_PAGES_FILE.exists() else {}
@@ -129,7 +131,7 @@ for placeholder, filename in [('__FAVICON_DATA_URI__', 'favicon.svg'), ('__LOGO_
     asset = (ROOT/'static'/filename).read_bytes()
     template = template.replace(placeholder, 'data:image/svg+xml;base64,' + base64.b64encode(asset).decode('ascii'))
 translations = {'en': {'pages': {key: {**pages[key], 'title': page['title'], 'html': page['html'], 'toc': page['toc']} for key, page in english_pages.items() if key in pages}}}
-data=json.dumps({'groups':groups,'pages':pages,'translations':translations},ensure_ascii=False).replace('<','\\u003c')
+data=json.dumps({'groups':groups,'pages':pages,'translations':translations,'settings':settings},ensure_ascii=False).replace('<','\\u003c')
 if args.search_index:
     searchable = {key: {**page, 'html': re.sub(r'\ssrc="data:[^"]*"', '', page['html'])} for key, page in pages.items()}
     args.search_index.parent.mkdir(parents=True, exist_ok=True)

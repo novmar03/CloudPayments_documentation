@@ -16,6 +16,7 @@ import {useLocation, useHistory} from '@docusaurus/router';
 import sourceGroups from './navigation.json';
 import englishPages from '../content/editor-pages.en.json';
 import locales from './document-locales.cjs';
+import OverviewGate from './OverviewGate';
 const groups=locales.view({groups:sourceGroups,pages:{},translations:{en:{pages:englishPages}}},'en').groups;
 
 const filters = [['all', 'All sections'], ['business', 'For business'], ['developer', 'For developers']];
@@ -26,7 +27,7 @@ export default function EnglishDocumentationIndex(){
  const audience=['business','developer'].includes(param)?param:'all';
  const visible=visibleNavigation(groups,audience);
  function choose(value){const params=new URLSearchParams(location.search);if(value==='all')params.delete('audience');else params.set('audience',value);history.replace({pathname:location.pathname,search:params.toString()?'?'+params.toString():'',hash:''});}
- return <div className="documentation-index">
+ return <OverviewGate groups={groups}><div className="documentation-index">
   <div className="index-main">
    <div className="index-eyebrow">DOCUMENTATION <span>/</span> OVERVIEW</div>
    <h1>About this document</h1>
@@ -45,7 +46,7 @@ export default function EnglishDocumentationIndex(){
    <div className="index-sources"><span>Sources</span><a href="https://developers.cloudpayments.ru/" target="_blank" rel="noreferrer">CloudPayments documentation ↗</a><a href="https://cloudpayments.ru/help/payments" target="_blank" rel="noreferrer">Knowledge base ↗</a></div>
   </div>
   <aside className="index-toc" aria-label="Contents"><div>On this page</div><nav>{visible.map(g=><a key={g.id} href={'#section-'+g.id}>{g.title}</a>)}</nav></aside>
- </div>
+ </div></OverviewGate>
 }
 
 function renderNavigationItems(items,parentId){return items.filter(p=>p.parentId===parentId).map(p=><li key={p.id}>{p.type==='category'?<span>{p.title}</span>:<Link to={'/'+p.id+'/'}>{p.title}</Link>}{items.some(c=>c.parentId===p.id)&&<ul>{renderNavigationItems(items,p.id)}</ul>}</li>);}
