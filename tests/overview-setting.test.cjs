@@ -48,6 +48,7 @@ for(const locale of ['ru','en']){
   const {elements,redirects}=reader(locale,true);
   assert.equal(redirects.length,0);assert.match(elements.sidebar.innerHTML,/home-link/);
   assert.match(elements.main.innerHTML,/overview-grid/);
+  assert.match(elements.main.innerHTML,/class="badge/);
  });
  test('standalone disabled overview redirects once to first available page and is absent from navigation: '+locale,()=>{
   const {elements,redirects}=reader(locale,false);
@@ -55,6 +56,7 @@ for(const locale of ['ru','en']){
   assert.doesNotMatch(elements.sidebar.innerHTML,/home-link|Об этом документе|About this document/);
   assert.doesNotMatch(elements.main.innerHTML,/overview-grid/);
   assert.match(elements.main.innerHTML,/Content first/);
+  assert.doesNotMatch(elements.main.innerHTML,/class="badge"|class="badge developer"/);
  });
  test('standalone ignores unavailable pages and uses fallback without a redirect loop: '+locale,()=>{
   assert.deepEqual(reader(locale,false,'business',['second']).redirects,[policy.url(locale,'second')]);

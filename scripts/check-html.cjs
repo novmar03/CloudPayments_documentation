@@ -10,7 +10,8 @@ const code = html.match(/<script>\n([\s\S]*?)<\/script>/)[1];
 assert.deepEqual(data.groups, JSON.parse(fs.readFileSync(path.join(root, 'src/components/navigation.json'), 'utf8')));
 const handlers = {};
 const element = id => ({
-  textContent: id === 'document-data' ? json : '', innerHTML: '',
+  // This smoke check exercises overview interactions regardless of the published toggle.
+  textContent: id === 'document-data' ? JSON.stringify({...data,settings:{...data.settings,showOverviewPage:true}}) : '', innerHTML: '',
   focus() {}, scrollIntoView() {}, setAttribute() {},
   classList: {remove() {}, toggle() {return true;}},
   addEventListener(event, callback) {handlers[`${id}:${event}`] = callback;},

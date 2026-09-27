@@ -15,6 +15,7 @@ import Link from '@docusaurus/Link';
 import {useLocation, useHistory} from '@docusaurus/router';
 import groups from './navigation.json';
 import OverviewGate from './OverviewGate';
+import settings from '../content/documentation-settings.json';
 
 const filters = [['all', 'Все разделы'], ['business', 'Для бизнеса'], ['developer', 'Для разработчиков']];
 
@@ -36,7 +37,7 @@ export default function DocumentationIndex(){
    <div className="section-grid">
     {visible.map((g,i)=><section key={g.id} id={'section-'+g.id} className={'section-card audience-'+g.audience}>
      <h2>{g.title}</h2><p className="section-description">{g.description}</p>
-     <div className="section-audiences">{(g.audience==='business'||g.audience==='both')&&<span className="audience-badge business">Для бизнеса</span>}{(g.audience==='developer'||g.audience==='both')&&<span className="audience-badge developer">Для разработчиков</span>}</div>
+     {settings.showOverviewPage!==false&&<div className="section-audiences">{(g.audience==='business'||g.audience==='both')&&<span className="audience-badge business">Для бизнеса</span>}{(g.audience==='developer'||g.audience==='both')&&<span className="audience-badge developer">Для разработчиков</span>}</div>}
      <ul className="section-links">{renderNavigationItems(g.items)}{(g.links||[]).map(item=><li key={item.id+':'+item.title}><Link to={'/'+item.id+'/'+(item.anchor?'#'+item.anchor:'')}>{item.title}</Link></li>)}</ul>
     </section>)}
    </div>
