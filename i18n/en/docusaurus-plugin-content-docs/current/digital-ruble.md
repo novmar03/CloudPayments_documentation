@@ -1,5 +1,5 @@
 ---
-title: "Цифровой рубль"
+title: "Digital ruble"
 slug: /digital-ruble/
 ---
 
