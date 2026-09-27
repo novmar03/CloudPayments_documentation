@@ -1,5 +1,5 @@
 ---
-title: "Долями"
+title: "Dolyame"
 slug: /dolyami/
 ---
 
