@@ -3,6 +3,7 @@ title: "SDK для Android"
 slug: /SDK-dlya-Android/
 ---
 
-import EnglishUnavailable from '@site/src/components/EnglishUnavailable';
+import EditedSection from '@site/src/components/EditedSection';
 
-<EnglishUnavailable page="SDK-dlya-Android" />
+<EditedSection page="SDK-dlya-Android" index={0} />
+
