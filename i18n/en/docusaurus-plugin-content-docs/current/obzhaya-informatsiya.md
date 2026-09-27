@@ -23,6 +23,6 @@ import EditedSection from '@site/src/components/EditedSection';
 
 <EditedSection page="obzhaya-informatsiya" index={4} />
 
-## 3D Secure {#section-af686054-e43f-4983-ae38-1f60d8fd6769}
+## 3D Secure. {#section-af686054-e43f-4983-ae38-1f60d8fd6769}
 
 <EditedSection page="obzhaya-informatsiya" index={5} />
