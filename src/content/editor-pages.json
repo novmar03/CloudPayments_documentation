@@ -8525,7 +8525,7 @@
   },
   "platezhniy-konstructor": {
     "title": "Платежный конструктор",
-    "html": "<div class=\"imported-api\"><p>PaymentBlocks — конструктор блоков, из которых можно собрать кастомную платежную форму. Вы можете сделать свой визуал формы</p><p>Форма оптимизирована для использования в любых браузерах и мобильных устройствах. Внутри блока открывается iframe, который гарантирует безопасность передачи карточных данных и не требует от ТСП сертификации для использования.</p><p>На форме поддерживаются все доступные в CloudPayments способы оплаты</p><p>Контроль суммы при оплате необходимо осуществлять самостоятельно. Для проверки суммы можно использовать уведомления: <a href=\"https://developers.cloudpayments.ru/#check\" target=\"_blank\" rel=\"noopener noreferrer\">Check</a> - для проверки суммы до оплаты, <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay</a> - для проверки суммы после оплаты</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"6f63b5d1-a0a7-4e4e-b0e8-61d4f6e0e67c\" src=\"https://developers.cloudpayments.ru/images/payment-blocks-5f56bd91.png\" alt=\"payment-blocks\" style=\"width:100%;max-width:100%;height:auto\"></figure><h2 id=\"demo-konstruktora\"><strong>Демо конструктора</strong></h2><p>Демонстрация работы Конструктора представлена <a href=\"https://widget.cloudpayments.ru/app/demo\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a>.</p><p>Для тестирования можно использовать как <a href=\"https://developers.cloudpayments.ru/#testirovanie\" target=\"_blank\" rel=\"noopener noreferrer\">тестовые карточные данные</a>, так и реальные. Списания денежных средств не произойдет.</p><h2 id=\"otlichiya-ot-vidzheta\"><strong>Отличия от виджета</strong></h2><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Ключевые отличия</p></th><th colspan=\"1\" rowspan=\"1\"><p>Виджет</p></th><th colspan=\"1\" rowspan=\"1\"><p>Платежный конструктор</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Способ отображения</p></td><td colspan=\"1\" rowspan=\"1\"><p>Попап</p></td><td colspan=\"1\" rowspan=\"1\"><p>Встраиваемый на страницу. Можно встроить прямо на страницу заказа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация</p></td><td colspan=\"1\" rowspan=\"1\"><p>2 вида:<br>modern – темная тема,<br>classic – светлая тема</p></td><td colspan=\"1\" rowspan=\"1\"><p>Возможность полноценной кастомизации</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность закрытия клиентом</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Отображение суммы оплаты и назначения платежа</p></td><td colspan=\"1\" rowspan=\"1\"><p>Да</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность обновлять данные платежа</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть возможность подстраивать оплату под изменения в корзине</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность принудительного unmount</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть через blocksApp.unmount()</p></td></tr></table></div><h2 id=\"ustanovka-platezhnogo-konstruktora\"><strong>Установка платежного конструктора</strong></h2><p>Для установки конструктора необходимо прописать на сайте скрипт в раздел <strong>head</strong>:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">&lt;script src=&quot;https://widget.cloudpayments.ru/bundles/paymentblocks.js&quot;&gt;&lt;/script&gt;\n</code></pre></div><p>Далее необходимо создать DOM-элемент для маунта</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">&lt;div id=&quot;element&quot;&gt;&lt;/div&gt;\n</code></pre></div><p>Объявить платежный конструктор (подробнее параметры описываются ниже)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-3\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-3\" class=\"language-text\">var blocksApp = new cp.PaymentBlocks(\n    initializationParams, // параметры инициализации -- обязательны для работы конструктора\n    customizationParams // параметры кастомизации -- необязательны\n);\n</code></pre></div><p>И замаунтить его в созданный DOM-элемент</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-4\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-4\" class=\"language-text\">blocksApp.mount(document.getElementById(&quot;element&quot;));\n</code></pre></div><h2 id=\"demontazh-iz-dom\"><strong>Демонтаж из DOM</strong></h2><p>В любой момент можно демонтировать платежный конструктор из DOM-элемента</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-5\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-5\" class=\"language-text\">blocksApp.unmount();\n</code></pre></div><h2 id=\"sobytiya-kollbeki\"><strong>События (коллбэки)</strong></h2><p>Есть возможность получать уведомления о событиях и обрабатывать их, для этого необходимо добавить обработчики соответствующих событий</p><p>Для этого после маунта необходимо добавить следующий блок (или его часть)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-6\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-6\" class=\"language-text\">blocksApp.on(&quot;destroy&quot;, () =&gt; { // Подписка на событие ошибки оплаты\n     console.log(&quot;destroy&quot;);\n});\nblocksApp.on(&quot;success&quot;, (result) =&gt; { // Подписка на событие успешного результата оплаты\n     console.log(&quot;success&quot;, result);\n});\nblocksApp.on(&quot;fail&quot;, (result) =&gt; { // Подписка на событие уничтожения платежного конструктора\n     console.log(&quot;fail&quot;, result);\n});\n</code></pre></div><h2 id=\"vidy-kollbekov\"><strong>Виды коллбэков</strong></h2><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Коллбэк</p></th><th colspan=\"1\" rowspan=\"1\"><p>Условия для формирования</p></th><th colspan=\"1\" rowspan=\"1\"><p>Код инициализации коллбэка</p></th><th colspan=\"1\" rowspan=\"1\"><p>Примеры result</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>destroy</p></td><td colspan=\"1\" rowspan=\"1\"><p>Уничтожение платежного блока через unmount()</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;destroy&quot;, () =&gt; { console.log(&quot;destroy&quot;); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p>отсутствует</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>success</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;success&quot;, (result) =&gt; { console.log(&quot;success&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581868029 }, &quot;status&quot;: &quot;success&quot; }</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>fail</p></td><td colspan=\"1\" rowspan=\"1\"><p>Неуспешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;fail&quot;, (result) =&gt; { console.log(&quot;fail&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581867878, &quot;ReasonCode&quot;: 5206 }, &quot;message&quot;: &quot;3-D Secure авторизация не пройдена&quot;, &quot;status&quot;: &quot;fail&quot; }</code></p></td></tr></table></div><h2 id=\"otpiska\"><strong>Отписка</strong></h2><p>Так же доступна возможность отписки от событий</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-7\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-7\" class=\"language-text\">// Отписка от событий успешного результата оплаты\nblocksApp.off(&quot;success&quot;);\n\n// Отписка от событий ошибки оплаты\nblocksApp.off(&quot;fail&quot;);\n\n// Отписка от события уничтожения платежного конструктора\nblocksApp.off(&quot;destroy&quot;);\n</code></pre></div><h2 id=\"primer-vyzova-paymentblocks\"><strong>Пример вызова PaymentBlocks</strong></h2><p>Пример вызова функции PaymentBlocks со всеми параметрами</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-8\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-8\" class=\"language-text\">var blocksApp = new cp.PaymentBlocks(\n{  // initializationParams -- параметры инициализации (обязательны для работы конструктора)\n   &quot;publicTerminalId&quot;:&quot;test_api_00000000000000000000002&quot;,\n   &quot;paymentSchema&quot;:&quot;Dual&quot;,\n   &quot;description&quot;:&quot;Тестовая оплата&quot;,\n   &quot;amount&quot;:100.53,\n   &quot;currency&quot;:&quot;RUB&quot;,\n   &quot;externalId&quot;:&quot;123&quot;,\n   &quot;accountId&quot;:&quot;123&quot;,\n   &quot;receiptEmail&quot;:&quot;&quot;,\n   &quot;emailBehavior&quot;:&quot;Optional&quot;,\n   &quot;language&quot;:&quot;ru-RU&quot;\n},\n{  // customizationParams -- параметры кастомизации (не обязательны)\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   },\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   }\n});\n</code></pre></div><p>Параметры инициализации <strong>обязательны</strong> для работы конструктора. Параметры кастомизации <strong>необязательны</strong> для работы конструктора</p><h2 id=\"parametry-initsializatsii\"><strong>Параметры инициализации</strong></h2><p>Параметры инициализации такие же, как для <a href=\"https://developers.cloudpayments.ru/#parametry\" target=\"_blank\" rel=\"noopener noreferrer\">виджета</a>. <strong>Обязательны</strong> для работы конструктора</p><h2 id=\"kastomizatsiya-platezhnogo-konstruktora\"><strong>Кастомизация платежного конструктора</strong></h2><p>Кастомизация осуществляется с помощью передачи следующего набора параметров. Необходимо передать этот объект вторым аргументом в функцию инициализации конструктора</p><p>Параметры <strong>необязательны</strong> для работы конструктора</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-9\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-9\" class=\"language-text\">{\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   },\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   }\n}\n</code></pre></div><h2 id=\"parametry-kastomizatsii\"><strong>Параметры кастомизации</strong></h2><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Уровень</p></th><th colspan=\"1\" rowspan=\"1\"><p>Параметр</p></th><th colspan=\"1\" rowspan=\"1\"><p>Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Описание</p></th><th colspan=\"1\" rowspan=\"1\"><p>Обязательность</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>components</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Блок кастомизации текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentButton</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация кнопки оплаты для карты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..text</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Текст кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentForm</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..labelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта подсказки поля (замещающего текста)</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeLabelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта заголовка поля</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта текста для ввода данных</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>appearance</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация - цвета и скругление</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.colors</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвета для различных объектов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryHoverButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonHoverTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeInputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет значения полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет фона полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста лейблов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBorderColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет обводки полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..errorColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет ошибки ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..skeletonBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет скелетона</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..titleColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет заголовков</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..textColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.borders</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Границы формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..radius</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Радиус скругления углов формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr></table></div><h2 id=\"obnovlenie-platezhnogo-konstruktora\"><strong>Обновление платежного конструктора</strong></h2><p>Можно обновить все или часть параметров конструктора</p><p>Для этого нужно вызвать метод update, передав туда те же параметры (или их часть), которые использовались для инициализации платежного конструктора.</p><p>Обновляются только переданные параметры. При обновлении обязательных параметров нет, все параметры необязательные</p><p>Со списком параметров можно <a href=\"https://developers.cloudpayments.ru/#parametry\" target=\"_blank\" rel=\"noopener noreferrer\">ознакомиться тут</a></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-10\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-10\" class=\"language-text\">blocksApp.update(initializationParams);</code></pre></div><p><br></p></div>",
+    "html": "<div class=\"imported-api\"><p>PaymentBlocks — конструктор блоков, из которых можно собрать кастомную платежную форму. Вы можете сделать свой визуал формы</p><p>Форма оптимизирована для использования в любых браузерах и мобильных устройствах. Внутри блока открывается iframe, который гарантирует безопасность передачи карточных данных и не требует от ТСП сертификации для использования.</p><p>На форме поддерживаются все доступные в CloudPayments способы оплаты</p><p>Контроль суммы при оплате необходимо осуществлять самостоятельно. Для проверки суммы можно использовать уведомления: <a href=\"/uvedomleniya/#check\">Check</a> - для проверки суммы до оплаты, <a href=\"/uvedomleniya/#pay\">Pay</a> - для проверки суммы после оплаты</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"6f63b5d1-a0a7-4e4e-b0e8-61d4f6e0e67c\" src=\"https://developers.cloudpayments.ru/images/payment-blocks-5f56bd91.png\" alt=\"payment-blocks\" style=\"width:100%;max-width:100%;height:auto\"></figure><h2 id=\"demo-konstruktora\"><strong>Демо конструктора</strong></h2><p>Демонстрация работы Конструктора представлена <a href=\"https://widget.cloudpayments.ru/app/demo\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a>.</p><p>Для тестирования можно использовать как <a href=\"/testirovaniye/\">тестовые карточные данные</a>, так и реальные. Списания денежных средств не произойдет.</p><h2 id=\"otlichiya-ot-vidzheta\"><strong>Отличия от виджета</strong></h2><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Ключевые отличия</p></th><th colspan=\"1\" rowspan=\"1\"><p>Виджет</p></th><th colspan=\"1\" rowspan=\"1\"><p>Платежный конструктор</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Способ отображения</p></td><td colspan=\"1\" rowspan=\"1\"><p>Попап</p></td><td colspan=\"1\" rowspan=\"1\"><p>Встраиваемый на страницу. Можно встроить прямо на страницу заказа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация</p></td><td colspan=\"1\" rowspan=\"1\"><p>2 вида:<br>modern – темная тема,<br>classic – светлая тема</p></td><td colspan=\"1\" rowspan=\"1\"><p>Возможность полноценной кастомизации</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность закрытия клиентом</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Отображение суммы оплаты и назначения платежа</p></td><td colspan=\"1\" rowspan=\"1\"><p>Да</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность обновлять данные платежа</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть возможность подстраивать оплату под изменения в корзине</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность принудительного unmount</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть через blocksApp.unmount()</p></td></tr></table></div><h2 id=\"ustanovka-platezhnogo-konstruktora\"><strong>Установка платежного конструктора</strong></h2><p>Для установки конструктора необходимо прописать на сайте скрипт в раздел <strong>head</strong>:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-javascript\">&lt;script src=&quot;https://widget.cloudpayments.ru/bundles/paymentblocks.js&quot;&gt;&lt;/script&gt;\n</code></pre></div><p>Далее необходимо создать DOM-элемент для маунта</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-javascript\">&lt;div id=&quot;element&quot;&gt;&lt;/div&gt;\n</code></pre></div><p>Объявить платежный конструктор (подробнее параметры описываются ниже)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-3\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-3\" class=\"language-javascript\">var blocksApp = new cp.PaymentBlocks(\n    initializationParams, // параметры инициализации -- обязательны для работы конструктора\n    customizationParams // параметры кастомизации -- необязательны\n);\n</code></pre></div><p>И замаунтить его в созданный DOM-элемент</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-4\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-4\" class=\"language-javascript\">blocksApp.mount(document.getElementById(&quot;element&quot;));\n</code></pre></div><h2 id=\"demontazh-iz-dom\"><strong>Демонтаж из DOM</strong></h2><p>В любой момент можно демонтировать платежный конструктор из DOM-элемента</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-5\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-5\" class=\"language-javascript\">blocksApp.unmount();\n</code></pre></div><h2 id=\"sobytiya-kollbeki\"><strong>События (коллбэки)</strong></h2><p>Есть возможность получать уведомления о событиях и обрабатывать их, для этого необходимо добавить обработчики соответствующих событий</p><p>Для этого после маунта необходимо добавить следующий блок (или его часть)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-6\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-6\" class=\"language-javascript\">blocksApp.on(&quot;destroy&quot;, () =&gt; { // Подписка на событие ошибки оплаты\n     console.log(&quot;destroy&quot;);\n});\nblocksApp.on(&quot;success&quot;, (result) =&gt; { // Подписка на событие успешного результата оплаты\n     console.log(&quot;success&quot;, result);\n});\nblocksApp.on(&quot;fail&quot;, (result) =&gt; { // Подписка на событие уничтожения платежного конструктора\n     console.log(&quot;fail&quot;, result);\n});\n</code></pre></div><h2 id=\"vidy-kollbekov\"><strong>Виды коллбэков</strong></h2><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table style=\"table-layout:fixed;width:788px;min-width:0\"><colgroup><col style=\"width:180px\"><col style=\"width:180px\"><col style=\"width:248px\"><col style=\"width:180px\"></colgroup><tr><th colspan=\"1\" rowspan=\"1\"><p>Коллбэк</p></th><th colspan=\"1\" rowspan=\"1\"><p>Условия для формирования</p></th><th colspan=\"1\" rowspan=\"1\"><p>Код инициализации коллбэка</p></th><th colspan=\"1\" rowspan=\"1\"><p>Примеры result</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>destroy</p></td><td colspan=\"1\" rowspan=\"1\"><p>Уничтожение платежного блока через unmount()</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;destroy&quot;, () =&gt; { console.log(&quot;destroy&quot;); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p>отсутствует</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>success</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;success&quot;, (result) =&gt; { console.log(&quot;success&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581868029 }, &quot;status&quot;: &quot;success&quot; }</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>fail</p></td><td colspan=\"1\" rowspan=\"1\"><p>Неуспешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;fail&quot;, (result) =&gt; { console.log(&quot;fail&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581867878, &quot;ReasonCode&quot;: 5206 }, &quot;message&quot;: &quot;3-D Secure авторизация не пройдена&quot;, &quot;status&quot;: &quot;fail&quot; }</code></p></td></tr></table></div><h2 id=\"otpiska\"><strong>Отписка</strong></h2><p>Так же доступна возможность отписки от событий</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-7\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-7\" class=\"language-javascript\">// Отписка от событий успешного результата оплаты\nblocksApp.off(&quot;success&quot;);\n\n// Отписка от событий ошибки оплаты\nblocksApp.off(&quot;fail&quot;);\n\n// Отписка от события уничтожения платежного конструктора\nblocksApp.off(&quot;destroy&quot;);\n</code></pre></div><h2 id=\"primer-vyzova-paymentblocks\"><strong>Пример вызова PaymentBlocks</strong></h2><p>Пример вызова функции PaymentBlocks со всеми параметрами</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-8\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-8\" class=\"language-javascript\">var blocksApp = new cp.PaymentBlocks(\n{  // initializationParams -- параметры инициализации (обязательны для работы конструктора)\n   &quot;publicTerminalId&quot;:&quot;test_api_00000000000000000000002&quot;,\n   &quot;paymentSchema&quot;:&quot;Dual&quot;,\n   &quot;description&quot;:&quot;Тестовая оплата&quot;,\n   &quot;amount&quot;:100.53,\n   &quot;currency&quot;:&quot;RUB&quot;,\n   &quot;externalId&quot;:&quot;123&quot;,\n   &quot;accountId&quot;:&quot;123&quot;,\n   &quot;receiptEmail&quot;:&quot;&quot;,\n   &quot;emailBehavior&quot;:&quot;Optional&quot;,\n   &quot;language&quot;:&quot;ru-RU&quot;\n},\n{  // customizationParams -- параметры кастомизации (не обязательны)\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   },\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   }\n});\n</code></pre></div><p>Параметры инициализации <strong>обязательны</strong> для работы конструктора. Параметры кастомизации <strong>необязательны</strong> для работы конструктора</p><h2 id=\"parametry-initsializatsii\"><strong>Параметры инициализации</strong></h2><p>Параметры инициализации такие же, как для <a href=\"/platezhniy-widget/#parametry\">виджета</a>. <strong>Обязательны</strong> для работы конструктора</p><h2 id=\"kastomizatsiya-platezhnogo-konstruktora\"><strong>Кастомизация платежного конструктора</strong></h2><p>Кастомизация осуществляется с помощью передачи следующего набора параметров. Необходимо передать этот объект вторым аргументом в функцию инициализации конструктора</p><p>Параметры <strong>необязательны</strong> для работы конструктора</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-9\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-9\" class=\"language-javascript\">{\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   },\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   }\n}\n</code></pre></div><h2 id=\"parametry-kastomizatsii\"><strong>Параметры кастомизации</strong></h2><div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table style=\"table-layout:fixed;width:896px;min-width:0\"><colgroup><col style=\"width:180px\"><col style=\"width:230px\"><col style=\"width:118px\"><col style=\"width:180px\"><col style=\"width:188px\"></colgroup><tr><th colspan=\"1\" rowspan=\"1\"><p>Уровень</p></th><th colspan=\"1\" rowspan=\"1\"><p>Параметр</p></th><th colspan=\"1\" rowspan=\"1\"><p>Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Описание</p></th><th colspan=\"1\" rowspan=\"1\"><p>Обязательность</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>components</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Блок кастомизации текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentButton</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация кнопки оплаты для карты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..text</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Текст кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentForm</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..labelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта подсказки поля (замещающего текста)</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeLabelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта заголовка поля</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта текста для ввода данных</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>appearance</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация - цвета и скругление</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.colors</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвета для различных объектов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryHoverButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonHoverTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeInputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет значения полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет фона полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста лейблов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBorderColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет обводки полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..errorColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет ошибки ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..skeletonBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет скелетона</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..titleColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет заголовков</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..textColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.borders</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Границы формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..radius</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Радиус скругления углов формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr></table></div><h2 id=\"obnovlenie-platezhnogo-konstruktora\"><strong>Обновление платежного конструктора</strong></h2><p>Можно обновить все или часть параметров конструктора</p><p>Для этого нужно вызвать метод update, передав туда те же параметры (или их часть), которые использовались для инициализации платежного конструктора.</p><p>Обновляются только переданные параметры. При обновлении обязательных параметров нет, все параметры необязательные</p><p>Со списком параметров можно <a href=\"/platezhniy-widget/#parametry\">ознакомиться тут</a></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-10\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-10\" class=\"language-javascript\">blocksApp.update(initializationParams);</code></pre></div><p><br></p></div>",
     "toc": [
       {
         "id": "demo-konstruktora",
@@ -8589,19 +8589,19 @@
       }
     ],
     "segments": [
-      "<p>PaymentBlocks — конструктор блоков, из которых можно собрать кастомную платежную форму. Вы можете сделать свой визуал формы</p><p>Форма оптимизирована для использования в любых браузерах и мобильных устройствах. Внутри блока открывается iframe, который гарантирует безопасность передачи карточных данных и не требует от ТСП сертификации для использования.</p><p>На форме поддерживаются все доступные в CloudPayments способы оплаты</p><p>Контроль суммы при оплате необходимо осуществлять самостоятельно. Для проверки суммы можно использовать уведомления: <a href=\"https://developers.cloudpayments.ru/#check\" target=\"_blank\" rel=\"noopener noreferrer\">Check</a> - для проверки суммы до оплаты, <a href=\"https://developers.cloudpayments.ru/#pay\" target=\"_blank\" rel=\"noopener noreferrer\">Pay</a> - для проверки суммы после оплаты</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"6f63b5d1-a0a7-4e4e-b0e8-61d4f6e0e67c\" src=\"https://developers.cloudpayments.ru/images/payment-blocks-5f56bd91.png\" alt=\"payment-blocks\" style=\"width:100%;max-width:100%;height:auto\"></figure>",
-      "<p>Демонстрация работы Конструктора представлена <a href=\"https://widget.cloudpayments.ru/app/demo\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a>.</p><p>Для тестирования можно использовать как <a href=\"https://developers.cloudpayments.ru/#testirovanie\" target=\"_blank\" rel=\"noopener noreferrer\">тестовые карточные данные</a>, так и реальные. Списания денежных средств не произойдет.</p>",
+      "<p>PaymentBlocks — конструктор блоков, из которых можно собрать кастомную платежную форму. Вы можете сделать свой визуал формы</p><p>Форма оптимизирована для использования в любых браузерах и мобильных устройствах. Внутри блока открывается iframe, который гарантирует безопасность передачи карточных данных и не требует от ТСП сертификации для использования.</p><p>На форме поддерживаются все доступные в CloudPayments способы оплаты</p><p>Контроль суммы при оплате необходимо осуществлять самостоятельно. Для проверки суммы можно использовать уведомления: <a href=\"/uvedomleniya/#check\">Check</a> - для проверки суммы до оплаты, <a href=\"/uvedomleniya/#pay\">Pay</a> - для проверки суммы после оплаты</p><p><br></p><figure style=\"text-align:center\"><img data-image-id=\"6f63b5d1-a0a7-4e4e-b0e8-61d4f6e0e67c\" src=\"https://developers.cloudpayments.ru/images/payment-blocks-5f56bd91.png\" alt=\"payment-blocks\" style=\"width:100%;max-width:100%;height:auto\"></figure>",
+      "<p>Демонстрация работы Конструктора представлена <a href=\"https://widget.cloudpayments.ru/app/demo\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a>.</p><p>Для тестирования можно использовать как <a href=\"/testirovaniye/\">тестовые карточные данные</a>, так и реальные. Списания денежных средств не произойдет.</p>",
       "<div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Ключевые отличия</p></th><th colspan=\"1\" rowspan=\"1\"><p>Виджет</p></th><th colspan=\"1\" rowspan=\"1\"><p>Платежный конструктор</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Способ отображения</p></td><td colspan=\"1\" rowspan=\"1\"><p>Попап</p></td><td colspan=\"1\" rowspan=\"1\"><p>Встраиваемый на страницу. Можно встроить прямо на страницу заказа</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация</p></td><td colspan=\"1\" rowspan=\"1\"><p>2 вида:<br>modern – темная тема,<br>classic – светлая тема</p></td><td colspan=\"1\" rowspan=\"1\"><p>Возможность полноценной кастомизации</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность закрытия клиентом</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Отображение суммы оплаты и назначения платежа</p></td><td colspan=\"1\" rowspan=\"1\"><p>Да</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность обновлять данные платежа</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть возможность подстраивать оплату под изменения в корзине</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>Возможность принудительного unmount</p></td><td colspan=\"1\" rowspan=\"1\"><p>Нет</p></td><td colspan=\"1\" rowspan=\"1\"><p>Есть через blocksApp.unmount()</p></td></tr></table></div>",
-      "<p>Для установки конструктора необходимо прописать на сайте скрипт в раздел <strong>head</strong>:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-text\">&lt;script src=&quot;https://widget.cloudpayments.ru/bundles/paymentblocks.js&quot;&gt;&lt;/script&gt;\n</code></pre></div><p>Далее необходимо создать DOM-элемент для маунта</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-text\">&lt;div id=&quot;element&quot;&gt;&lt;/div&gt;\n</code></pre></div><p>Объявить платежный конструктор (подробнее параметры описываются ниже)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-3\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-3\" class=\"language-text\">var blocksApp = new cp.PaymentBlocks(\n    initializationParams, // параметры инициализации -- обязательны для работы конструктора\n    customizationParams // параметры кастомизации -- необязательны\n);\n</code></pre></div><p>И замаунтить его в созданный DOM-элемент</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-4\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-4\" class=\"language-text\">blocksApp.mount(document.getElementById(&quot;element&quot;));\n</code></pre></div>",
-      "<p>В любой момент можно демонтировать платежный конструктор из DOM-элемента</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-5\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-5\" class=\"language-text\">blocksApp.unmount();\n</code></pre></div>",
-      "<p>Есть возможность получать уведомления о событиях и обрабатывать их, для этого необходимо добавить обработчики соответствующих событий</p><p>Для этого после маунта необходимо добавить следующий блок (или его часть)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-6\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-6\" class=\"language-text\">blocksApp.on(&quot;destroy&quot;, () =&gt; { // Подписка на событие ошибки оплаты\n     console.log(&quot;destroy&quot;);\n});\nblocksApp.on(&quot;success&quot;, (result) =&gt; { // Подписка на событие успешного результата оплаты\n     console.log(&quot;success&quot;, result);\n});\nblocksApp.on(&quot;fail&quot;, (result) =&gt; { // Подписка на событие уничтожения платежного конструктора\n     console.log(&quot;fail&quot;, result);\n});\n</code></pre></div>",
-      "<div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Коллбэк</p></th><th colspan=\"1\" rowspan=\"1\"><p>Условия для формирования</p></th><th colspan=\"1\" rowspan=\"1\"><p>Код инициализации коллбэка</p></th><th colspan=\"1\" rowspan=\"1\"><p>Примеры result</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>destroy</p></td><td colspan=\"1\" rowspan=\"1\"><p>Уничтожение платежного блока через unmount()</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;destroy&quot;, () =&gt; { console.log(&quot;destroy&quot;); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p>отсутствует</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>success</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;success&quot;, (result) =&gt; { console.log(&quot;success&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581868029 }, &quot;status&quot;: &quot;success&quot; }</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>fail</p></td><td colspan=\"1\" rowspan=\"1\"><p>Неуспешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;fail&quot;, (result) =&gt; { console.log(&quot;fail&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581867878, &quot;ReasonCode&quot;: 5206 }, &quot;message&quot;: &quot;3-D Secure авторизация не пройдена&quot;, &quot;status&quot;: &quot;fail&quot; }</code></p></td></tr></table></div>",
-      "<p>Так же доступна возможность отписки от событий</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-7\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-7\" class=\"language-text\">// Отписка от событий успешного результата оплаты\nblocksApp.off(&quot;success&quot;);\n\n// Отписка от событий ошибки оплаты\nblocksApp.off(&quot;fail&quot;);\n\n// Отписка от события уничтожения платежного конструктора\nblocksApp.off(&quot;destroy&quot;);\n</code></pre></div>",
-      "<p>Пример вызова функции PaymentBlocks со всеми параметрами</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-8\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-8\" class=\"language-text\">var blocksApp = new cp.PaymentBlocks(\n{  // initializationParams -- параметры инициализации (обязательны для работы конструктора)\n   &quot;publicTerminalId&quot;:&quot;test_api_00000000000000000000002&quot;,\n   &quot;paymentSchema&quot;:&quot;Dual&quot;,\n   &quot;description&quot;:&quot;Тестовая оплата&quot;,\n   &quot;amount&quot;:100.53,\n   &quot;currency&quot;:&quot;RUB&quot;,\n   &quot;externalId&quot;:&quot;123&quot;,\n   &quot;accountId&quot;:&quot;123&quot;,\n   &quot;receiptEmail&quot;:&quot;&quot;,\n   &quot;emailBehavior&quot;:&quot;Optional&quot;,\n   &quot;language&quot;:&quot;ru-RU&quot;\n},\n{  // customizationParams -- параметры кастомизации (не обязательны)\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   },\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   }\n});\n</code></pre></div><p>Параметры инициализации <strong>обязательны</strong> для работы конструктора. Параметры кастомизации <strong>необязательны</strong> для работы конструктора</p>",
-      "<p>Параметры инициализации такие же, как для <a href=\"https://developers.cloudpayments.ru/#parametry\" target=\"_blank\" rel=\"noopener noreferrer\">виджета</a>. <strong>Обязательны</strong> для работы конструктора</p>",
-      "<p>Кастомизация осуществляется с помощью передачи следующего набора параметров. Необходимо передать этот объект вторым аргументом в функцию инициализации конструктора</p><p>Параметры <strong>необязательны</strong> для работы конструктора</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-9\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-9\" class=\"language-text\">{\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   },\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   }\n}\n</code></pre></div>",
-      "<div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table><tr><th colspan=\"1\" rowspan=\"1\"><p>Уровень</p></th><th colspan=\"1\" rowspan=\"1\"><p>Параметр</p></th><th colspan=\"1\" rowspan=\"1\"><p>Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Описание</p></th><th colspan=\"1\" rowspan=\"1\"><p>Обязательность</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>components</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Блок кастомизации текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentButton</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация кнопки оплаты для карты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..text</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Текст кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentForm</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..labelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта подсказки поля (замещающего текста)</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeLabelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта заголовка поля</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта текста для ввода данных</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>appearance</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация - цвета и скругление</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.colors</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвета для различных объектов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryHoverButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonHoverTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeInputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет значения полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет фона полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста лейблов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBorderColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет обводки полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..errorColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет ошибки ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..skeletonBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет скелетона</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..titleColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет заголовков</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..textColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.borders</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Границы формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..radius</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Радиус скругления углов формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr></table></div>",
-      "<p>Можно обновить все или часть параметров конструктора</p><p>Для этого нужно вызвать метод update, передав туда те же параметры (или их часть), которые использовались для инициализации платежного конструктора.</p><p>Обновляются только переданные параметры. При обновлении обязательных параметров нет, все параметры необязательные</p><p>Со списком параметров можно <a href=\"https://developers.cloudpayments.ru/#parametry\" target=\"_blank\" rel=\"noopener noreferrer\">ознакомиться тут</a></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>text</span><button type=\"button\" data-copy-code=\"editor-code-10\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-10\" class=\"language-text\">blocksApp.update(initializationParams);</code></pre></div><p><br></p>"
+      "<p>Для установки конструктора необходимо прописать на сайте скрипт в раздел <strong>head</strong>:</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-1\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-1\" class=\"language-javascript\">&lt;script src=&quot;https://widget.cloudpayments.ru/bundles/paymentblocks.js&quot;&gt;&lt;/script&gt;\n</code></pre></div><p>Далее необходимо создать DOM-элемент для маунта</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-2\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-2\" class=\"language-javascript\">&lt;div id=&quot;element&quot;&gt;&lt;/div&gt;\n</code></pre></div><p>Объявить платежный конструктор (подробнее параметры описываются ниже)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-3\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-3\" class=\"language-javascript\">var blocksApp = new cp.PaymentBlocks(\n    initializationParams, // параметры инициализации -- обязательны для работы конструктора\n    customizationParams // параметры кастомизации -- необязательны\n);\n</code></pre></div><p>И замаунтить его в созданный DOM-элемент</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-4\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-4\" class=\"language-javascript\">blocksApp.mount(document.getElementById(&quot;element&quot;));\n</code></pre></div>",
+      "<p>В любой момент можно демонтировать платежный конструктор из DOM-элемента</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-5\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-5\" class=\"language-javascript\">blocksApp.unmount();\n</code></pre></div>",
+      "<p>Есть возможность получать уведомления о событиях и обрабатывать их, для этого необходимо добавить обработчики соответствующих событий</p><p>Для этого после маунта необходимо добавить следующий блок (или его часть)</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-6\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-6\" class=\"language-javascript\">blocksApp.on(&quot;destroy&quot;, () =&gt; { // Подписка на событие ошибки оплаты\n     console.log(&quot;destroy&quot;);\n});\nblocksApp.on(&quot;success&quot;, (result) =&gt; { // Подписка на событие успешного результата оплаты\n     console.log(&quot;success&quot;, result);\n});\nblocksApp.on(&quot;fail&quot;, (result) =&gt; { // Подписка на событие уничтожения платежного конструктора\n     console.log(&quot;fail&quot;, result);\n});\n</code></pre></div>",
+      "<div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table style=\"table-layout:fixed;width:788px;min-width:0\"><colgroup><col style=\"width:180px\"><col style=\"width:180px\"><col style=\"width:248px\"><col style=\"width:180px\"></colgroup><tr><th colspan=\"1\" rowspan=\"1\"><p>Коллбэк</p></th><th colspan=\"1\" rowspan=\"1\"><p>Условия для формирования</p></th><th colspan=\"1\" rowspan=\"1\"><p>Код инициализации коллбэка</p></th><th colspan=\"1\" rowspan=\"1\"><p>Примеры result</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>destroy</p></td><td colspan=\"1\" rowspan=\"1\"><p>Уничтожение платежного блока через unmount()</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;destroy&quot;, () =&gt; { console.log(&quot;destroy&quot;); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p>отсутствует</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>success</p></td><td colspan=\"1\" rowspan=\"1\"><p>Успешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;success&quot;, (result) =&gt; { console.log(&quot;success&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581868029 }, &quot;status&quot;: &quot;success&quot; }</code></p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>fail</p></td><td colspan=\"1\" rowspan=\"1\"><p>Неуспешная оплата</p></td><td colspan=\"1\" rowspan=\"1\"><p><code>blocksApp.on(&quot;fail&quot;, (result) =&gt; { console.log(&quot;fail&quot;, result); });</code></p></td><td colspan=\"1\" rowspan=\"1\"><p><code>{ &quot;type&quot;: &quot;payment&quot;, &quot;data&quot;: { &quot;transactionId&quot;: 4581867878, &quot;ReasonCode&quot;: 5206 }, &quot;message&quot;: &quot;3-D Secure авторизация не пройдена&quot;, &quot;status&quot;: &quot;fail&quot; }</code></p></td></tr></table></div>",
+      "<p>Так же доступна возможность отписки от событий</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-7\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-7\" class=\"language-javascript\">// Отписка от событий успешного результата оплаты\nblocksApp.off(&quot;success&quot;);\n\n// Отписка от событий ошибки оплаты\nblocksApp.off(&quot;fail&quot;);\n\n// Отписка от события уничтожения платежного конструктора\nblocksApp.off(&quot;destroy&quot;);\n</code></pre></div>",
+      "<p>Пример вызова функции PaymentBlocks со всеми параметрами</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-8\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-8\" class=\"language-javascript\">var blocksApp = new cp.PaymentBlocks(\n{  // initializationParams -- параметры инициализации (обязательны для работы конструктора)\n   &quot;publicTerminalId&quot;:&quot;test_api_00000000000000000000002&quot;,\n   &quot;paymentSchema&quot;:&quot;Dual&quot;,\n   &quot;description&quot;:&quot;Тестовая оплата&quot;,\n   &quot;amount&quot;:100.53,\n   &quot;currency&quot;:&quot;RUB&quot;,\n   &quot;externalId&quot;:&quot;123&quot;,\n   &quot;accountId&quot;:&quot;123&quot;,\n   &quot;receiptEmail&quot;:&quot;&quot;,\n   &quot;emailBehavior&quot;:&quot;Optional&quot;,\n   &quot;language&quot;:&quot;ru-RU&quot;\n},\n{  // customizationParams -- параметры кастомизации (не обязательны)\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   },\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   }\n});\n</code></pre></div><p>Параметры инициализации <strong>обязательны</strong> для работы конструктора. Параметры кастомизации <strong>необязательны</strong> для работы конструктора</p>",
+      "<p>Параметры инициализации такие же, как для <a href=\"/platezhniy-widget/#parametry\">виджета</a>. <strong>Обязательны</strong> для работы конструктора</p>",
+      "<p>Кастомизация осуществляется с помощью передачи следующего набора параметров. Необходимо передать этот объект вторым аргументом в функцию инициализации конструктора</p><p>Параметры <strong>необязательны</strong> для работы конструктора</p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-9\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-9\" class=\"language-javascript\">{\n   &quot;components&quot;:{\n      &quot;paymentButton&quot;:{\n         &quot;text&quot;:&quot;Свое название кнопки&quot;,\n         &quot;fontSize&quot;:&quot;40px&quot;\n      },\n      &quot;paymentForm&quot;:{\n         &quot;labelFontSize&quot;:&quot;5px&quot;,\n         &quot;activeLabelFontSize&quot;:&quot;50px&quot;,\n         &quot;fontSize&quot;:&quot;90px&quot;\n      }\n   },\n   &quot;appearance&quot;:{\n      &quot;colors&quot;:{\n         &quot;primaryButtonColor&quot;:&quot;#1dfa05&quot;,\n         &quot;primaryHoverButtonColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;primaryButtonHoverTextColor&quot;:&quot;#da1ef7&quot;,\n         &quot;activeInputColor&quot;:&quot;#da1ef7&quot;,\n         &quot;inputBackground&quot;:&quot;#da1ef7&quot;,\n         &quot;inputColor&quot;:&quot;#1dfa05&quot;,\n         &quot;inputBorderColor&quot;:&quot;#f20505&quot;,\n         &quot;titleColor&quot;:&quot;#da1ef7&quot;,\n         &quot;textColor&quot;:&quot;#1dfa05&quot;,\n         &quot;errorColor&quot;:&quot;#ee05fa&quot;,\n         &quot;skeletonBackground&quot;:&quot;#ee05fa&quot;\n      },\n      &quot;borders&quot;:{\n         &quot;radius&quot;:&quot;80px&quot;\n      }\n   }\n}\n</code></pre></div>",
+      "<div class=\"api-table-scroll\" tabindex=\"0\" aria-label=\"Таблица\"><table style=\"table-layout:fixed;width:896px;min-width:0\"><colgroup><col style=\"width:180px\"><col style=\"width:230px\"><col style=\"width:118px\"><col style=\"width:180px\"><col style=\"width:188px\"></colgroup><tr><th colspan=\"1\" rowspan=\"1\"><p>Уровень</p></th><th colspan=\"1\" rowspan=\"1\"><p>Параметр</p></th><th colspan=\"1\" rowspan=\"1\"><p>Тип</p></th><th colspan=\"1\" rowspan=\"1\"><p>Описание</p></th><th colspan=\"1\" rowspan=\"1\"><p>Обязательность</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>components</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Блок кастомизации текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentButton</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация кнопки оплаты для карты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..text</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Текст кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.paymentForm</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..labelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта подсказки поля (замещающего текста)</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeLabelFontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта заголовка поля</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..fontSize</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Размер шрифта текста для ввода данных</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\"><p>appearance</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Кастомизация - цвета и скругление</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.colors</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвета для различных объектов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryHoverButtonColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..primaryButtonHoverTextColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста кнопки оплаты при наведении</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..activeInputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет значения полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет фона полей</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста лейблов</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..inputBorderColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет обводки полей ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..errorColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет ошибки ввода</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..skeletonBackground</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет скелетона</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..titleColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет заголовков</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..textColor</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Цвет текста</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>3</p></td><td colspan=\"1\" rowspan=\"1\"><p>.borders</p></td><td colspan=\"1\" rowspan=\"1\"><p>object</p></td><td colspan=\"1\" rowspan=\"1\"><p>Границы формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\"><p>4</p></td><td colspan=\"1\" rowspan=\"1\"><p>..radius</p></td><td colspan=\"1\" rowspan=\"1\"><p>string</p></td><td colspan=\"1\" rowspan=\"1\"><p>Радиус скругления углов формы</p></td><td colspan=\"1\" rowspan=\"1\"><p>Необязателен</p></td></tr></table></div>",
+      "<p>Можно обновить все или часть параметров конструктора</p><p>Для этого нужно вызвать метод update, передав туда те же параметры (или их часть), которые использовались для инициализации платежного конструктора.</p><p>Обновляются только переданные параметры. При обновлении обязательных параметров нет, все параметры необязательные</p><p>Со списком параметров можно <a href=\"/platezhniy-widget/#parametry\">ознакомиться тут</a></p><div class=\"api-code-block\"><div class=\"api-code-toolbar\"><span>javascript</span><button type=\"button\" data-copy-code=\"editor-code-10\" data-copy-state=\"ready\" aria-label=\"Копировать код\" title=\"Копировать код\"><svg class=\"api-copy-icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"12\" rx=\"2\"/><path d=\"M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1\"/></svg><svg class=\"api-copy-success\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><span class=\"api-copy-status\" data-copy-status role=\"status\" aria-live=\"polite\"></span></button></div><pre class=\"api-code\"><code id=\"editor-code-10\" class=\"language-javascript\">blocksApp.update(initializationParams);</code></pre></div><p><br></p>"
     ],
     "content": {
       "type": "doc",
@@ -8658,7 +8658,7 @@
                 {
                   "type": "link",
                   "attrs": {
-                    "href": "https://developers.cloudpayments.ru/#check",
+                    "href": "/uvedomleniya/#check",
                     "target": "_blank",
                     "rel": "noopener noreferrer",
                     "class": null,
@@ -8678,7 +8678,7 @@
                 {
                   "type": "link",
                   "attrs": {
-                    "href": "https://developers.cloudpayments.ru/#pay",
+                    "href": "/uvedomleniya/#pay",
                     "target": "_blank",
                     "rel": "noopener noreferrer",
                     "class": null,
@@ -8780,7 +8780,7 @@
                 {
                   "type": "link",
                   "attrs": {
-                    "href": "https://developers.cloudpayments.ru/#testirovanie",
+                    "href": "/testirovaniye/",
                     "target": "_blank",
                     "rel": "noopener noreferrer",
                     "class": null,
@@ -9399,7 +9399,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -9423,7 +9423,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -9447,7 +9447,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -9471,7 +9471,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -9514,7 +9514,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -9569,7 +9569,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -9654,7 +9654,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      248
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -9751,7 +9753,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      248
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -9853,7 +9857,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      248
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -9960,7 +9966,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      248
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10049,7 +10057,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -10092,7 +10100,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -10174,7 +10182,7 @@
                 {
                   "type": "link",
                   "attrs": {
-                    "href": "https://developers.cloudpayments.ru/#parametry",
+                    "href": "/platezhniy-widget/#parametry",
                     "target": "_blank",
                     "rel": "noopener noreferrer",
                     "class": null,
@@ -10262,7 +10270,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
@@ -10324,7 +10332,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10347,7 +10357,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10393,7 +10405,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10444,7 +10458,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10467,7 +10483,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10513,7 +10531,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10564,7 +10584,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10587,7 +10609,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10633,7 +10657,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10684,7 +10710,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10707,7 +10735,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10753,7 +10783,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10804,7 +10836,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10827,7 +10861,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10873,7 +10909,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10924,7 +10962,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10947,7 +10987,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -10993,7 +11035,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11044,7 +11088,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11067,7 +11113,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11113,7 +11161,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11164,7 +11214,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11187,7 +11239,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11233,7 +11287,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11284,7 +11340,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11307,7 +11365,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11353,7 +11413,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11404,7 +11466,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11427,7 +11491,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11473,7 +11539,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11524,7 +11592,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11547,7 +11617,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11593,7 +11665,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11644,7 +11718,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11667,7 +11743,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11713,7 +11791,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11764,7 +11844,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11787,7 +11869,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11833,7 +11917,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11884,7 +11970,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11907,7 +11995,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -11953,7 +12043,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12004,7 +12096,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12027,7 +12121,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12073,7 +12169,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12124,7 +12222,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12147,7 +12247,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12193,7 +12295,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12244,7 +12348,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12267,7 +12373,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12313,7 +12421,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12364,7 +12474,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12387,7 +12499,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12433,7 +12547,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12484,7 +12600,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12507,7 +12625,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12553,7 +12673,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12604,7 +12726,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12627,7 +12751,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12673,7 +12799,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12724,7 +12852,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12747,7 +12877,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12793,7 +12925,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12844,7 +12978,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12867,7 +13003,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12913,7 +13051,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12964,7 +13104,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -12987,7 +13129,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13033,7 +13177,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13084,7 +13230,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13107,7 +13255,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13153,7 +13303,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13204,7 +13356,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      230
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13227,7 +13381,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      118
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13273,7 +13429,9 @@
                   "attrs": {
                     "colspan": 1,
                     "rowspan": 1,
-                    "colwidth": null,
+                    "colwidth": [
+                      188
+                    ],
                     "align": "left"
                   },
                   "content": [
@@ -13366,7 +13524,7 @@
                 {
                   "type": "link",
                   "attrs": {
-                    "href": "https://developers.cloudpayments.ru/#parametry",
+                    "href": "/platezhniy-widget/#parametry",
                     "target": "_blank",
                     "rel": "noopener noreferrer",
                     "class": null,
@@ -13381,7 +13539,7 @@
         {
           "type": "codeBlock",
           "attrs": {
-            "language": "text"
+            "language": "javascript"
           },
           "content": [
             {
