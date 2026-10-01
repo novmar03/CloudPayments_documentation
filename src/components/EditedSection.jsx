@@ -7,7 +7,6 @@ import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import russianContent from '../content/editor-pages.json?render';
 import {handleCodeCopy} from './document-ui';
-import CheckoutDemo from './CheckoutDemo';
 export default function EditedSection({page,index}) {
  const base=useBaseUrl('/');
  const {i18n:{currentLocale}}=useDocusaurusContext();
@@ -17,5 +16,5 @@ export default function EditedSection({page,index}) {
  const documentationLinkedHtml=html.replace(/href="\/(?!\/)([^"#]+)(#[^"]*)?"/g,(all,route,hash)=>documentationRoutes.has(route.replace(/^en\//,'').replace(/\/$/,''))?'href="'+base.replace(/\/en\/$/,'/')+route+(hash||'')+'"':all);
  const carouselRoot=useCarouselRef(null);
  useCarouselEffect(()=>installCarouselRuntime(carouselRoot.current),[html]);
- return <><div ref={carouselRoot} className="imported-api" onClick={handleCodeCopy} dangerouslySetInnerHTML={{__html:documentationLinkedHtml}}/>{page==='script-checkout'&&index===1&&<CheckoutDemo/>}</>;
+ return <div ref={carouselRoot} className="imported-api" onClick={handleCodeCopy} dangerouslySetInnerHTML={{__html:documentationLinkedHtml}}/>;
 }
