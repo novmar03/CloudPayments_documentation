@@ -122,6 +122,8 @@ for route,anchor in internal_links:
     if anchor: assert 'id="'+html.escape(anchor,quote=True)+'"' in pages[route]['html'], (route,anchor)
 
 template=(ROOT/'src/offline-template.html').read_text(encoding='utf-8')
+import runpy
+template=template.replace('<!-- CHECKOUT_DEMO -->',runpy.run_path(str(ROOT/'scripts/lib/checkout-demo.py'))['checkout_demo'](ROOT))
 template=template.replace('/* IMPORTED_API_CSS */', (ROOT/'src/css/imported-api.css').read_text(encoding='utf-8'))
 template=template.replace('/* DOCUMENT_LOCALES */', (ROOT/'src/components/document-locales.cjs').read_text(encoding='utf-8'))
 template=template.replace('/* DOCUMENT_UI */', (ROOT/'src/components/document-ui.js').read_text(encoding='utf-8'))
